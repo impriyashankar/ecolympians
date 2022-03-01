@@ -1,0 +1,2 @@
+class GroupChallengesController < ApplicationController
+end
