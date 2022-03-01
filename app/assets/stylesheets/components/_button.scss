@@ -1,0 +1,98 @@
+/*
+btn-regular --> 'Start Playing, 'Understood', 'Invite', etc.
+btn-welcome --> 'Get Started', 'New Group'
+btn-search --> Search click button
+btn-vote --> Challenge vote
+btn-vote-rounded --> round 'Vote' button inside btn-vote
+btn-footer --> Footer navigation buttons on mobile
+
+*/
+
+.btn-welcome, .btn-regular, .btn-search, .btn-vote, .btn-footer {
+  color: white;
+  padding: 0.375rem 3rem;
+  border-radius: 10px;
+  background-color: $primary;
+  transition: background 0.3s ease;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-size: 1rem;
+}
+
+.btn-regular:hover {
+  background: $primary-light;
+  color: $black;
+}
+
+.btn-welcome {
+  width:100%;
+
+  &:hover {
+    background: $primary-light;
+    color: $black;
+  }
+}
+.btn-search {
+  width: 3rem;
+  padding: .5rem 15px;
+  i{
+    font-size:15px;
+  }
+  &:hover {
+    background: $primary-light;
+    color: $black;
+  }
+
+}
+
+.btn-vote {
+  width:100%;
+  position: relative;
+  color: $black;
+  background-color: $white;
+
+  &:hover {
+    background: $primary-light;
+    color: $black;
+  }
+}
+
+.btn-vote-round {
+  width: 2rem;
+  height: 2rem;
+  border-radius:50%;
+  display: inline-block;
+  position: absolute;
+  background-color: $primary;
+  color: $white;
+  font-size: 12px;
+  bottom: 0.15rem;
+  right: 2rem;
+  span {
+    margin-bottom: -1rem;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+}
+
+.btn-footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: $white;
+  color: $light-gray;
+  align-items: center;
+  i{
+    width: 25%vw;
+    &:hover {
+      color: $primary;
+    }
+  }
+
+}
