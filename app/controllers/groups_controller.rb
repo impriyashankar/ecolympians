@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update]
+  before_action :set_group, only: [ :edit, :update ]
   def index
     @groups = Group.all
   end
@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    if @toy.save
+    if @group.save
       redirect_to groups_path
     else
       render :new
