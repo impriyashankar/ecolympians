@@ -8,5 +8,5 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :email_address, presence: true, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
   has_many :groups, through: :memberships
-  # has_one_attached :photo
+  has_one_attached :photo
 end
