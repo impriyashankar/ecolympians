@@ -1,5 +1,5 @@
 class GroupChallenge < ApplicationRecord
-  STATUSES = %w[waiting challenging finished]
+  STATUSES = %w[waiting ongoing finished]
   belongs_to :challenge
   belongs_to :membership
   validates :status, presence: true, inclusion: { in: STATUSES }

@@ -3,7 +3,7 @@ class Membership < ApplicationRecord
 
   belongs_to :user
   belongs_to :group
-  has_many :group_challenges
+  has_many :group_challenges, dependent: :destroy
   validates :role, presence: true, inclusion: { in: ['Member', 'Admin'] }
   validates :status, presence: true, inclusion: { in: MEMBER_STATUSES }
 end
