@@ -1,7 +1,19 @@
 <h1>UI Kit</h1>
 <!-- Color Scheme -->
 <h2>Colors:</h2>
-
+<div class="d-flex">
+  <div id="primary" class="ui-kit-circle"></div>
+  <div id="primary-light" class="ui-kit-circle"></div>
+  <div id="secondary" class="ui-kit-circle"></div>
+  <div id="secondary-light" class="ui-kit-circle"></div>
+  <div id="yellow" class="ui-kit-circle"></div>
+  <div id="yellow-hover" class="ui-kit-circle"></div>
+  <div id="red" class="ui-kit-circle"></div>
+  <div id="red-hover" class="ui-kit-circle"></div>
+  <div id="blue" class="ui-kit-circle"></div>
+  <div id="blue-hover" class="ui-kit-circle"></div>
+</div>
+<br>
 <!-- Components -->
 <h2>Basic Components</h2>
 
@@ -13,9 +25,46 @@
 
 <!-- Searchbar -->
 <h3>Searchbar</h3>
+<input type="text" class="searchbar" placeholder="Search...">
+<br>
 
 <!-- Navbar -->
 <h3>Navbar</h3>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <h1>Ecolympians <%= icon("fas", "leaf") %></h1>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Home", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Messages", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <!-- Tabs -->
 <h3>Tabs</h3>
