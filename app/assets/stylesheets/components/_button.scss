@@ -90,9 +90,43 @@ btn-footer --> Footer navigation buttons on mobile
   align-items: center;
   i{
     width: 25%vw;
+    padding: 0.5rem;
     &:hover {
       color: $primary;
+      background: $light-gray;
+      border-radius: 50%;
+
     }
+  }
+
+}
+
+@media(max-width: 768px) {
+  .btn-regular:active {
+    background: $primary-light;
+    color: $black;
+  }
+
+  .btn-welcome:active {
+    background: $primary-light;
+    color: $black;
+  }
+
+  .btn-search:active {
+    background: $primary-light;
+    color: $black;
+  }
+
+  .btn-vote:active {
+    background: $primary-light;
+    color: $black;
+  }
+
+  .btn-footer:active {
+    color: $primary;
+    background: $light-gray;
+    border-radius: 50%;
+
   }
 
 }
