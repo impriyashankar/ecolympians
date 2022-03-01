@@ -23,7 +23,7 @@ GroupChallenge.destroy_all
 puts "Creating 15 users...\n"
 
 users = 15.times.each_with_object([]) do |index, arr|
-  arr << User.create!(
+  arr << user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: "user#{index + 1}@gmail.com",
@@ -31,13 +31,13 @@ users = 15.times.each_with_object([]) do |index, arr|
     password_confirmation: "123456"
   )
 
-  # user.photo.attach(
-  #   io: File.open("app/assets/images/empty_account.png"),
-  #   filename: "empty_account.png",
-  #   content_type: "image/png"
-  # )
+  user.photo.attach(
+    io: File.open("app/assets/images/empty_account.png"),
+    filename: "empty_account.png",
+    content_type: "image/png"
+  )
 
-  # user.save
+  user.save
 
   puts "User ##{index + 1}"
   puts "Email: user#{index + 1}@gmail.com"
@@ -131,3 +131,5 @@ Group.all.each do |group|
 
   puts "#{group.name} will do the #{GroupChallenge.last.challenge.name} challenge, which starts at #{GroupChallenge.last.start_date}"
 end
+
+puts ""
