@@ -2,9 +2,9 @@ class GroupChallenge < ApplicationRecord
   STATUSES = %w[waiting challenging finished]
   belongs_to :challenge
   belongs_to :membership
+  has_one_attached :photo
   validates :status, presence: true, inclusion: { in: STATUSES }
   validates :start_date, presence: true
-
   validate :valid_start_date?
 
   private
