@@ -1,0 +1,2 @@
+class ChallengeVotesController < ApplicationController
+end

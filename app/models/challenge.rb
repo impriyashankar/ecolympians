@@ -1,5 +1,5 @@
 class Challenge < ApplicationRecord
-  CATEGORY = %w[
+  CATEGORIES = %w[
     Recycle
     Planting\ tree
     Pick\ up\ trash
@@ -13,6 +13,6 @@ class Challenge < ApplicationRecord
   has_many :group_challenges
   validates :name, presence: true
   validates :description, presence: true
-  validates :category, presence: true
+  validates :category, presence: true, inclusion: { in: CATEGORIES }
   validates :score, presence: true
 end
