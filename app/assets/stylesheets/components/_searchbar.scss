@@ -1,0 +1,24 @@
+.searchbar {
+  border-radius: 12px;
+  border: 1px solid $primary;
+  padding: 0.25em 1em;
+  color: $secondary;
+
+  &::placeholder {
+    color: $secondary-light;
+  }
+
+  &:focus {
+      outline: none !important;
+      outline-offset: 0px !important;
+      border: 2px solid $primary;
+    }
+
+}
+
+
+  // :focus {
+  //   outline: none !important;
+  //   outline-offset: 0px !important;
+  //   border: 2px solid $primary;
+  // }
