@@ -1,6 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between;
   align-content: center;
+  position: sticky;
+  top: 0;
   background: $primary;
   .nav-item .nav-link {
     color: $white;

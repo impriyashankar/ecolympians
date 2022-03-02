@@ -42,7 +42,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <% if true #user_signed_in? %>
+        <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "Home", "#", class: "nav-link" %>
           </li>
@@ -62,6 +62,18 @@
   </div>
 </div>
 
+<!-- Footer -->
+<h3>Footer</h3>
+<div class="footer-wrapper">
+    <!-- Uncomment these conditionals and correct the paths -->
+    <% user_page = "" #current_page?(user_path) ? "active" : "" %>
+    <% groups_page = "" #current_page?(user_groups_path) ? "active" : "" %>
+    <% challenges_page = "" #current_page?(challenges_path) ? "active" : "" %>
+    <%= link_to icon("far", "user"), "#", class: "footer-link #{user_page}" %>
+    <%= link_to icon("fas", "users"), "#", class: "footer-link #{groups_page}" %>
+    <%= link_to icon("far", "list-alt"), "#", class: "footer-link#{challenges_page}" %>
+</div>
+
 <!-- Tabs -->
 <h3>Tabs</h3>
 
@@ -73,6 +85,10 @@
 <!-- Challenge card -->
 
 <!-- Proof card -->
+<div class="proof-card">
+
+</div>
+
 
 <!-- Group card -->
 
