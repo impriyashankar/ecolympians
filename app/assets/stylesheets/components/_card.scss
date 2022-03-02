@@ -6,9 +6,6 @@
   background-color: $white;
   //border: 1px solid $secondary;
   border-radius:15px;
-  .card-group-info-pic {
-    //background-color: $blue;
-  }
   //.card-group-infos
   .card-group-wrapper {
   //background-color: $blue;
@@ -23,10 +20,6 @@
     position:relative;
     top:-38px;
   }
-  /*.card-group-wrapper {
-    position:absolute;
-    top: 40px;
-  }*/
   .card-group-infos {
     position:relative;
     top:-20px;
@@ -37,4 +30,24 @@
   background-color: $secondary;
   border-radius: 15px;
 }
+}
+
+//Player card
+.card-player {
+  background-color: $secondary-light;
+  width:250px;
+  height:75px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  color: $secondary;
+  border-radius: 5px;
+  padding: 5px;
+  p{
+    margin:0;
+  }
+  span {
+    color: $black;
+    font-weight:bold;
+  }
 }
