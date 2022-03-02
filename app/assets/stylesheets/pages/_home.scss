@@ -1,1 +1,136 @@
 // Specific CSS for your home-page
+.landing-page {
+  background-image: url("landing_page.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  .landing-name {
+  // display: flex;
+  // flex-direction: column;
+    text-align: center;
+    padding-top: 3rem;
+    width: 100%;
+    position: fixed;
+    background: inherit;
+    z-index: 10;
+    h1 {
+      font-size: 15vw;
+      color: $background;
+      text-shadow: 2px 2px rgba(0,0,0,0.5)
+    }
+  }
+
+  .landing-content {
+    padding: 1rem;
+  }
+
+  .landing-scroll {
+    text-align: center;
+    color: $background;
+    text-shadow: 1px 1px rgba(0,0,0,0.3);
+    height: 80vh;
+    padding-top: 20vh;
+    h2 {
+      font-size: 2.5em;
+    }
+  }
+
+  .scroll-link {
+    text-decoration: none;
+    color: $background;
+    font-family: $headers-font;
+
+  }
+
+  .landing-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 55vh;
+    padding: 1rem;
+    padding-bottom: 0;
+    margin: 2rem 0;
+    background-color: rgba( $background, 0.5);
+    border-radius: 8px;
+
+    .landing-box-text {
+      text-align: center;
+    }
+
+    .scroll-down-icon {
+      text-align: center;
+    }
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .landing-bottom {
+    height: 60vh;
+    margin-bottom: 18vh;
+    text-align: center;
+    color: $background;
+    text-shadow: 1px 1px rgba(0,0,0,0.3);
+    h2 {
+      font-size: 2.5em;
+      margin-bottom: 1em;
+    }
+  }
+
+  .landing-footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: inherit;
+    z-index: 10;
+    height: 20vh;
+    margin-top: 1rem;
+    padding-top: 1rem;
+
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60vw;
+      height: 8vh;
+      background-color: rgb(255, 217, 0);
+      font-family: $headers-font;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.3);
+    }
+  }
+
+  @media (min-width:600px) {
+    .landing-content {
+      margin: 0 20vw;
+      padding: 1rem;
+    }
+
+    .landing-name {
+      padding-top: 0.5rem;
+      h1 {
+        font-size: 7vw;
+        color: $background;
+        text-shadow: 2px 2px rgba(0,0,0,0.5)
+      }
+    }
+
+    .landing-footer {
+      .btn {
+        width: 20vw;
+      }
+    }
+
+
+    .landing-bottom {
+      height: 60vh;
+      margin-bottom: 16vh;
+    }
+  }
+}
