@@ -39,11 +39,7 @@ class ChallengesController < ApplicationController
 
   private
 
-  def group_params
+  def challenge_params
     params.require(:challenge).permit(:name, :description, :category)
-  end
-
-  def set_group
-    @challenge = Challenge.find(params[:id])
   end
 end
