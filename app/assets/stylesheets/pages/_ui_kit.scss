@@ -1,9 +1,14 @@
 .ui-kit-circle {
   border-radius: 50%;
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
   margin: 0.5em;
-}
+  font-size: smaller;
+  color: $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;}
 
 #primary {
   background-color: $primary;
