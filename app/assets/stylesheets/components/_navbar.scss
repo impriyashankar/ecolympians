@@ -2,6 +2,9 @@
   justify-content: space-between;
   align-content: center;
   background: $primary;
+  .nav-item .nav-link {
+    color: $white;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -12,6 +15,7 @@
   width: 30%;
 }
 
-.navbar-brand h1 {
+.navbar-brand h2 {
   color: $white;
+  margin: 0;
 }
