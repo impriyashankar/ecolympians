@@ -17,11 +17,23 @@
 <!-- Components -->
 <h2>Basic Components</h2>
 
-<!-- Buttons -->
-<h3>Buttons</h3>
+  <!-- Buttons -->
+  <h3>Buttons</h3>
+  <div class = "btn-regular mb-3">Join Group</div>
+  <div class = "btn-welcome mb-3">Get Started</div>
+  <div class = "btn-search mb-3"><i class="fa fa-solid fa-vr-cardboard"></i></div>
+  <div class = "btn-vote mb-3">Challenge # <div class="btn-vote-round"><span>Vote</span></div></div>
+  <div class = "btn-footer mb-3">
+    <i class="fa fa-solid fa-vr-cardboard"></i>
+    <i class="fa fa-solid fa-vr-cardboard"></i>
+    <i class="fa fa-solid fa-vr-cardboard"></i>
+    <i class="fa fa-solid fa-vr-cardboard"></i>
+  </div>
 
-<!-- Avatars -->
-<h3>Avatars</h3>
+  <!-- Avatars -->
+  <h3>Avatars</h3>
+  <div class = "mb-3"><img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /></div>
+  <div class = "mb-3"><img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /></div>
 
 <!-- Searchbar -->
 <h3>Searchbar</h3>
@@ -74,15 +86,31 @@
     <%= link_to icon("far", "list-alt"), "#", class: "footer-link#{challenges_page}" %>
 </div>
 
-<!-- Tabs -->
-<h3>Tabs</h3>
+  <!-- Tabs -->
+  <h3>Tabs</h3>
 
-<h2>Complex Components</h2>
+  <!--From Bootstrap Tab-->
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link dashboard-tab active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Groups</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link dashboard-tab" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Challenges</button>
+  </li>
+ <!--<li class="nav-item" role="presentation">
+    <button class="nav-link dashboard-tab" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+  </li>-->
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  </div>
 
-<!-- Cards -->
-<h3>Cards</h3>
+  <h2>Complex Components</h2>
 
-<!-- Challenge card -->
+  <!-- Cards -->
+  <h3>Cards</h3>
 
 <!-- Proof card -->
 <div class="proof-card">
@@ -90,10 +118,27 @@
 </div>
 
 
-<!-- Group card -->
+  <!-- Proof card -->
 
-<!-- Notifications -->
-<h3>Notifications</h3>
+  <!-- Group card -->
+
+  <!-- Notifications -->
+  <h3>Notifications</h3>
+  <i class="fa fa-solid fa-xmark"></i>
+
+  <div class="notification">
+  <!--<img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />-->
+  <i class="fa fa-solid fa-bell"></i>
+  <div class="notification-content">
+    <p><small>14th January</small></p>
+    <p><strong>Trash Trashers</strong> won a new badge!🎉🎉 </p>
+  </div>
+
+  <div class="notification-actions">
+    <a href="#"><i class="fas fa-times-circle"></i></a>
+  </div>
+</div>
 
 
-<!-- Ranking table -->
+  <!-- Ranking table -->
+</div>

@@ -1,0 +1,50 @@
+.notification {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  //background: white;
+  background: $white;
+  padding: 8px 16px;
+  //border: 1px solid rgb(235,235,235);
+  border: 1px solid $secondary-light;
+  color: $primary;
+}
+
+.notification .notification-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.notification p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.notification small {
+  //color: #999999;
+  color: #c78669;
+  font-weight: bold;
+}
+.notification .notification-actions {
+  opacity: 0;
+  display: flex;
+  transition: ease .3s;
+}
+
+.notification:hover .notification-actions {
+  opacity: 1;
+  .fa-times-circle {
+    font-size: 18px;
+  }
+
+}
+
+.notification .notification-actions a {
+  color: #c78669;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.notification .notification-actions a:hover {
+  color: #555555;
+}
