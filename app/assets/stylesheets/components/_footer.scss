@@ -1,0 +1,27 @@
+.footer-wrapper {
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  background-color: $primary;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-link {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 1em;
+  a, i{
+    color: $white;
+    font-size: larger;
+  }
+
+  &.active {
+    a, i {
+      color: $yellow;
+    }
+  }
+}

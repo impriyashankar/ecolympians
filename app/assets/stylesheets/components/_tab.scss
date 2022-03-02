@@ -1,8 +1,8 @@
 #pills-tab .dashboard-tab {
-  color: #1ca3ec;
+  color: $black;
 }
 
 #pills-tab .dashboard-tab.nav-link.active{
-  color: #1ca3ec;
-  background-color: #f0d946;
+  color: $black;
+  background-color: $primary-light;
 }
