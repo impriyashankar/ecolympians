@@ -1,3 +1,49 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "UI Kit", ui_kit_path %>
+<div class="landing-page">
+  <div class="landing-name">
+    <h1>Ecolympians</h1>
+  </div>
+
+  <div class="landing-content">
+    <div class="landing-scroll">
+      <h2>The World is our playground</h2>
+      <h2>Let's keep it that way!</h2>
+      <br><br><br>
+      <a href="#box-1" class="scroll-link" data-controller="scroll-to" data-scroll-to-offset-value="140">
+      <h3>Click here to learn more about the Ecolympians!</h3>
+      </a>
+
+    </div>
+
+    <div class="landing-box" id="box-1">
+      <div class="landing-box-text">
+        <h1>Who are the Ecolympians?</h1>
+        <p> Ecolympians is an incredible app with everything you have ever wanted</p>
+      </div>
+      <div class="scroll-down-icon">
+        <a href="#box-2" class="scroll-link" data-controller="scroll-to" data-scroll-to-offset-value="140"><h3>What have we achieved?</h3></a>
+      </div>
+    </div>
+
+    <div class="landing-box" id="box-2">
+      <div class="landing-box-text">
+        <h1>What have we achieved?</h1>
+        <p> So far all the Ecolympians have reduced a million tons of CO2.
+            Planted a million trees. Saved a million liters of water.</p>
+      </div>
+      <div class="scroll-down-icon">
+        <a href="#box-3" class="scroll-link" data-controller="scroll-to" data-scroll-to-offset-value="140"><h3>Wanna contribute?</h3></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="landing-bottom" id="box-3">
+      <h2>Gather your friends</h2>
+      <h2>Start playing</h2>
+      <h2>And protect our playground!</h2>
+  </div>
+
+  <div class="landing-footer">
+      <%= link_to "Start playing", new_user_session_path, class: "btn"  %>
+  </div>
+
+</div>
