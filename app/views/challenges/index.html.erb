@@ -16,8 +16,9 @@
       <%#= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </div>
-
-    <%= link_to 'Create your challenge', new_challenge_path %>
+    <div class="create-tag">
+      <%= link_to 'Create new challenge', new_challenge_path %>
+    </div>
 
     <div class="challenges">
       <%= render 'challenges/list', challenges: @challenges %>

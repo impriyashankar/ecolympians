@@ -1,12 +1,15 @@
 .challenges-index {
 
-  h1, .search-challenges {
+  h1, .search-challenges, .create-tag {
     text-align: center;
+  }
+
+  .create-tag {
+    margin-bottom: 0.4rem;
   }
 
   .challenges .card-challenges {
     height: 9rem;
-    background: white;
     box-shadow: 0 0 1rem rgba(0,0,0,0.2);
     display: flex;
     justify-content: space-between;
@@ -14,12 +17,15 @@
     margin-left: 1rem;
     margin-right: 1rem;
     padding: 1rem 1.5rem 2rem 0.5rem;
+    background-color: $primary-light;
   }
 
   .info-challenge {
     line-height: 1.5rem;
   }
-  .challenge-score {
-
+  .challenge-score p {
+    color: $red;
+    font-weight: bold;
+    font-size:x-large;
   }
 }
