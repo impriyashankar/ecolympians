@@ -1,0 +1,65 @@
+.proof-card {
+  width: 100%;
+  background-color: $blue;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.212);
+  & > img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+  }
+}
+
+.proof-card-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  h3 {
+    font-size: x-large;
+    color: $black;
+    margin: 0;
+  }
+}
+
+.proof-card-text {
+  border-radius: 8px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: $blue-hover;
+  font-size: large;
+  color: $black;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+}
+
+.proof-card-vote {
+  width: 50%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-vote-proof-round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: $primary;
+  color: $white;
+  font-size: 1.5em;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+  span {
+    text-align: center;
+  }
+}
+
+#decline {
+  background-color: $red;
+}
