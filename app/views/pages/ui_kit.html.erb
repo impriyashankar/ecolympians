@@ -1,38 +1,215 @@
 <h1>UI Kit</h1>
 <!-- Color Scheme -->
 <h2>Colors:</h2>
-
+<div class="d-flex flex-wrap">
+  <div id="primary" class="ui-kit-circle">$primary</div>
+  <div id="primary-light" class="ui-kit-circle">$primary-light</div>
+  <div id="secondary" class="ui-kit-circle">$secondary</div>
+  <div id="secondary-light" class="ui-kit-circle">$secondary-light</div>
+  <div id="yellow" class="ui-kit-circle">$yellow</div>
+  <div id="yellow-hover" class="ui-kit-circle">$yellow-hover</div>
+  <div id="red" class="ui-kit-circle">$red</div>
+  <div id="red-hover" class="ui-kit-circle">$red-hover</div>
+  <div id="blue" class="ui-kit-circle">$blue</div>
+  <div id="blue-hover" class="ui-kit-circle">$blue-hover</div>
+</div>
+<br>
 <!-- Components -->
 <h2>Basic Components</h2>
 
 <!-- Buttons -->
 <h3>Buttons</h3>
+<div class = "btn-regular mb-3">Join Group</div>
+<div class = "btn-welcome mb-3">Get Started</div>
+<div class = "btn-search mb-3"><i class="fa fa-solid fa-vr-cardboard"></i></div>
+<div class = "btn-vote mb-3">Challenge # <div class="btn-vote-round"><span>Vote</span></div></div>
+<div class = "btn-footer mb-3">
+  <i class="fa fa-solid fa-vr-cardboard"></i>
+  <i class="fa fa-solid fa-vr-cardboard"></i>
+  <i class="fa fa-solid fa-vr-cardboard"></i>
+  <i class="fa fa-solid fa-vr-cardboard"></i>
+</div>
+<div class="btn-vote-proof-round">
+  <span><%= icon("fas", "check") %></span>
+</div>
+<div class="btn-vote-proof-round" id="decline">
+  <span><%= icon("fas", "times") %></span>
+</div>
 
 <!-- Avatars -->
 <h3>Avatars</h3>
+<div class = "mb-3"><img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /></div>
+<div class = "mb-3"><img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /></div>
 
 <!-- Searchbar -->
 <h3>Searchbar</h3>
+<input type="text" class="searchbar" placeholder="Search...">
+<br>
 
 <!-- Navbar -->
 <h3>Navbar</h3>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <h2>Ecolympians <%= icon("fas", "leaf") %></h2>
+    <% end %>
+
+    <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item active">
+            <%= link_to "Home", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Edit Profile", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<h3>Footer</h3>
+<div class="footer-wrapper">
+    <!-- Uncomment these conditionals and correct the paths -->
+    <% user_page = "" #current_page?(user_path) ? "active" : "" %>
+    <% groups_page = "" #current_page?(user_groups_path) ? "active" : "" %>
+    <% challenges_page = "" #current_page?(challenges_path) ? "active" : "" %>
+    <%= link_to icon("far", "user"), "#", class: "footer-link #{user_page}" %>
+    <%= link_to icon("fas", "users"), "#", class: "footer-link #{groups_page}" %>
+    <%= link_to icon("far", "list-alt"), "#", class: "footer-link#{challenges_page}" %>
+</div>
+
+<br>
+
+<div class="footer-wrapper">
+    <!-- Uncomment these conditionals and correct the paths -->
+    <% user_page = "" #current_page?(user_path) ? "active" : "" %>
+    <% groups_page = "" #current_page?(user_groups_path) ? "active" : "" %>
+    <% challenges_page = "" #current_page?(challenges_path) ? "active" : "" %>
+    <%= link_to icon("far", "user"), "#", class: "footer-link #{user_page}" %>
+    <%= link_to icon("fas", "users"), "#", class: "footer-link active" %>
+    <%= link_to icon("far", "list-alt"), "#", class: "footer-link#{challenges_page}" %>
+</div>
 
 <!-- Tabs -->
 <h3>Tabs</h3>
+
+<!--From Bootstrap Tab-->
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+<li class="nav-item" role="presentation">
+  <button class="nav-link dashboard-tab active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Groups</button>
+</li>
+<li class="nav-item" role="presentation">
+  <button class="nav-link dashboard-tab" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Challenges</button>
+</li>
+<!--<li class="nav-item" role="presentation">
+  <button class="nav-link dashboard-tab" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+</li>-->
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...</div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+</div>
 
 <h2>Complex Components</h2>
 
 <!-- Cards -->
 <h3>Cards</h3>
 
-<!-- Challenge card -->
-
 <!-- Proof card -->
+<div class="container">
+  <div class="proof-card">
+    <div class="proof-card-top">
+      <h3><%= "Uploaded by user" %></h3>
+      <div>
+        <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+      </div>
+    </div>
+      <img src="https://picsum.photos/id/1059/500/500" alt="proof image">
+      <!-- Uncomment the next line to add cloundinary photo -->
+      <!-- cl_image_tag @group_challenge.photo.key -->
+      <div class="proof-card-text">
+        <p>
+          <%= "Here is the comment that I wrote for this proof..." %>
+        </p>
+      </div>
+      <div class="proof-card-vote">
+        <div class="btn-vote-proof-round">
+          <span><%= icon("fas", "check") %></span>
+        </div>
+        <div class="btn-vote-proof-round" id="decline">
+          <span><%= icon("fas", "times") %></span>
+        </div>
+      </div>
+  </div>
+</div>
+<br>
 
-<!-- Group card -->
+  <!-- Group card -->
+  <div style="background-color: #49BF4E;padding:10px;">
+   <div class="card-groups text-center">
+    <div class= "color-band"></div>
+    <div class="card-group-wrapper">
+      <div class="card-group-info-pic">
+        <%=image_tag("leaf.png")%>
+        <!--<img class="avatar-large" alt="avatar" src="../../assets/images/leaf.png" />-->
+      </div>
+      <div class="card-group-infos">
+        <h3>Trash Trashers</h3>
+        <p><strong>xx</strong> members(and counting!)</p>
+      </div>
+    </div>
+    </div>
+  </div>
+
+   <!-- Player card -->
+
+   <div style="background-color: #49BF4E;padding:10px;">
+    <div class="card-player text-center">
+
+
+        <img class="avatar-large" alt="avatar" src='https://kitt.lewagon.com/placeholder/users/arthur-littm' />
+
+
+
+        <p><strong>Tony Newman</strong> </p>
+        <span>250</span>
+
+    </div>
+
+  </div>
 
 <!-- Notifications -->
 <h3>Notifications</h3>
+<i class="fa fa-solid fa-xmark"></i>
+
+<div class="notification">
+  <!--<img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />-->
+  <i class="fa fa-solid fa-bell"></i>
+  <div class="notification-content">
+    <p><small>14th January</small></p>
+    <p><strong>Trash Trashers</strong> won a new badge!🎉🎉 </p>
+  </div>
+
+  <div class="notification-actions">
+    <a href="#"><i class="fas fa-times-circle"></i></a>
+  </div>
+</div>
 
 
-<!-- Ranking table -->
+  <!-- Ranking table -->
+</div>

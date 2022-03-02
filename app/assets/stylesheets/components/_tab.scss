@@ -1,0 +1,8 @@
+#pills-tab .dashboard-tab {
+  color: $black;
+}
+
+#pills-tab .dashboard-tab.nav-link.active{
+  color: $black;
+  background-color: $primary-light;
+}

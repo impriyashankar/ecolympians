@@ -1,0 +1,30 @@
+.footer-wrapper {
+  z-index: 100;
+  width: 100%;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $primary;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-link {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 1em;
+  a, i{
+    color: $white;
+    font-size: larger;
+  }
+
+  &.active {
+    a, i {
+      color: $yellow;
+    }
+  }
+}

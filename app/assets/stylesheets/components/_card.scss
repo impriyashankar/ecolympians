@@ -1,0 +1,119 @@
+//Group card
+.card-groups {
+  height:250px;
+  width:200px;
+  position:relative;
+  background-color: $white;
+  //border: 1px solid $secondary;
+  border-radius:15px;
+  //.card-group-infos
+  .card-group-wrapper {
+  //background-color: $blue;
+  padding-left:10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  }
+  img {
+    border: 4px solid $white;
+    border-radius: 50%;
+    width:70px;
+    position:relative;
+    top:-38px;
+  }
+  .card-group-infos {
+    position:relative;
+    top:-20px;
+  }
+
+.color-band {
+  height:75px;
+  background-color: $secondary;
+  border-radius: 15px;
+}
+}
+
+//Player card
+.card-player {
+  background-color: $secondary-light;
+  width:250px;
+  height:75px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  color: $secondary;
+  border-radius: 5px;
+  padding: 5px;
+  p{
+    margin:0;
+  }
+  span {
+    color: $black;
+    font-weight:bold;
+  }
+}
+
+.proof-card {
+  width: 100%;
+  background-color: $blue;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.212);
+  & > img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+  }
+}
+
+.proof-card-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  h3 {
+    font-size: x-large;
+    color: $black;
+    margin: 0;
+  }
+}
+
+.proof-card-text {
+  border-radius: 8px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: $blue-hover;
+  font-size: large;
+  color: $black;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+}
+
+.proof-card-vote {
+  width: 50%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-vote-proof-round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: $primary;
+  color: $white;
+  font-size: 1.5em;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+  span {
+    text-align: center;
+  }
+}
+
+#decline {
+  background-color: $red;
+}
