@@ -1,12 +1,18 @@
- <div class="card-challenges" data-search-challenges-target="list">
-      <% challenges.all.each do |challenge| %>
+<div data-search-challenges-target="list">
+
+  <% challenges.all.each do |challenge| %>
+    <div class="card-challenges">
       <div class="info-challenge">
-        <p><%=challenge.name %> ---- <%= challenge.description %> ---- <%= challenge.category %> </p>
+        <h2><%=challenge.name %></h2>
+        <p>Discription: <%= challenge.description %></p>
+        <p>Type: <%= challenge.category %> </p>
       </div>
 
       <div class="challenge-score">
+        <p>Score:<p>
         <p><%= challenge.score %></p>
       </div>
-      <% end %>
+
     </div>
-  </div>
+  <% end %>
+</div>

@@ -1,9 +1,7 @@
 class ChallengesController < ApplicationController
   # before_action :set_challenge, only: [ :edit, :update ]
   def index
-
     @challenges = Challenge.all
-
     if params[:query].present?
       @challenges = Challenge.search_by_score_category_name(params[:query])
     end

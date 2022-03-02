@@ -1,0 +1,25 @@
+.challenges-index {
+
+  h1, .search-challenges {
+    text-align: center;
+  }
+
+  .challenges .card-challenges {
+    height: 9rem;
+    background: white;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem 1.5rem 2rem 0.5rem;
+  }
+
+  .info-challenge {
+    line-height: 1.5rem;
+  }
+  .challenge-score {
+
+  }
+}

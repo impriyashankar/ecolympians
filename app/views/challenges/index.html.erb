@@ -1,26 +1,26 @@
-<h1>Here is all he changllenges stands</h1>
+<div class="challenges-index">
 
-<div data-controller="search-challenges">
-  <%= form_with url: challenges_path, method: :get, html: { class:
-   'mb-4', data: { search_challenges_target: 'form' } } do |f| %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "searchbar",
-    placeholder: "Find a challenge",
-    value: params[:query],
-    data: {search_challenges_target: 'input', action: "keyup->search-challenges#showChallenges"}
-  %>
-  <%#= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
+  <h1>Here is all he changllenges stands</h1>
 
-  <div class="challenges">
-    <%= render 'challenges/list', challenges: @challenges %>
+  <div data-controller="search-challenges">
+    <div class="search-challenges">
+      <%= form_with url: challenges_path, method: :get, html: { class:
+      'mb-4', data: { search_challenges_target: 'form' } } do |f| %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "searchbar",
+        placeholder: "Find a challenge",
+        value: params[:query],
+        data: {search_challenges_target: 'input', action: "keyup->search-challenges#showChallenges"}
+      %>
+      <%#= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+    <%= link_to 'Create your challenge', new_challenge_path %>
+
+    <div class="challenges">
+      <%= render 'challenges/list', challenges: @challenges %>
+    </div>
   </div>
 </div>
-
-
-
-
-
-
-<%= link_to 'Create your challenge', new_challenge_path %>
