@@ -117,6 +117,8 @@ puts ""
 puts "Assigning challenges to groups.."
 puts ""
 
+counter = -2
+
 Group.all.each do |group|
   challenge = Challenge.all.sample
 
@@ -124,11 +126,11 @@ Group.all.each do |group|
     GroupChallenge.create!(
       challenge: challenge,
       membership: member,
-      start_date: Date.today + 2,
+      start_date: Date.today + counter,
       status: "waiting"
     )
   end
-
+  counter += 1
   puts "#{group.name} will do the #{GroupChallenge.last.challenge.name} challenge, which starts at #{GroupChallenge.last.start_date}"
 end
 
