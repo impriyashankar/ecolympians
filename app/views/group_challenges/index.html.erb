@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <h2><strong>Challenges for <%= @group.name %></strong></h2>
+
+
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link dashboard-tab active" id="pills-member-tab" data-bs-toggle="pill" data-bs-target="#pills-member" type="button" role="tab" aria-controls="pills-member" aria-selected="true">Members</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link dashboard-tab" id="pills-challenge-tab" data-bs-toggle="pill" data-bs-target="#pills-challenge" type="button" role="tab" aria-controls="pills-challenge" aria-selected="false">Challenges</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link dashboard-tab" id="pills-next-tab" data-bs-toggle="pill" data-bs-target="#pills-next" type="button" role="tab" aria-controls="pills-next" aria-selected="false">Next Challenges</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-member" role="tabpanel" aria-labelledby="pills-member-tab">
+           <% @group.user_ids.each do |member| %>
+            <div class="card-player text-center">
+              <%= cl_image_tag User.find(member).photo.key, class: "avatar-large" if User.find(member).photo.key%>
+              <!--<img class="avatar-large" alt="avatar" src='https://kitt.lewagon.com/placeholder/users/arthur-littm' />-->
+              <p><strong><%= User.find(member).first_name %></strong> </p>
+              <span><%=Membership.find(@group.id).score%></span>
+            </div>
+           <% end %>
+           <% button_value = @group.memberships.empty? ? "Invite members" : "Invite more members" %>
+            <button class="btn-welcome mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#invMem" aria-expanded="false" aria-controls="invMem">
+              <%= button_value %>
+            </button>
+            <div class="collapse" id="invMem" data-controller="invite-member">
+              <%= simple_form_for @group do |f| %>
+              <%= f.input :name, label: false, placeholder: "Select Players!", input_html: { class: 'searchbar' } %>
+              <%= f.button :submit, "Invite", class: 'btn-regular w-100 mb-3' %>
+              <% end %>
+              <% members_available = User.where.not(id: @group.user_ids) %>
+              <div class = "member-invite-group-dashboard" style = "display:flex;justify-content:space-between;">
+                <% members_available.each do |member| %>
+                  <a href="#">
+                    <div class="text-center" data-action="click->invite-member#invite" data-invite-member-target="user">
+                      <%= cl_image_tag member.photo.key, class: "avatar-large" if member.photo.key%>
+                      <p><%= member.first_name + " " + member.last_name %></p>
+                    </div>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+
+        </div>
+        <div class="tab-pane fade" id="pills-challenge" role="tabpanel" aria-labelledby="pills-challenge-tab">
+          <% @group_challenge.each do |item| %>
+            <%= link_to '#' do %>
+              <p><%= item.challenge.name %></p>
+            <% end %>
+          <% end %>
+        </div>
+         <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab">
+          <p>You do not have any upcoming challenges.</p>start_date < Date.today
+        </div>
+      </div>
+  </div>
+</div>
