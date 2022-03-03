@@ -1,0 +1,14 @@
+.user-dashboard-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 1rem;
+  border-bottom: 2px groove $secondary-light;
+}
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+  justify-content: space-between;
+}
