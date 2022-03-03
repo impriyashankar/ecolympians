@@ -6,7 +6,7 @@
 <div class="proofs-horizontal">
   <% @group_challenges.each do |challenge| %>
     <% if challenge.membership.group == @group_challenge.membership.group %>
-      <div class="proof-card-container">
+      <%# <div class="proof-card-container"> %>
         <div class="proof-card">
           <div class="proof-card-top">
             <h3><%= "Proof from #{challenge.membership.user.first_name}" %></h3>
@@ -31,7 +31,7 @@
               </div>
             </div>
         </div>
-      </div>
+      <%# </div> %>
       <br>
     <% end %>
   <% end %>
