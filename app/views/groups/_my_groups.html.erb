@@ -1,0 +1,30 @@
+<% if @groups.empty? %>
+  <div class="container mt-5 d-flex flex-column justify-content-center align-items-center">
+    <button class="btn-welcome pt-4 pb-4 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#newGroup" aria-expanded="false" aria-controls="newGroup">
+      Create your first group!
+    </button>
+    <div class="collapse" id="newGroup">
+      <%= simple_form_for @group do |f| %>
+      <%= f.input :name, label: false, placeholder: "Name the group!", input_html: { class: 'searchbar' } %>
+      <%= f.button :submit, "OK", class: 'btn-regular w-100' %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div style="background-color: #49BF4E;padding:10px;">
+   <div class="card-groups text-center">
+    <div class= "color-band"></div>
+      <div class="card-group-wrapper">
+        <div class="card-group-info-pic">
+          <%=image_tag("leaf.png")%>
+          <!--<img class="avatar-large" alt="avatar" src="../../assets/images/leaf.png" />-->
+        </div>
+        <div class="card-group-infos">
+          <h3>Trash Trashers</h3>
+          <p><strong>xx</strong> members(and counting!)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
