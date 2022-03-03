@@ -45,7 +45,8 @@
 //Player card
 .card-player {
   background-color: $secondary-light;
-  width:250px;
+  width:90%;//making width change for mobile view
+  margin:0 auto;
   height:75px;
   display:flex;
   justify-content:space-around;
