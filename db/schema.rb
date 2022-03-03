@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_01_151903) do
+ActiveRecord::Schema.define(version: 2022_03_03_153849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,13 @@ ActiveRecord::Schema.define(version: 2022_03_01_151903) do
   end
 
   create_table "challenge_votes", force: :cascade do |t|
-    t.bigint "group_id", null: false
-    t.bigint "challenge_id", null: false
-    t.integer "votes", default: 0
+    t.bigint "user_id", null: false
+    t.boolean "vote"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["challenge_id"], name: "index_challenge_votes_on_challenge_id"
-    t.index ["group_id"], name: "index_challenge_votes_on_group_id"
+    t.bigint "potential_challenge_id", null: false
+    t.index ["potential_challenge_id"], name: "index_challenge_votes_on_potential_challenge_id"
+    t.index ["user_id"], name: "index_challenge_votes_on_user_id"
   end
 
   create_table "challenges", force: :cascade do |t|
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2022_03_01_151903) do
 
   create_table "group_challenges", force: :cascade do |t|
     t.string "comment"
-    t.integer "votes", default: 0
     t.string "status"
     t.date "start_date"
     t.bigint "challenge_id", null: false
@@ -93,6 +92,25 @@ ActiveRecord::Schema.define(version: 2022_03_01_151903) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
+  create_table "potential_challenges", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "challenge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["challenge_id"], name: "index_potential_challenges_on_challenge_id"
+    t.index ["group_id"], name: "index_potential_challenges_on_group_id"
+  end
+
+  create_table "proof_votes", force: :cascade do |t|
+    t.bigint "group_challenge_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "vote"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_challenge_id"], name: "index_proof_votes_on_group_challenge_id"
+    t.index ["user_id"], name: "index_proof_votes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -109,10 +127,14 @@ ActiveRecord::Schema.define(version: 2022_03_01_151903) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "challenge_votes", "challenges"
-  add_foreign_key "challenge_votes", "groups"
+  add_foreign_key "challenge_votes", "potential_challenges"
+  add_foreign_key "challenge_votes", "users"
   add_foreign_key "group_challenges", "challenges"
   add_foreign_key "group_challenges", "memberships"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
+  add_foreign_key "potential_challenges", "challenges"
+  add_foreign_key "potential_challenges", "groups"
+  add_foreign_key "proof_votes", "group_challenges"
+  add_foreign_key "proof_votes", "users"
 end
