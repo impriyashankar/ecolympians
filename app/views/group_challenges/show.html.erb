@@ -1,35 +1,38 @@
-<h1>Challenge: <%= @group_challenge.challenge.name %></h1>
-<p>Startdate: <%= @group_challenge.start_date %></p>
+<div class="container">
+  <h1>Challenge: <%= @group_challenge.challenge.name %></h1>
+  <p> <%= @group_challenge.start_date.strftime("%e %B") %> - <%= (@group_challenge.start_date + 7).strftime("%e %B") %></p>
+</div>
 
-
-<% @group_challenges.each do |challenge| %>
-  <% if challenge.membership.group == @group_challenge.membership.group %>
-    <div class="container">
-      <div class="proof-card">
-        <div class="proof-card-top">
-          <h3><%= "Proof from #{challenge.membership.user.first_name}" %></h3>
-          <div>
-            <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+<div class="proofs-horizontal">
+  <% @group_challenges.each do |challenge| %>
+    <% if challenge.membership.group == @group_challenge.membership.group %>
+      <div class="proof-card-container">
+        <div class="proof-card">
+          <div class="proof-card-top">
+            <h3><%= "Proof from #{challenge.membership.user.first_name}" %></h3>
+            <div>
+              <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+            </div>
           </div>
+            <img src="https://picsum.photos/id/1059/500/500" alt="proof image">
+            <!-- Uncomment the next line to add cloundinary photo -->
+            <!-- cl_image_tag @group_challenge.photo.key -->
+            <div class="proof-card-text">
+              <p>
+                <%= "Here is the comment that I wrote for this proof..." %>
+              </p>
+            </div>
+            <div class="proof-card-vote">
+              <div class="btn-vote-proof-round">
+                <span><%= icon("fas", "check") %></span>
+              </div>
+              <div class="btn-vote-proof-round" id="decline">
+                <span><%= icon("fas", "times") %></span>
+              </div>
+            </div>
         </div>
-          <img src="https://picsum.photos/id/1059/500/500" alt="proof image">
-          <!-- Uncomment the next line to add cloundinary photo -->
-          <!-- cl_image_tag @group_challenge.photo.key -->
-          <div class="proof-card-text">
-            <p>
-              <%= "Here is the comment that I wrote for this proof..." %>
-            </p>
-          </div>
-          <div class="proof-card-vote">
-            <div class="btn-vote-proof-round">
-              <span><%= icon("fas", "check") %></span>
-            </div>
-            <div class="btn-vote-proof-round" id="decline">
-              <span><%= icon("fas", "times") %></span>
-            </div>
-          </div>
       </div>
-    </div>
-    <br>
+      <br>
+    <% end %>
   <% end %>
-<% end %>
+</div>
