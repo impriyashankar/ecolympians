@@ -77,4 +77,7 @@ Rails.application.configure do
 
   # # Store uploaded files on the cloudinary
   config.active_storage.service = :cloudinary
+
+  # setting up ngrok (change every time you set up ngrok mobile)
+  config.hosts << "500d-92-108-134-52.ngrok.io"
 end
