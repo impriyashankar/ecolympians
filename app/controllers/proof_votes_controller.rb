@@ -1,0 +1,2 @@
+class ProofVotesController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class PotentialChallengesController < ApplicationController
+end

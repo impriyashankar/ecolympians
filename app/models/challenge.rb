@@ -11,7 +11,6 @@ class Challenge < ApplicationRecord
     Travel
     Food
   ]
-  has_many :challange_votes
   has_many :group_challenges, dependent: :destroy
   validates :name, presence: true
   validates :description, presence: true
