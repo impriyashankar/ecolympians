@@ -2,9 +2,9 @@
 <!-- TODO: link to the correct paths-->
 <div class="footer-wrapper">
     <!-- Uncomment these conditionals and correct the paths -->
-    <% user_page = "" #current_page?(user_path) ? "active" : "" %>
+    <% user_page = current_page?(user_path) ? "active" : "" %>
     <% groups_page = "" #current_page?(user_groups_path) ? "active" : "" %>
-    <% challenges_page = "" #current_page?(challenges_path) ? "active" : "" %>
+    <% challenges_page = current_page?(challenges_path) ? "active" : "" %>
     <%= link_to icon("far", "user"), "#", class: "footer-link #{user_page}" %>
     <%= link_to icon("fas", "users"), "#", class: "footer-link #{groups_page}" %>
     <%= link_to icon("far", "list-alt"), "#", class: "footer-link#{challenges_page}" %>
