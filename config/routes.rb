@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :groups
   resources :users, only: :show
   get "/ui_kit", to: "pages#ui_kit"
+  resources :challenges, only: [:index, :show, :new, :create]
 end
