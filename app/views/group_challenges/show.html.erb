@@ -1,7 +1,35 @@
-<h1>Group: <%= @group_challenge.membership.group.name %></h1>
-<h2>Challenge: <%= @group_challenge.challenge.name %></h2>
+<h1>Challenge: <%= @group_challenge.challenge.name %></h1>
+<p>Startdate: <%= @group_challenge.start_date %></p>
 
 
 <% @group_challenges.each do |challenge| %>
-  <p><%= challenge.membership.user.first_name if challenge.membership.group == @group_challenge.membership.group %></p>
+  <% if challenge.membership.group == @group_challenge.membership.group %>
+    <div class="container">
+      <div class="proof-card">
+        <div class="proof-card-top">
+          <h3><%= "Proof from #{challenge.membership.user.first_name}" %></h3>
+          <div>
+            <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+          </div>
+        </div>
+          <img src="https://picsum.photos/id/1059/500/500" alt="proof image">
+          <!-- Uncomment the next line to add cloundinary photo -->
+          <!-- cl_image_tag @group_challenge.photo.key -->
+          <div class="proof-card-text">
+            <p>
+              <%= "Here is the comment that I wrote for this proof..." %>
+            </p>
+          </div>
+          <div class="proof-card-vote">
+            <div class="btn-vote-proof-round">
+              <span><%= icon("fas", "check") %></span>
+            </div>
+            <div class="btn-vote-proof-round" id="decline">
+              <span><%= icon("fas", "times") %></span>
+            </div>
+          </div>
+      </div>
+    </div>
+    <br>
+  <% end %>
 <% end %>
