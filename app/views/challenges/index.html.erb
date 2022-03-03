@@ -1,6 +1,6 @@
 <div class="challenges-index">
 
-  <h1>Here is all the changllenge stands</h1>
+  <h1>Here is all the challenge stands</h1>
 
   <div data-controller="search-challenges">
     <div class="search-challenges">
@@ -16,8 +16,8 @@
       <%#= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </div>
-    <div class="create-tag">
-      <%= link_to 'Create new challenge', new_challenge_path %>
+    <div>
+      <a class="btn-welcome mb-3" href="<%= new_challenge_path %>">Create new challenge</a>
     </div>
 
     <div class="challenges">
