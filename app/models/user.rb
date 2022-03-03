@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :email, presence: true, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
   has_many :memberships
   has_many :groups, through: :memberships
-  has_many :group_challenges, through: :groups
+  has_many :group_challenges, through: :memberships
   has_one_attached :photo
 
   def full_name

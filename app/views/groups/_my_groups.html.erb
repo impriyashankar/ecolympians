@@ -1,30 +1,37 @@
 <% if @groups.empty? %>
-  <div class="container mt-5 d-flex flex-column justify-content-center align-items-center">
-    <button class="btn-welcome pt-4 pb-4 mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#newGroup" aria-expanded="false" aria-controls="newGroup">
-      Create your first group!
-    </button>
-    <div class="collapse" id="newGroup">
-      <%= simple_form_for @group do |f| %>
-      <%= f.input :name, label: false, placeholder: "Name the group!", input_html: { class: 'searchbar' } %>
-      <%= f.button :submit, "OK", class: 'btn-regular w-100' %>
-      <% end %>
-    </div>
+  <p>You haven’t created or joined any groups yet... </p>
+<% end %>
+<% button_value = @groups.empty? ? "Create your first group!" : "New group" %>
+<% first_group_button = @groups.empty? ? "pt-4 pb-4 mt-5" : "" %>
+
+<div class="container mt-3 d-flex flex-column justify-content-center align-items-center">
+  <button class="btn-welcome <%= first_group_button %> mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#newGroup" aria-expanded="false" aria-controls="newGroup">
+    <%= button_value %>
+  </button>
+  <div class="collapse" id="newGroup">
+    <%= simple_form_for @group do |f| %>
+    <%= f.input :name, label: false, placeholder: "Name the group!", input_html: { class: 'searchbar' } %>
+    <%= f.button :submit, "OK", class: 'btn-regular w-100 mb-3' %>
+    <% end %>
   </div>
-<% else %>
-  <div style="background-color: #49BF4E;padding:10px;">
-   <div class="card-groups text-center">
-    <div class= "color-band"></div>
-      <div class="card-group-wrapper">
-        <div class="card-group-info-pic">
-          <%=image_tag("leaf.png")%>
-          <!--<img class="avatar-large" alt="avatar" src="../../assets/images/leaf.png" />-->
-        </div>
-        <div class="card-group-infos">
-          <h3>Trash Trashers</h3>
-          <p><strong>xx</strong> members(and counting!)</p>
+</div>
+
+<div class="cards-grid">
+  <% @groups.each do |group| %>
+    <div class="card-groups text-center">
+      <%= link_to group_path(group) do %>
+        <div class= "color-band"></div>
+        <div class="card-group-wrapper">
+          <div class="card-group-info-pic">
+            <%=image_tag("leaf.png")%>
+            <!--<img class="avatar-large" alt="avatar" src="../../assets/images/leaf.png" />-->
+          </div>
+          <div class="card-group-infos">
+            <h3><%= group.name %></h3>
+            <p><strong><%= pluralize(group.users.count, "member") %></strong></p>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
-<% end %>
+    <% end %>
+  <% end %>
+</div>

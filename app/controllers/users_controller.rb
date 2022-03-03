@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
+
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @groups = @user.groups
     @group = Group.new
-    @challenges = @user.group_challenges
-
-    respond_to do |format|
-      format.html
-      format.text { render partial: 'groups/my_groups', locals: { groups: @groups }, formats: [:html] }
-    end
+    @group_challenges = @user.group_challenges
   end
 end
