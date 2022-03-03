@@ -3,29 +3,79 @@
   h1, .search-challenges, .create-tag {
     text-align: center;
   }
-
+  h1 {
+    color: $primary;
+  }
   .create-tag {
     margin-bottom: 0.4rem;
   }
 
   .challenges .card-challenges {
-    height: 9rem;
-    box-shadow: 0 0 1rem rgba(0,0,0,0.2);
+    height: auto;
+    box-shadow: 0 0 2rem rgba(0,0,0,0.2);
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 1rem 1.5rem 2rem 0.5rem;
-    background-color: $primary-light;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    padding: 1rem 1rem 2rem 0.5rem;
+    border-radius: 0.8rem;
+    p {
+      color: $white;
+    }
   }
 
-  .info-challenge {
+  .card-challenges:hover {
+    box-shadow: 0rem 0.2rem 0.8rem rgba(6, 92, 8, 0.4);
+    transform: scale(1.01);
+  }
+
+
+  .info-challenge p {
     line-height: 1.5rem;
+    text-overflow: ellipsis;
+  }
+
+  .info-challenge h2 {
+    color: $yellow-hover;
+
   }
   .challenge-score p {
-    color: $red;
     font-weight: bold;
-    font-size:x-large;
+    font-size: large;
+    text-align: center;
+    padding-left: 1rem;
+  }
+
+  .card-blue {
+    background: radial-gradient(#1fe4f5, #3fbafe);
+  }
+
+  .card-pink {
+    background: radial-gradient(#fbc1cc, #fa99b2);
+  }
+
+  .card-dark {
+    background: radial-gradient(#76b2fe, #b69efe);
+  }
+
+  .card-green {
+    background: radial-gradient(#60efbc, #58d5c9);
+  }
+
+  .card-purple {
+    background: radial-gradient(#f588d8, #c0a3e5);
+  }
+
+}
+
+
+.new-challenge {
+  padding: 3rem;
+
+  h1 {
+    color: $primary;
+    text-align: center;
+    padding-bottom: 2rem;
   }
 }

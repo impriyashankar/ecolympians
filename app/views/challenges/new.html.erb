@@ -1,1 +1,23 @@
-<h1>Create your own challenge</h1>
+<div class="new-challenge">
+
+  <h1>Create your own challenge</h1>
+  <div class="form-simple">
+    <%= simple_form_for @challenge do |f| %>
+      <%# <label class="input-new-challenge" for="">What's the challenge name</label> %>
+      <%= f.input :name, input_html: { maxlength: 20 }%>
+      <%# <label class="input-new-challenge" for="">What's the challenge description</label> %>
+      <%= f.input :description, as: :text %>
+      <%# <label class="input-new-challenge" for="">Choose challenge category</label> %>
+      <%= f.input :category, collection: Challenge::CATEGORIES %>
+      <%# <label class="input-new-challenge" for="">what's score this challenges?</label> %>
+      <%= f.input :score %>
+
+      <%= f.button :submit, class: "btn-welcome mb-3"%>
+    <% end %>
+  </div>
+
+
+   <div>
+      <a class="btn-regular mb-3" href="<%=challenges_path %>">Back to all challenges</a>
+  </div>
+</div>

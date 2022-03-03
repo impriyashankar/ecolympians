@@ -1,5 +1,5 @@
 class ChallengeVote < ApplicationRecord
-  belongs_to :group
-  belongs_to :challenge
-  validates :votes, presence: true
+  belongs_to :potential_challenge
+  belongs_to :user
+  validates :vote, presence: true
 end

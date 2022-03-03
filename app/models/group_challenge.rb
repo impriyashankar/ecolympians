@@ -3,6 +3,7 @@ class GroupChallenge < ApplicationRecord
   belongs_to :challenge
   belongs_to :membership
   has_one_attached :photo
+  has_many :proof_votes
   validates :status, presence: true, inclusion: { in: STATUSES }
   validates :start_date, presence: true
   # validate :valid_start_date?
