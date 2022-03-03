@@ -13,9 +13,15 @@ class GroupsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @group = Group.new(group_params)
     if @group.save
-      redirect_to groups_path
+      @membership = Membership.new(role: "Admin", status: "Accepted")
+      @membership.group = @group
+      @membership.user = @user
+      @membership.save
+
+      redirect_to group_path(@group)
     else
       render :new
     end
