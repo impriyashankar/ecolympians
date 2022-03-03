@@ -1,10 +1,10 @@
-<% if @groups.empty? %>
-  <p>You haven’t created or joined any groups yet... </p>
-<% end %>
-<% button_value = @groups.empty? ? "Create your first group!" : "New group" %>
-<% first_group_button = @groups.empty? ? "pt-4 pb-4 mt-5" : "" %>
-
 <div class="container mt-3 d-flex flex-column justify-content-center align-items-center">
+  <% if @groups.empty? %>
+    <h3 class="mt-5">You haven’t created or joined any groups yet... </h3>
+  <% end %>
+  <% button_value = @groups.empty? ? "Create your first group!" : "New group" %>
+  <% first_group_button = @groups.empty? ? "pt-4 pb-4 mt-5" : "" %>
+
   <button class="btn-welcome <%= first_group_button %> mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#newGroup" aria-expanded="false" aria-controls="newGroup">
     <%= button_value %>
   </button>
