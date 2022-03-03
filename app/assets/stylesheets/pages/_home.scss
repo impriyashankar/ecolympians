@@ -32,25 +32,30 @@
     height: 80vh;
     padding-top: 20vh;
     h2 {
+      color: $background;
       font-size: 2.5em;
     }
   }
 
   .scroll-link {
     text-decoration: none;
-    color: $background;
-    font-family: $headers-font;
+    h3 {
 
+      color: $background;
+      font-family: $headers-font;
+    }
   }
 
   .landing-box {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 55vh;
+    position: relative;
+    top: -140px;
+    height: 50vh;
     padding: 1rem;
     padding-bottom: 0;
-    margin: 2rem 0;
+    margin: 8rem 0;
     background-color: rgba( $background, 0.5);
     border-radius: 8px;
 
@@ -69,11 +74,11 @@
 
   .landing-bottom {
     height: 60vh;
-    margin-bottom: 18vh;
+    margin-top: 2rem;
     text-align: center;
-    color: $background;
-    text-shadow: 1px 1px rgba(0,0,0,0.3);
     h2 {
+      color: $background;
+      text-shadow: 1px 1px rgba(0,0,0,0.3);
       font-size: 2.5em;
       margin-bottom: 1em;
     }
@@ -130,7 +135,7 @@
 
     .landing-bottom {
       height: 60vh;
-      margin-bottom: 16vh;
+      margin-bottom: 7vh;
     }
   }
 }

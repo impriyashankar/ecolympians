@@ -9,10 +9,11 @@
 
 
 .card-groups {
-  height:250px;
-  width:200px;
+  height: 250px;
+  width: 47%;
   position:relative;
   background-color: $white;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.24);
   //border: 1px solid $secondary;
   border-radius:15px;
   //.card-group-infos
