@@ -1,1 +1,30 @@
-<h1>Hello loser</h1>
+<!--If coming from user dashboard-->
+<div class="container">
+  <div class="row">
+
+      <div class="my_groups">
+        <h2><strong>My groups</strong></h2>
+
+        <div class="cards">
+          <% current_user.groups.each do |group| %>
+            <%= link_to group_group_challenges_path(group) do %>
+              <div class="card-groups text-center">
+                <div class= "color-band"></div>
+                <div class="card-group-wrapper">
+                  <div class="card-group-info-pic">
+                    <%=image_tag("leaf.png")%>
+                  </div>
+                  <div class="card-group-infos">
+                    <h3><%= group.name %></h3>
+                    <p><strong><%= group.memberships.count %></strong> members</p>
+                  </div>
+                </div>
+
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
+  </div>
+</div>

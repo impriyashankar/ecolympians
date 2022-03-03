@@ -18,10 +18,10 @@ class Challenge < ApplicationRecord
   validates :category, presence: true, inclusion: { in: CATEGORIES }
   validates :score, presence: true
 
-  include PgSearch::Model
-  pg_search_scope :search_by_score_category_name,
-    against: [ :name, :category, :score ],
-    using: {
-      tsearch: { prefix: true }
-    }
+  # include PgSearch::Model
+  # pg_search_scope :search_by_score_category_name,
+  #   against: [ :name, :category, :score ],
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
 end
