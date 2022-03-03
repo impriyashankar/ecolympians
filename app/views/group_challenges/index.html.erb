@@ -1,14 +1,7 @@
 <div class="container">
   <div class="row">
     <h2><strong>Challenges for <%= @group.name %></strong></h2>
-      <!--<div class="group_picture_container">
 
-          <% @group.user_ids.each do |member| %>
-            <p><%= User.find(member).first_name %></p>
-           <% end %>
-          <p><%= @group_challenge.challenge.name %></p>
-
-      </div>-->
 
       <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -33,10 +26,12 @@
            <% end %>
         </div>
         <div class="tab-pane fade" id="pills-challenge" role="tabpanel" aria-labelledby="pills-challenge-tab">
-          <p><%= @group_challenge.challenge.name %></p>
+          <% @group_challenge.each do |item| %>
+            <p><%= item.challenge.name %></p>
+           <% end %>
         </div>
          <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab">
-          <p>You do not have any upcoming challenges.</p>
+          <p>You do not have any upcoming challenges.</p>start_date < Date.today
         </div>
       </div>
   </div>
