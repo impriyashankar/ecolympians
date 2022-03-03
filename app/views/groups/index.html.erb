@@ -5,7 +5,7 @@
       <div class="my_groups">
         <h2><strong>My groups</strong></h2>
 
-        <div class="cards">
+        <div class="card groups">
           <% current_user.groups.each do |group| %>
             <%= link_to group_group_challenges_path(group) do %>
               <div class="card-groups text-center">

@@ -24,11 +24,35 @@
               <span><%=Membership.find(@group.id).score%></span>
             </div>
            <% end %>
+           <% button_value = @group.memberships.empty? ? "Invite members" : "Invite more members" %>
+            <button class="btn-welcome mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#invMem" aria-expanded="false" aria-controls="invMem">
+              <%= button_value %>
+            </button>
+            <div class="collapse" id="invMem" data-controller="invite-member">
+              <%= simple_form_for @group do |f| %>
+              <%= f.input :name, label: false, placeholder: "Select Players!", input_html: { class: 'searchbar' } %>
+              <%= f.button :submit, "Invite", class: 'btn-regular w-100 mb-3' %>
+              <% end %>
+              <% members_available = User.where.not(id: @group.user_ids) %>
+              <div class = "member-invite-group-dashboard" style = "display:flex;justify-content:space-between;">
+                <% members_available.each do |member| %>
+                  <a href="#">
+                    <div class="text-center" data-action="click->invite-member#invite" data-invite-member-target="user">
+                      <%= cl_image_tag member.photo.key, class: "avatar-large" if member.photo.key%>
+                      <p><%= member.first_name + " " + member.last_name %></p>
+                    </div>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+
         </div>
         <div class="tab-pane fade" id="pills-challenge" role="tabpanel" aria-labelledby="pills-challenge-tab">
           <% @group_challenge.each do |item| %>
-            <p><%= item.challenge.name %></p>
-           <% end %>
+            <%= link_to '#' do %>
+              <p><%= item.challenge.name %></p>
+            <% end %>
+          <% end %>
         </div>
          <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab">
           <p>You do not have any upcoming challenges.</p>start_date < Date.today
