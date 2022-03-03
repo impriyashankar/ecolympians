@@ -1,0 +1,7 @@
+<h1>Group: <%= @group_challenge.membership.group.name %></h1>
+<h2>Challenge: <%= @group_challenge.challenge.name %></h2>
+
+
+<% @group_challenges.each do |challenge| %>
+  <p><%= challenge.membership.user.first_name if challenge.membership.group == @group_challenge.membership.group %></p>
+<% end %>
