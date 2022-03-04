@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <% unless current_page?(root_path) %>
+    <% unless current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path)%>
       <%= render 'shared/navbar' %>
     <% end %>
 
@@ -21,7 +21,7 @@
 
     <%= yield %>
 
-    <% unless current_page?(root_path) %>
+    <% unless current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path)%>
       <%= render 'shared/footer' %>
     <% end %>
   </body>

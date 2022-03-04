@@ -1,1 +1,99 @@
-<h1>TODO: List all challenges</h1>
+<div class="challenges-index">
+  <div class="challenges-container">
+    <h3 style="text-align:center;">Your ongoing challenges</h3>
+            <% @group_challenges_ongoing.each do |item| %>
+            <% @item = item %>
+              <div class="challenges">
+                <% color = ''%>
+                <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting tree"%>
+                  <% color = "card-green" %>
+                <% elsif item.challenge.category == "Food" || item.challenge.category == "Preventing pollution"%>
+                  <% color = "card-purple" %>
+                <% elsif item.challenge.category == "Travel" || item.challenge.category == "Recycle"%>
+                  <% color = "card-dark" %>
+                <% elsif item.challenge.category == "Reuse items" || item.challenge.category == "Conserving water"%>
+                  <% color = "card-blue" %>
+                <% elsif item.challenge.category == "Pick up trash" || item.challenge.category == "Made homemade art"%>
+                  <% color = "card-pink" %>
+                <% end %>
+                <div class="card-challenges <%= color %>">
+                  <div class="">
+                    <div class="info-challenge">
+                      <h2><%=item.challenge.name %></h2>
+                      <p>Description: <%= item.challenge.description %></p>
+                    </div>
+                      <div class="">
+                        <p class="" id="category">Type: <%= item.challenge.category %></p>
+                      </div>
+                      <!-- start of proof buttons -->
+                      <div class="card-challenge-buttons">
+                        <a class="btn-regular" ref="" id="upload_proof" data-bs-toggle="modal" data-bs-target="#uploadProofModal">Upload proof!</a>
+                        <%= link_to "View proofs", group_group_challenge_path(item.membership.group, item), class: "btn-regular" %>
+                      </div>
+                      <!-- end of proof buttons -->
+                  </div>
+                </div>
+
+
+              </div>
+          <% end %>
+
+          <!-- start of modal -->
+          <div class="modal fade" id="uploadProofModal" tabindex="-1" aria-labelledby="uploadProofModal" aria-hidden="true">
+            <div class=" d-flex align-items-center w-100 h-100">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="uploadProofModal">Upload your proof!</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for(@item) do |f| %>
+                    <%= f.input :photo, as: :file %>
+                    <%= f.input :comment, as: :text %>
+                  <%= f.submit "Update photo", class: "btn-welcome text-center" %>
+                <% end %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-regular" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+          <!-- end of modal -->
+
+
+    <h3 style="text-align:center;">Your upcoming challenges</h3>
+          <% @group_challenges_upcoming.each do |item| %>
+            <% @item = item %>
+              <div class="challenges">
+                <% color = ''%>
+                <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting tree"%>
+                  <% color = "card-green" %>
+                <% elsif item.challenge.category == "Food" || item.challenge.category == "Preventing pollution"%>
+                  <% color = "card-purple" %>
+                <% elsif item.challenge.category == "Travel" || item.challenge.category == "Recycle"%>
+                  <% color = "card-dark" %>
+                <% elsif item.challenge.category == "Reuse items" || item.challenge.category == "Conserving water"%>
+                  <% color = "card-blue" %>
+                <% elsif item.challenge.category == "Pick up trash" || item.challenge.category == "Made homemade art"%>
+                  <% color = "card-pink" %>
+                <% end %>
+                <div class="card-challenges <%= color %>">
+                  <div class="">
+                    <div class="info-challenge">
+                      <h2><%=item.challenge.name %></h2>
+                      <p>Description: <%= item.challenge.description %></p>
+                    </div>
+                      <div class="">
+                        <p class="" id="category">Type: <%= item.challenge.category %></p>
+                      </div>
+                  </div>
+                </div>
+
+
+              </div>
+          <% end %>
+  </div>
+</div>
