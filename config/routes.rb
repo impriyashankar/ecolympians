@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :groups do
     resources :group_challenges, only: [:new, :create, :index, :show]
+    resources :memberships, only: [:new, :create, :index, :show]
   end
   resources :users, only: :show
   get "/ui_kit", to: "pages#ui_kit"

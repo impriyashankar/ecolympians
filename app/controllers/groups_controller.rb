@@ -8,7 +8,9 @@ class GroupsController < ApplicationController
 
   def show
     @user = current_user
+    @users = User.all
     @group = Group.find(params[:id])
+    @membership = Membership.new
     @group_challenge = GroupChallenge.where("membership_id = ?",params[:id])#moved from group_challenges controller
     #@group_challenge = GroupChallenge.find(params[:id]) #moved from group_challenges controller
     #raise
