@@ -3,17 +3,18 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @user = current_user
-    @group_challenge = GroupChallenge.where("membership_id = ?",params[:group_id]) #moved from group_challenges controller
   end
 
   def show
     @user = current_user
     @users = User.all
     @group = Group.find(params[:id])
+    @potential_challenge = PotentialChallenge.new
+    @current_membership = Membership.where(user: @user, group: @group, status: "Accepted")
     @membership = Membership.new
-    @group_challenge = GroupChallenge.where("membership_id = ?",params[:id])#moved from group_challenges controller
-    #@group_challenge = GroupChallenge.find(params[:id]) #moved from group_challenges controller
-    #raise
+    @group_challenges = GroupChallenge.where(membership: @current_membership) # moved from group_challenges controller
+    # @group_challenge = GroupChallenge.find(params[:id]) #moved from group_challenges controller
+
   end
 
   def new

@@ -123,12 +123,15 @@ Group.all.each do |group|
   challenge = Challenge.all.sample
 
   group.memberships.each do |member|
-    GroupChallenge.create!(
+    group_challenge = GroupChallenge.create!(
       challenge: challenge,
       membership: member,
       start_date: Date.today + counter,
       status: "waiting"
     )
+
+    group_challenge.status = "ongoing" if group_challenge.start_date >= Date.today
+    group_challenge.save!
   end
   counter += 1
   puts "#{group.name} will do the #{GroupChallenge.last.challenge.name} challenge, which starts at #{GroupChallenge.last.start_date}"
