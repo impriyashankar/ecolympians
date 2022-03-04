@@ -9,6 +9,8 @@
 
 #pills-tab {
   flex-wrap: nowrap;
+  overflow: auto;//Adding property for horizontal scroll tab bar on mobile view
+  white-space: nowrap;
   .nav-item {
     width: 100%;
     .nav-link {
