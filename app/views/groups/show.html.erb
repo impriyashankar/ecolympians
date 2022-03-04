@@ -44,7 +44,7 @@
               <%# end %>
 
 
-              <%= simple_form_for ([ @group, @membership ]) do |f| %>
+              <%= simple_form_for([ @group, @membership ], remote: true) do |f| %>
                 <%= select_tag :user_id, options_from_collection_for_select(User.where.not(id: @group.user_ids), "id", "first_name"), class: "js-states", multiple: true, remote: true %>
                 <%#= f.select(:user_id, options_from_collection_for_select(User.where.not(id: @group.user_ids), "id", "first_name"), class: "js-states", multiple: true, remote: true )%>
                 <%#= f.select(:user_id,  User.all.collect {|m| [ m.first_name, m.id] }, class: "js-states form-control select2-simple-dropdown", multiple: true) %>

@@ -25,7 +25,7 @@ class MembershipsController < ApplicationController
   end
 
   def membership_params
-    params.require(:memberships).permit(:user_id)
+    params.require(:membership).permit(:user_id)
   end
 
 end
