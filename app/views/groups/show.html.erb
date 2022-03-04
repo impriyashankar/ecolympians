@@ -21,7 +21,7 @@
               <%= cl_image_tag User.find(member).photo.key, class: "avatar-large" if User.find(member).photo.key%>
               <!--<img class="avatar-large" alt="avatar" src='https://kitt.lewagon.com/placeholder/users/arthur-littm' />-->
               <p><strong><%= User.find(member).first_name %></strong> </p>
-              <span><%=Membership.find(@group.id).score%></span>
+              <span><%= Membership.find_by(user_id: member, group: @group, status: "Accepted").score %></span>
             </div>
            <% end %>
            <% button_value = @group.memberships.empty? ? "Invite members" : "Invite more members" %>
@@ -48,7 +48,7 @@
 
         </div>
         <div class="tab-pane fade challenges-index" id="pills-challenge" role="tabpanel" aria-labelledby="pills-challenge-tab">
-          <% @group_challenge.each do |item| %>
+          <% @group_challenges.each do |item| %>
             <% @item = item %>
               <div class="challenges">
                 <% color = ''%>
