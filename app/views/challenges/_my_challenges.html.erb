@@ -1,1 +1,60 @@
-<h1>TODO: List all challenges</h1>
+<div class="challenges-index">
+  <div class="challenges-container">
+    <h3 style="text-align:center;">Your ongoing challenges</h3>
+    <% @group_challenges_ongoing.each do |group_challenge| %>
+      <% if group_challenge.challenge.category == "Saving energy" || group_challenge.challenge.category == "Planting tree"%>
+        <% color = "card-green" %>
+      <% elsif group_challenge.challenge.category == "Food" || group_challenge.challenge.category == "Preventing pollution"%>
+        <% color = "card-purple" %>
+      <% elsif group_challenge.challenge.category == "Travel" || group_challenge.challenge.category == "Recycle"%>
+        <% color = "card-dark" %>
+      <% elsif group_challenge.challenge.category == "Reuse items" || group_challenge.challenge.category == "Conserving water"%>
+        <% color = "card-blue" %>
+      <% elsif group_challenge.challenge.category == "Pick up trash" || group_challenge.challenge.category == "Made homemade art"%>
+        <% color = "card-pink" %>
+      <% end %>
+      <div class="card-challenges <%= color %>">
+        <div class="info-challenge">
+          <h2><%=group_challenge.challenge.name %></h2>
+          <p>Description: <%= group_challenge.challenge.description %></p>
+          <p id="category">Type: <%= group_challenge.challenge.category %></p>
+        </div>
+
+        <div class="challenge-score">
+          <p>Score:<p>
+          <p><%= group_challenge.challenge.score %></p>
+        </div>
+
+      </div>
+    <% end %>
+
+    <h3 style="text-align:center;">Your upcoming challenges</h3>
+    <% @group_challenges_upcoming.each do |group_challenge| %>
+      <% if group_challenge.challenge.category == "Saving energy" || group_challenge.challenge.category == "Planting tree"%>
+        <% color = "card-green" %>
+      <% elsif group_challenge.challenge.category == "Food" || group_challenge.challenge.category == "Preventing pollution"%>
+        <% color = "card-purple" %>
+      <% elsif group_challenge.challenge.category == "Travel" || group_challenge.challenge.category == "Recycle"%>
+        <% color = "card-dark" %>
+      <% elsif group_challenge.challenge.category == "Reuse items" || group_challenge.challenge.category == "Conserving water"%>
+        <% color = "card-blue" %>
+      <% elsif group_challenge.challenge.category == "Pick up trash" || group_challenge.challenge.category == "Made homemade art"%>
+        <% color = "card-pink" %>
+      <% end %>
+      <div class="card-challenges <%= color %>">
+        <div class="info-challenge">
+          <h2><%=group_challenge.challenge.name %></h2>
+          <p>Description: <%= group_challenge.challenge.description %></p>
+          <p id="category">Type: <%= group_challenge.challenge.category %></p>
+        </div>
+
+        <div class="challenge-score">
+          <p>Score:<p>
+          <p><%= group_challenge.challenge.score %></p>
+        </div>
+
+      </div>
+    <% end %>
+
+  </div>
+</div>
