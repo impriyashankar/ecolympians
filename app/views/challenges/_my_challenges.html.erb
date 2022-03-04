@@ -48,11 +48,13 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <%= simple_form_for(@item) do |f| %>
-                    <%= f.input :photo, as: :file %>
-                    <%= f.input :comment, as: :text %>
-                  <%= f.submit "Update photo", class: "btn-welcome text-center" %>
-                <% end %>
+                  <% if @item %>
+                    <%= simple_form_for(@item) do |f| %>
+                      <%= f.input :photo, as: :file %>
+                      <%= f.input :comment, as: :text %>
+                    <%= f.submit "Update photo", class: "btn-welcome text-center" %>
+                    <% end %>
+                  <% end %>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-regular" data-bs-dismiss="modal">Close</button>
