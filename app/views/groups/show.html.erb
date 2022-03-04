@@ -17,27 +17,48 @@
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-member" role="tabpanel" aria-labelledby="pills-member-tab">
            <% @group.user_ids.each do |member| %>
-            <div class="card-player text-center">
+            <div class="card-player text-center mb-3">
               <%= cl_image_tag User.find(member).photo.key, class: "avatar-large" if User.find(member).photo.key%>
               <!--<img class="avatar-large" alt="avatar" src='https://kitt.lewagon.com/placeholder/users/arthur-littm' />-->
               <p><strong><%= User.find(member).first_name %></strong> </p>
               <span><%= Membership.find_by(user_id: member, group: @group, status: "Accepted").score %></span>
             </div>
            <% end %>
+
+          <%= javascript_pack_tag 'show' %>
+          <%#= select_tag('animal', options_for_select([['Dog', 'dog'], ['Cat', 'cat'], ['Bird', 'bird'], ['Ushi', 'cow'], ['Snake', 'snake']]), class: "form-control", multiple: true) %>
+
+          <%#= select :article, :tags, tags, { selected: selected_tags }, { multiple: true, name: 'article[tags]', class: 'form-control js-searchable' } %>
+          <%#= form_for @group do |f| %>
+            <%#= f.select :person_id, Person.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+            <%# <%= f.submit %>
+          <%# <% end %>
            <% button_value = @group.memberships.empty? ? "Invite members" : "Invite more members" %>
             <button class="btn-welcome mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#invMem" aria-expanded="false" aria-controls="invMem">
               <%= button_value %>
             </button>
             <div class="collapse" id="invMem" data-controller="invite-member">
-              <%= simple_form_for @group do |f| %>
-              <%= f.input :name, label: false, placeholder: "Select Players!", input_html: { class: 'searchbar' } %>
-              <%= f.button :submit, "Invite", class: 'btn-regular w-100 mb-3' %>
+              <%# <%= simple_form_for @group do |f| %>
+              <%#= f.input :name, label: false, placeholder: "Select Players!", input_html: { class: 'searchbar' } %>
+              <%#= f.button :submit, "Invite", class: 'btn-regular w-100 mb-3' %>
+              <%# end %>
+
+
+              <%= simple_form_for([ @group, @membership ], remote: true) do |f| %>
+                <%= select_tag :user_id, options_from_collection_for_select(User.where.not(id: @group.user_ids), "id", "first_name"), class: "js-states", multiple: true, remote: true %>
+                <%#= f.select(:user_id, options_from_collection_for_select(User.where.not(id: @group.user_ids), "id", "first_name"), class: "js-states", multiple: true, remote: true )%>
+                <%#= f.select(:user_id,  User.all.collect {|m| [ m.first_name, m.id] }, class: "js-states form-control select2-simple-dropdown", multiple: true) %>
+                <%= f.button :submit %>
               <% end %>
+
+
+              <h3 class="mt-3 mb-3">Pending Invitations</h3>
+
               <% members_available = User.where.not(id: @group.user_ids) %>
               <div class = "member-invite-group-dashboard" style = "display:flex;justify-content:space-between;">
                 <% members_available.each do |member| %>
                   <a href="#">
-                    <div class="text-center" data-action="click->invite-member#invite" data-invite-member-target="user">
+                    <div id= "member-<%= member.id %>" class="text-center" data-action="click->invite-member#invite" data-invite-member-target="user">
                       <%= cl_image_tag member.photo.key, class: "avatar-large" if member.photo.key%>
                       <p><%= member.first_name + " " + member.last_name %></p>
                     </div>

@@ -1,12 +1,13 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [ :edit, :update ]
   def index
-    #@groups = Group.all
+    @groups = Group.all
     @user = current_user
   end
 
   def show
     @user = current_user
+    @users = User.all
     @group = Group.find(params[:id])
     @membership = Membership.where(user: @user, group: @group, status: "Accepted")
     @group_challenges = GroupChallenge.where(membership: @membership) # moved from group_challenges controller
