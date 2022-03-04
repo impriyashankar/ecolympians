@@ -1,4 +1,13 @@
 class MembershipsController < ApplicationController
+
+  def index
+    @membership = Membership.new
+  end
+
+  def new
+    @membership = Membership.new
+  end
+
   def create
     @group = Group.find(params[:group_id])
     @membership = Membership.new(membership_params)

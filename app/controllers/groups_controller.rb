@@ -10,8 +10,9 @@ class GroupsController < ApplicationController
     @users = User.all
     @group = Group.find(params[:id])
     @potential_challenge = PotentialChallenge.new
-    @membership = Membership.where(user: @user, group: @group, status: "Accepted")
-    @group_challenges = GroupChallenge.where(membership: @membership) # moved from group_challenges controller
+    @current_membership = Membership.where(user: @user, group: @group, status: "Accepted")
+    @membership = Membership.new
+    @group_challenges = GroupChallenge.where(membership: @current_membership) # moved from group_challenges controller
     # @group_challenge = GroupChallenge.find(params[:id]) #moved from group_challenges controller
 
   end
