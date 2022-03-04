@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [ :edit, :update ]
   def index
-    #@groups = Group.all
+    @groups = Group.all
     @user = current_user
     @group_challenge = GroupChallenge.where("membership_id = ?",params[:group_id]) #moved from group_challenges controller
   end
@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @group_challenge = GroupChallenge.where("membership_id = ?",params[:id])#moved from group_challenges controller
     #@group_challenge = GroupChallenge.find(params[:id]) #moved from group_challenges controller
+    #raise
   end
 
   def new
