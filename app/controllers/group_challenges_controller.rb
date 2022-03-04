@@ -4,6 +4,7 @@ class GroupChallengesController < ApplicationController
     @user = current_user
     #@group_challenge = GroupChallenge.find(params[:group_id])
     #@group_challenge = GroupChallenge.where("membership_id = ?",params[:group_id]) -- moved to groups_controller
+    # raise
     @group = Group.find(params[:group_id])
     #raise
   end
