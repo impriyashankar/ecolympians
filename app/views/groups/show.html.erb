@@ -86,7 +86,6 @@
 
 
           <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
-              <div class="form-example">
                 <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
                 <select id="challenge1" name="challenge1" size="1">
                   <% Challenge.all.each do |challenge| %>
@@ -103,7 +102,6 @@
                     <option value="<%= challenge.name %>"><%= challenge.name %></option>
                   <% end %>
                   </select>
-              </div>
 
               <div class="form-example">
                 <input type="submit" value="Select!">
