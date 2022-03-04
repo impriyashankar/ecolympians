@@ -5,7 +5,7 @@
 
 <div class="proofs-horizontal">
   <% @group_challenges.each do |challenge| %>
-    <% if challenge.membership.group == @group_challenge.membership.group %>
+    <% if challenge.membership.group == @group_challenge.membership.group && challenge.photo.attached? %>
       <%# <div class="proof-card-container"> %>
         <div class="proof-card">
           <div class="proof-card-top">
@@ -14,7 +14,7 @@
               <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
             </div>
           </div>
-            <%= cl_image_tag @group_challenge.photo.key %>
+            <%= cl_image_tag challenge.photo.key %>
             <div class="proof-card-text">
               <p>
                 <%= "Here is the comment that I wrote for this proof..." %>

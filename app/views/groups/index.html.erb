@@ -7,6 +7,7 @@
 
         <div class="cards-grid"> <!--#changed from card groups-->
           <% current_user.groups.each do |group| %>
+          <%# @groups.each do |group| %>
             <%#= link_to group_group_challenges_path(group) do %>
             <div class="card-groups text-center">
               <%= link_to group_path(group) do %>

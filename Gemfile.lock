@@ -223,6 +223,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    select2-rails (4.0.13)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -244,6 +245,11 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
+    turbolinks_render (0.9.21)
+      actionpack (>= 5.2.0)
+      activesupport (>= 5.2.0)
+      railties (>= 5.2.0)
+      turbolinks-source (~> 5.1)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -298,10 +304,12 @@ DEPENDENCIES
   rails (~> 6.1.4, >= 6.1.4.6)
   redis (~> 4.0)
   sass-rails (>= 6)
+  select2-rails
   selenium-webdriver
   simple_form
   spring
   turbolinks (~> 5)
+  turbolinks_render
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers
