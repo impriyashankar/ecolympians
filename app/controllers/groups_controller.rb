@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @group_challenge = GroupChallenge.where("membership_id = ?",params[:id])#moved from group_challenges controller
     #@group_challenge = GroupChallenge.find(params[:id]) #moved from group_challenges controller
+    @potential_challenge = PotentialChallenge.new
   end
 
   def new

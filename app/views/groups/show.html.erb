@@ -79,7 +79,11 @@
           <% end %>
         </div>
          <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab">
-          <p>You do not have any upcoming challenges.</p><!--start_date < Date.today-->
+          <%= simple_form_for [@group, @potential_challenge] do |f| %>
+          <%=  f.association :challenge, collection: Challenge.order(:name), prompt: "Choose a challenge", input_html: { :multiple => true }%>
+
+          <%= f.submit %>
+          <% end %>
         </div>
       </div>
   </div>
