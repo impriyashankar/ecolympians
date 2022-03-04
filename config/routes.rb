@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   get "/ui_kit", to: "pages#ui_kit"
   resources :challenges, only: [:index, :show, :new, :create]
 
-  resources :group_challenges, only: [:show, :create]
+  resources :group_challenges, only: [:show, :create, :update]
   get "/my_dashboard", to: "users#show"
 end
