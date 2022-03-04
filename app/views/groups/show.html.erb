@@ -133,7 +133,34 @@
 
         </div>
          <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab">
-          <p>You do not have any upcoming challenges.</p><!--start_date < Date.today-->
+          <!-- <%= simple_form_for [@group, @potential_challenge] do |f| %>
+          <%=  f.association :challenge, collection: Challenge.order(:name), input_html: { :multiple => true }%>
+          <%= f.submit %>
+          <% end %> -->
+
+
+          <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
+                <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
+                <select id="challenge1" name="challenge1" size="1">
+                  <% Challenge.all.each do |challenge| %>
+                    <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                  <% end %>
+                  </select>
+                  <select id="challenge2" name="challenge2" size="1">
+                  <% Challenge.all.each do |challenge| %>
+                    <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                  <% end %>
+                  </select>
+                  <select id="challenge3" name="challenge3" size="1">
+                  <% Challenge.all.each do |challenge| %>
+                    <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                  <% end %>
+                  </select>
+
+              <div class="form-example">
+                <input type="submit" value="Select!">
+              </div>
+              </form>
         </div>
       </div>
   </div>
