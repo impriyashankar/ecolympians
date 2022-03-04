@@ -52,19 +52,16 @@
             <% @item = item %>
               <div class="challenges">
                 <% color = ''%>
-                <% Challenge.all.each do |challenge| %>
-                  <% if challenge.category == "Saving energy" || challenge.category == "Planting tree"%>
-                    <% color = "card-green" %>
-                  <% elsif challenge.category == "Food" || challenge.category == "Preventing pollution"%>
-                    <% color = "card-purple" %>
-                  <% elsif challenge.category == "Travel" || challenge.category == "Recycle"%>
-                    <% color = "card-dark" %>
-                  <% elsif challenge.category == "Reuse items" || challenge.category == "Conserving water"%>
-                    <% color = "card-blue" %>
-                  <% elsif challenge.category == "Pick up trash" || challenge.category == "Made homemade art"%>
-                    <% color = "card-pink" %>
-                  <% end %>
-
+                <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting tree"%>
+                  <% color = "card-green" %>
+                <% elsif item.challenge.category == "Food" || item.challenge.category == "Preventing pollution"%>
+                  <% color = "card-purple" %>
+                <% elsif item.challenge.category == "Travel" || item.challenge.category == "Recycle"%>
+                  <% color = "card-dark" %>
+                <% elsif item.challenge.category == "Reuse items" || item.challenge.category == "Conserving water"%>
+                  <% color = "card-blue" %>
+                <% elsif item.challenge.category == "Pick up trash" || item.challenge.category == "Made homemade art"%>
+                  <% color = "card-pink" %>
                 <% end %>
                 <div class="card-challenges <%= color %>">
                   <div class="">
