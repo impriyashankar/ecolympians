@@ -1,0 +1,4 @@
+ <div class="text-center" id = "member-<%= member.id %>" >
+    <%= cl_image_tag member.user.photo.key, class: "avatar-large" if member.user.photo.key%>
+    <p><%= member.user.first_name + " " + member.user.last_name %></p>
+  </div>

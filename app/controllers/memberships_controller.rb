@@ -1,13 +1,4 @@
 class MembershipsController < ApplicationController
-
-  # def index
-  #   @membership = Membership.new
-  # end
-
-  # def new
-  #   @membership = Membership.new
-  # end
-
   def create
     @group = Group.find(params[:group_id])
     param = []
@@ -25,36 +16,25 @@ class MembershipsController < ApplicationController
       render "groups/show"
     end
 
-      # redirect_to group_path(@group, anchor: "member-#{@membership.id}")
-      # raise
-      # if @membership.save
-      #   redirect_to group_path(@group, anchor: "member-#{@membership.id}")
-      # else
-      #   raise
-      #   render "groups/show"
-      # end
-
-
-    # @membership = Membership.new(user_id: params[:user_id])
-    # @membership.role = 'Member'
-    # @membership.status = 'Pending'
-    # @membership.group = @group
-
-    # raise
     if @membership.save
       redirect_to group_path(@group, anchor: "member-#{@membership.id}")
     else
-      raise
       render "groups/show"
     end
-    #@membership = Membership.new(membership_params)
+
+    # raise
+  #   respond_to do |format|
+  #   if @membership.save
+  #     format.html {redirect_to group_path(@group), anchor: "member-#{@membership.id}"}
+  #     format.json
+  #   else
+  #     #raise
+  #     format.html { render "groups/show" }
+  #     format.json
+  #   end
+  # end
 
   end
-
-  # def show
-  #   @group = Group.find(params[:id])
-  #   @membership = Membership.new
-  # end
 
   private
 
