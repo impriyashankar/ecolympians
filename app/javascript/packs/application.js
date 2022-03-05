@@ -32,8 +32,9 @@ require("jquery")
     });
   });
 
-  $('.js-searchable').select2({
-    allowClear: true,
-    width: 200
-    // If you are using Bootstrap, please add　`theme: "bootstrap"` too.
+  $( document ).on('turbolinks:load', function() {//Added to avoid select2 tag display issues on page reload
+    $( ".js-states" ).select2({
+      allowClear: true,
+      width:'100%'
+    });
   });
