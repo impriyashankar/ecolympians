@@ -130,13 +130,13 @@ Group.all.each do |group|
       status: "waiting"
     )
 
-    group_challenge.status = "ongoing" if group_challenge.start_date >= Date.today
+    group_challenge.status = "ongoing" if group_challenge.start_date <= Date.today
 
     if group_challenge.status == "ongoing"
       file = URI.open('https://source.unsplash.com/300x300/?earth')
       group_challenge.photo.attach(
         io: file,
-        filename: "#{index}.jpg",
+        filename: "proof_#{group_challenge.id}.jpg",
         content_type: "image/jpg"
       )
 

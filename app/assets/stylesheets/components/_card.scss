@@ -75,11 +75,11 @@
   margin: 0 5vw;
   margin-bottom: 1rem;
   border-radius: 16px;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.212);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.412);
   & > img {
     width: 100%;
     border-radius: 16px;
@@ -116,29 +116,38 @@
 }
 
 .proof-card-vote {
-  width: 50%;
-  margin-top: 1rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
+
 
 .btn-vote-proof-round {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
+  width: 8rem;
   height: 3rem;
-  border-radius: 50%;
+  border-radius: 8px;
   background-color: $primary;
   color: $white;
-  font-size: 1.5em;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+  font-size: 1em;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.412);
   span {
     text-align: center;
   }
   a {
     color: $background;
+
   }
+}
+
+.vote-text {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #decline {
