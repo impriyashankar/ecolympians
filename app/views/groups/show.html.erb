@@ -181,7 +181,7 @@
 
             <div class="score-potential-challenges">
               <p>Score: <%= potential_challenge.challenge.score %></p>
-              <div class = "btn-regular mb-3">Vote</div>
+              <%= button_to "Vote", potential_challenge_challenge_votes_path(potential_challenge), method: :post, data: { action: "click->challenge-voting#reloadContent", challenge_voting_target: "button"}, class: "btn-regular mb-3" %>
             </div>
           </div>
           <% end %>
