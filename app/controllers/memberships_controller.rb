@@ -4,7 +4,7 @@ class MembershipsController < ApplicationController
     param = []
     param = params[:user_id]
     unless param.nil?
-      param.each{|id|
+      param.each { |id|
         id = id.to_i
         @membership = Membership.new(role: 'Member', status: 'Pending', user_id: id)
         @membership.group = @group
@@ -33,12 +33,10 @@ class MembershipsController < ApplicationController
   #     format.json
   #   end
   # end
-
   end
 
   def edit
     @membership = Membership.find(params[:id])
-
 
   end
 

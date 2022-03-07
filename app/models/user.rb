@@ -23,4 +23,5 @@ class User < ApplicationRecord
     end
     return total_score
   end
+
 end
