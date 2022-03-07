@@ -117,7 +117,7 @@ puts ""
 puts "Assigning challenges to groups.."
 puts ""
 
-counter = -2
+counter = -5
 
 Group.all.each do |group|
   challenge = Challenge.all.sample
@@ -131,9 +131,21 @@ Group.all.each do |group|
     )
 
     group_challenge.status = "ongoing" if group_challenge.start_date >= Date.today
+
+    if group_challenge.status == "ongoing"
+      file = URI.open('https://source.unsplash.com/300x300/?earth')
+      group_challenge.photo.attach(
+        io: file,
+        filename: "#{index}.jpg",
+        content_type: "image/jpg"
+      )
+
+      group_challenge.comment = "Here is a little comment about my proof!"
+    end
+
     group_challenge.save!
   end
-  counter += 1
+  counter += 3
   puts "#{group.name} will do the #{GroupChallenge.last.challenge.name} challenge, which starts at #{GroupChallenge.last.start_date}"
 end
 

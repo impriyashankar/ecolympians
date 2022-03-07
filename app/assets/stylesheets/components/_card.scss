@@ -73,6 +73,7 @@
   min-width: 90vw;
   background-color: $blue;
   margin: 0 5vw;
+  margin-bottom: 1rem;
   border-radius: 16px;
   padding: 1.5rem;
   display: flex;
@@ -83,6 +84,10 @@
     width: 100%;
     border-radius: 16px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+  }
+
+  h4 {
+    margin: 0;
   }
 }
 
@@ -100,8 +105,9 @@
 }
 
 .proof-card-text {
+  width: 100%;
   border-radius: 8px;
-  margin-top: 1rem;
+  margin: 1rem 0;
   padding: 0.5rem;
   background-color: $blue-hover;
   font-size: large;
@@ -129,6 +135,9 @@
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
   span {
     text-align: center;
+  }
+  a {
+    color: $background;
   }
 }
 

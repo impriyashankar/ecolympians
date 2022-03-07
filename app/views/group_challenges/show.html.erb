@@ -7,27 +7,36 @@
   <% @group_challenges.each do |challenge| %>
     <% if challenge.membership.group == @group_challenge.membership.group && challenge.photo.attached? %>
       <%# <div class="proof-card-container"> %>
-        <div class="proof-card">
+        <div class="proof-card" data-controller="proof-voting" >
           <div class="proof-card-top">
             <h3><%= "Proof from #{challenge.membership.user.first_name}" %></h3>
             <div>
               <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
             </div>
           </div>
-            <%= cl_image_tag challenge.photo.key %>
-            <div class="proof-card-text">
-              <p>
-                <%= challenge.comment %>
-              </p>
-            </div>
-            <div class="proof-card-vote">
+
+          <%= cl_image_tag challenge.photo.key %>
+
+          <div class="proof-card-text">
+            <p>
+              <%= challenge.comment %>
+            </p>
+          </div>
+
+          <% if proof_vote = ProofVote.find_by(user: current_user, group_challenge: challenge) %>
+            <h4> You have <%= proof_vote.vote ? "approved" : "rejected" %> this!</h4>
+          <% elsif challenge.membership.user == current_user%>
+            <h4> Awaiting votes for your proof!</h4>
+          <% else %>
+            <div class="proof-card-vote" data-proof-voting-target="buttons" >
               <div class="btn-vote-proof-round">
-                <span><%= icon("fas", "check") %></span>
+                <span><%= link_to icon("fas", "check"), group_challenge_proof_votes_path(challenge, vote: true), method: :post, data: { action: "click->proof-voting#showUpVoted"} %></span>
               </div>
               <div class="btn-vote-proof-round" id="decline">
-                <span><%= icon("fas", "times") %></span>
+                <span><%= link_to icon("fas", "times"), group_challenge_proof_votes_path(challenge, vote: false), method: :post, data: { action: "click->proof-voting#showDownVoted"} %></span>
               </div>
             </div>
+          <% end %>
         </div>
       <%# </div> %>
       <br>

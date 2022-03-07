@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   resources :challenges, only: [:index, :show, :new, :create]
 
   get "/my_dashboard", to: "users#show"
+
+  resources :group_challenges, only: [] do
+    resources :proof_votes, only: [:create]
+  end
 end
