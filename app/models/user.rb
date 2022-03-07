@@ -24,12 +24,4 @@ class User < ApplicationRecord
     return total_score
   end
 
-
-  # def update_vote
-  #   @group = Group.find(params[:id])
-  #   @group_challenges = GroupChallenge.where(membership: current_user, group: @group)
-  #   if @group_challenge.status == "finished"
-  #     @membership.score += @group_challenge.challenge.score
-  #   end
-  # end
 end
