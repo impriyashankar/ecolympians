@@ -1,16 +1,38 @@
 import { Controller } from "@hotwired/stimulus"
+import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
 
-  static targets = "user"
+  static targets = ["items", "form"]
 
   connect() {
-    console.log("Hello from our first Stimulus controller")
+    console.log(this.element)
+    console.log(this.itemsTarget)
+    console.log(this.formTarget)
   }
 
-  invite() {
-    console.log(this.userTarget)
-   // document.querySelector('input').value = this.userTarget.innerHTML
+  send(event) {
+    event.preventDefault()
 
-  }
+    fetch(this.formTarget.action, {
+      method: "POST",
+      headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },
+      body: new FormData(this.formTarget)
+    })
+      .then(async response => {
+        try {
+         const data = await response.json()
+         console.log('response data?', data)
+       } catch(error) {
+         console.log('Error happened here!')
+         console.error(error)
+       }
+      })
+      .then((data) => {
+        if (data.inserted_item) {
+          this.itemsTarget.insertAdjacentHTML("beforeend", data.inserted_item)
+        }
+        this.formTarget.outerHTML = data.form
+      })
+    }
 }

@@ -19,7 +19,7 @@
                   </div>
                   <div class="card-group-infos">
                     <h3><%= group.name %></h3>
-                    <p><strong><%= group.memberships.count %></strong> members</p>
+                    <p><strong><%= group.memberships.where(status: "Accepted").count %></strong> members</p>
                   </div>
                 </div>
 
