@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :groups do
     resources :group_challenges, only: [:new, :create, :index, :show, :update]
-    resources :memberships, only: [:create]
+    resources :memberships, except: [:new, :show] do
+      member do
+        patch :update_status
+      end
+    end
     resources :potential_challenges, only: [:create] do
       resources :challenge_votes, only: [:create]
     end
