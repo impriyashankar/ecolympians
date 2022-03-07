@@ -49,7 +49,7 @@
                 </div>
                 <div class="modal-body">
                   <% if @item %>
-                    <%= simple_form_for(@item) do |f| %>
+                    <%= simple_form_for([@item.membership.group, @item]) do |f| %>
                       <%= f.input :photo, as: :file %>
                       <%= f.input :comment, as: :text %>
                     <%= f.submit "Update photo", class: "btn-welcome text-center" %>
