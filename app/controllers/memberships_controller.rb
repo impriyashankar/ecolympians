@@ -36,7 +36,6 @@ class MembershipsController < ApplicationController
 
   end
 
-<<<<<<< HEAD
   # def update_vote
   #   @group = Group.find(params[:id])
   #   @group_challenges = GroupChallenge.where(membership: current_user, group: @group)
@@ -44,7 +43,6 @@ class MembershipsController < ApplicationController
   #     @membership.score += @group_challenge.challenge.score
   #   end
   # end
-=======
   def edit
     @membership = Membership.find(params[:id])
 
@@ -68,7 +66,6 @@ class MembershipsController < ApplicationController
     @membership.destroy
     redirect_to group_path(@group, anchor: "pending-member-box")
   end
->>>>>>> master
 
   private
 
