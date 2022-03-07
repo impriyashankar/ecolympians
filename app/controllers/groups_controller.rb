@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
     @membership = Membership.new
     @group_challenges = GroupChallenge.where(membership: @current_membership) # moved from group_challenges controller
     # @group_challenge = GroupChallenge.find(params[:id]) #moved from group_challenges controller
-
+    @user_role = Membership.where(user: current_user, group: @group).first.role
   end
 
   def new

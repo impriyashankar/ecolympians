@@ -1,165 +1,230 @@
 <div class="container">
-  <div class="row">
-    <h2><strong>Challenges for <%= @group.name %></strong></h2>
+    <h2><strong><%= @group.name %></strong></h2>
 
+  <div>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link dashboard-tab active" id="pills-member-tab" data-bs-toggle="pill" data-bs-target="#pills-member" type="button" role="tab" aria-controls="pills-member" aria-selected="true">Members</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link dashboard-tab" id="pills-challenge-tab" data-bs-toggle="pill" data-bs-target="#pills-challenge" type="button" role="tab" aria-controls="pills-challenge" aria-selected="false">Challenges</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link dashboard-tab" id="pills-next-tab" data-bs-toggle="pill" data-bs-target="#pills-next" type="button" role="tab" aria-controls="pills-next" aria-selected="false">Next Challenges</button>
+      </li>
+    </ul>
 
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link dashboard-tab active" id="pills-member-tab" data-bs-toggle="pill" data-bs-target="#pills-member" type="button" role="tab" aria-controls="pills-member" aria-selected="true">Members</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link dashboard-tab" id="pills-challenge-tab" data-bs-toggle="pill" data-bs-target="#pills-challenge" type="button" role="tab" aria-controls="pills-challenge" aria-selected="false">Challenges</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link dashboard-tab" id="pills-next-tab" data-bs-toggle="pill" data-bs-target="#pills-next" type="button" role="tab" aria-controls="pills-next" aria-selected="false">Next Challenges</button>
-        </li>
-      </ul>
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-member" role="tabpanel" aria-labelledby="pills-member-tab">
-          <% if  Membership.find_by(group: @group, status: "Accepted").present? %>
-            <% grp_members = Membership.where(group: @group, status: "Accepted") %>
-            <% grp_members.each do |member| %>
-              <div class="card-player text-center mb-3">
-                <%= cl_image_tag member.user.photo.key, class: "avatar-large" if member.user.photo.key%>
-                  <!--<img class="avatar-large" alt="avatar" src='https://kitt.lewagon.com/placeholder/users/arthur-littm' />-->
-                <p><strong><%= member.user.first_name %></strong> </p>
-                <span><%= member.score %></span>
-              </div>
-            <% end %>
+    <!-- Here comes the content -->
+    <div class="tab-content" id="pills-tabContent">
+
+      <!-- Members overview -->
+      <div class="tab-pane fade show active" id="pills-member" role="tabpanel" aria-labelledby="pills-member-tab">
+        <% if  Membership.find_by(group: @group, status: "Accepted").present? %>
+          <% grp_members = Membership.where(group: @group, status: "Accepted") %>
+          <% grp_members.each do |member| %>
+            <div class="card-player text-center mb-3">
+              <%= cl_image_tag member.user.photo.key, class: "avatar-large" if member.user.photo.key%>
+                <!--<img class="avatar-large" alt="avatar" src='https://kitt.lewagon.com/placeholder/users/arthur-littm' />-->
+              <p><strong><%= member.user.first_name %></strong> </p>
+              <span><%= member.score %></span>
+            </div>
           <% end %>
+        <% end %>
 
 
-          <%= javascript_pack_tag 'show' %>
+        <%= javascript_pack_tag 'show' %>
 
-          <% if  Membership.find_by(group: @group, status: "Pending").present? %>
-            <h3 class="mt-3 mb-3">Awaiting invite response from</h3>
-            <% members_yet_to_accept = Membership.where(group: @group, status: "Pending") %>
-            <div id="wrapper-controller"> <!--Controller wrapper begin-->
-              <div class="card-member-pending-invitation" id = "pending-member-box">
-                  <!--<div class = "member-invite-group-dashboard" style = "display:flex;justify-content:space-between;">-->
-                    <% members_yet_to_accept.each do |member| %>
-                      <div class="text-center" id = "member-<%= member.id %>" >
-                        <%= cl_image_tag member.user.photo.key, class: "avatar-large" if member.user.photo.key%>
-                        <p><%= member.user.first_name + " " + member.user.last_name %></p>
-                      </div>
-                    <% end %>
-                  <!--</div>-->
-              </div>
-          <% end %>
-
-          <div class="collapse" id="invMem">
-              <%= form_tag(group_memberships_path(@group), format: :js ,method: :post, remote: true, id: 'invite-form') do %>
-                <%= select_tag :user_id, options_from_collection_for_select(User.where.not(id: @group.user_ids), "id", "first_name"), class: "js-states", multiple: true %>
-                 <%= submit_tag "Invite", class: 'btn-regular mt-3 mb-3' %>
-              <% end %>
-          </div>
-        </div><!--Controller wrapper end-->
-
-
-           <% button_value = @group.memberships.empty? ? "Invite members" : "Invite more members" %>
-            <button class="btn-welcome mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#invMem" aria-expanded="false" aria-controls="invMem">
-              <%= button_value %>
-            </button>
-
-
-
-        </div>
-        <div class="tab-pane fade challenges-index" id="pills-challenge" role="tabpanel" aria-labelledby="pills-challenge-tab">
-          <% @group_challenges.each do |item| %>
-            <% @item = item %>
-              <div class="challenges">
-                <% color = ''%>
-                <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting tree"%>
-                  <% color = "card-green" %>
-                <% elsif item.challenge.category == "Food" || item.challenge.category == "Preventing pollution"%>
-                  <% color = "card-purple" %>
-                <% elsif item.challenge.category == "Travel" || item.challenge.category == "Recycle"%>
-                  <% color = "card-dark" %>
-                <% elsif item.challenge.category == "Reuse items" || item.challenge.category == "Conserving water"%>
-                  <% color = "card-blue" %>
-                <% elsif item.challenge.category == "Pick up trash" || item.challenge.category == "Made homemade art"%>
-                  <% color = "card-pink" %>
-                <% end %>
-                <div class="card-challenges <%= color %>">
-                  <div class="">
-                    <div class="info-challenge">
-                      <h2><%=item.challenge.name %></h2>
-                      <p>Description: <%= item.challenge.description %></p>
+        <% if  Membership.find_by(group: @group, status: "Pending").present? %>
+          <h3 class="mt-3 mb-3">Awaiting invite response from</h3>
+          <% members_yet_to_accept = Membership.where(group: @group, status: "Pending") %>
+          <div id="wrapper-controller"> <!--Controller wrapper begin-->
+            <div class="card-member-pending-invitation">
+                <!--<div class = "member-invite-group-dashboard" style = "display:flex;justify-content:space-between;">-->
+                  <% members_yet_to_accept.each do |member| %>
+                    <div class="text-center" id = "member-<%= member.id %>" >
+                      <%= cl_image_tag member.user.photo.key, class: "avatar-large" if member.user.photo.key%>
+                      <p><%= member.user.first_name + " " + member.user.last_name %></p>
                     </div>
-                      <div class="">
-                        <p class="" id="category">Type: <%= item.challenge.category %></p>
-                      </div>
-                      <!-- start of proof buttons -->
-                      <div class="card-challenge-buttons">
-                        <a class="btn-regular" ref="" id="upload_proof" data-bs-toggle="modal" data-bs-target="#uploadProofModal">Upload proof!</a>
-                        <%= link_to "View proofs", group_group_challenge_path(item.membership.group, item), class: "btn-regular" %>
-                      </div>
-                      <!-- end of proof buttons -->
-                  </div>
-                </div>
-
-
-              </div>
-          <% end %>
-
-          <!-- start of modal -->
-          <div class="modal fade" id="uploadProofModal" tabindex="-1" aria-labelledby="uploadProofModal" aria-hidden="true">
-            <div class=" d-flex align-items-center w-100 h-100">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="uploadProofModal">Upload your proof!</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <% if @item %>
-                    <%= simple_form_for([@item.membership.group, @item]) do |f| %>
-                      <%= f.input :photo, as: :file %>
-                      <%= f.input :comment, as: :text %>
-                    <%= f.submit "Update photo", class: "btn-welcome text-center" %>
                   <% end %>
+                <!--</div>-->
+            </div>
+        <% end %>
+
+        <div class="collapse" id="invMem">
+            <%= form_tag(group_memberships_path(@group), format: :js ,method: :post, remote: true, id: 'invite-form') do %>
+              <%= select_tag :user_id, options_from_collection_for_select(User.where.not(id: @group.user_ids), "id", "first_name"), class: "js-states", multiple: true %>
+                <%= submit_tag "Invite", class: 'btn-regular mt-3 mb-3' %>
+            <% end %>
+        </div>
+
+          <% button_value = @group.memberships.empty? ? "Invite members" : "Invite more members" %>
+          <button class="btn-welcome mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#invMem" aria-expanded="false" aria-controls="invMem">
+            <%= button_value %>
+          </button>
+      </div>
+      <!--Members overview end-->
+
+      <!-- Challenges overview -->
+      <div class="tab-pane fade challenges-index" id="pills-challenge" role="tabpanel" aria-labelledby="pills-challenge-tab">
+        <% @group_challenges.each do |item| %>
+          <% @item = item %>
+            <div class="challenges">
+              <% color = ''%>
+              <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting tree"%>
+                <% color = "card-green" %>
+              <% elsif item.challenge.category == "Food" || item.challenge.category == "Preventing pollution"%>
+                <% color = "card-purple" %>
+              <% elsif item.challenge.category == "Travel" || item.challenge.category == "Recycle"%>
+                <% color = "card-dark" %>
+              <% elsif item.challenge.category == "Reuse items" || item.challenge.category == "Conserving water"%>
+                <% color = "card-blue" %>
+              <% elsif item.challenge.category == "Pick up trash" || item.challenge.category == "Made homemade art"%>
+                <% color = "card-pink" %>
+              <% end %>
+              <div class="card-challenges <%= color %>">
+                <div class="">
+                  <div class="info-challenge">
+                    <h2><%=item.challenge.name %></h2>
+                    <p>Description: <%= item.challenge.description %></p>
+                  </div>
+                    <div class="">
+                      <p class="" id="category">Type: <%= item.challenge.category %></p>
+                    </div>
+                    <!-- start of proof buttons -->
+                    <div class="card-challenge-buttons">
+                      <a class="btn-regular" ref="" id="upload_proof" data-bs-toggle="modal" data-bs-target="#uploadProofModal">Upload proof!</a>
+                      <%= link_to "View proofs", group_group_challenge_path(item.membership.group, item), class: "btn-regular" %>
+                    </div>
+                    <!-- end of proof buttons -->
+                </div>
+              </div>
+
+
+            </div>
+        <% end %>
+
+        <!-- start of modal -->
+        <div class="modal fade" id="uploadProofModal" tabindex="-1" aria-labelledby="uploadProofModal" aria-hidden="true">
+          <div class=" d-flex align-items-center w-100 h-100">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="uploadProofModal">Upload your proof!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <% if @item %>
+                  <%= simple_form_for([@item.membership.group, @item]) do |f| %>
+                    <%= f.input :photo, as: :file %>
+                    <%= f.input :comment, as: :text %>
+                  <%= f.submit "Update photo", class: "btn-welcome text-center" %>
                 <% end %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-regular" data-bs-dismiss="modal">Close</button>
-                </div>
+              <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-regular" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
-           </div>
           </div>
-          <!-- end of modal -->
-
+          </div>
         </div>
-         <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab">
+
+
+        <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab">
           <!-- <%= simple_form_for [@group, @potential_challenge] do |f| %>
           <%=  f.association :challenge, collection: Challenge.order(:name), input_html: { :multiple => true }%>
           <%= f.submit %>
           <% end %> -->
+          <% if @user_role == "admin" %>
+            <div class="potential-challenges">
+              <h3>Please! choose the next challenge<h3>
+              <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
+              <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
+              <select id="challenge1" name="challenge1" size="1">
+                <% Challenge.all.each do |challenge| %>
+                  <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                <% end %>
+              </select>
+
+              <br>
+              <select id="challenge2" name="challenge2" size="1">
+                <% Challenge.all.each do |challenge| %>
+                  <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                <% end %>
+              </select>
+
+              <br>
+              <select id="challenge3" name="challenge3" size="1">
+                <% Challenge.all.each do |challenge| %>
+                  <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                <% end %>
+              </select>
 
 
-          <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
-                <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
-                <select id="challenge1" name="challenge1" size="1">
-                  <% Challenge.all.each do |challenge| %>
-                    <option value="<%= challenge.name %>"><%= challenge.name %></option>
-                  <% end %>
-                  </select>
-                  <select id="challenge2" name="challenge2" size="1">
-                  <% Challenge.all.each do |challenge| %>
-                    <option value="<%= challenge.name %>"><%= challenge.name %></option>
-                  <% end %>
-                  </select>
-                  <select id="challenge3" name="challenge3" size="1">
-                  <% Challenge.all.each do |challenge| %>
-                    <option value="<%= challenge.name %>"><%= challenge.name %></option>
-                  <% end %>
-                  </select>
-
-              <div class="form-example">
-                <input type="submit" value="Select!">
+              <div class="submit-challenges">
+                <input type="submit" value="Select!" class="btn-regular">
               </div>
               </form>
+            </div>
+
+          <% else %>
+            <% @group.potential_challenges.each do |potential_challenge| %>
+            <div class="card-potential-challenges">
+              <div class="info-potential-challenges">
+                <h5><%= potential_challenge.challenge.name %></h5>
+                <p><%= potential_challenge.challenge.description %></p>
+              </div>
+
+              <div class="score-potential-challenges">
+                <p>Score: <%= potential_challenge.challenge.score %></p>
+                <div class = "btn-regular mb-3">Vote</div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+
         </div>
+
+
+
+        <!-- end of modal -->
+
       </div>
+      <!--Challenges overview end-->
+
+      <!-- Next challenges page -->
+      <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab">
+        <!-- <%= simple_form_for [@group, @potential_challenge] do |f| %>
+        <%=  f.association :challenge, collection: Challenge.order(:name), input_html: { :multiple => true }%>
+        <%= f.submit %>
+        <% end %> -->
+
+        <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
+              <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
+              <select id="challenge1" name="challenge1" size="1">
+                <% Challenge.all.each do |challenge| %>
+                  <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                <% end %>
+                </select>
+                <select id="challenge2" name="challenge2" size="1">
+                <% Challenge.all.each do |challenge| %>
+                  <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                <% end %>
+                </select>
+                <select id="challenge3" name="challenge3" size="1">
+                <% Challenge.all.each do |challenge| %>
+                  <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                <% end %>
+                </select>
+
+            <div class="form-example">
+              <input type="submit" value="Select!">
+            </div>
+        </form>
+      </div>
+      <!--Next challenges end-->
+
+    </div>
+    <!-- Content ends here -->
   </div>
 </div>
