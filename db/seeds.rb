@@ -17,6 +17,7 @@ Membership.destroy_all
 User.destroy_all
 Challenge.destroy_all
 GroupChallenge.destroy_all
+ProofVote.destroy_all
 
 # create users
 
@@ -117,7 +118,7 @@ puts ""
 puts "Assigning challenges to groups.."
 puts ""
 
-counter = -5
+counter = -15
 
 Group.all.each do |group|
   challenge = Challenge.all.sample
@@ -130,9 +131,15 @@ Group.all.each do |group|
       status: "waiting"
     )
 
-    group_challenge.status = "ongoing" if group_challenge.start_date <= Date.today
+    if group_challenge.start_date <= (Date.today - 7)
+      group_challenge.status = "finished"
+    elsif group_challenge.start_date > (Date.today - 7) && group_challenge.start_date <= Date.today
+      group_challenge.status = "ongoing"
+    else
+      group_challenge.status = "waiting"
+    end
 
-    if group_challenge.status == "ongoing"
+    unless group_challenge.status == "waiting"
       file = URI.open('https://source.unsplash.com/300x300/?earth')
       group_challenge.photo.attach(
         io: file,
@@ -143,10 +150,20 @@ Group.all.each do |group|
       group_challenge.comment = "Here is a little comment about my proof!"
     end
 
+    if group_challenge.status == "finished"
+      group.memberships.excluding(member).each do |voting_member|
+        ProofVote.create!(
+          user: voting_member.user,
+          group_challenge: group_challenge,
+          vote: [1, 2].sample == 1
+        )
+      end
+    end
+
     group_challenge.save!
   end
-  counter += 3
-  puts "#{group.name} will do the #{GroupChallenge.last.challenge.name} challenge, which starts at #{GroupChallenge.last.start_date}"
+  counter += 5
+  puts "#{group.name} will do the #{GroupChallenge.last.challenge.name} challenge, which starts at #{GroupChallenge.last.start_date} (#{GroupChallenge.last.status})"
 end
 
 puts ""
