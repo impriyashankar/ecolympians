@@ -9,8 +9,8 @@ class PotentialChallengesController < ApplicationController
     #  potential_challenges << po
     # end
 
-    potential_challenges = []
-    challenges_names = [ params[:challenge1], params[:challenge2], params[:challenge3] ]
+    @potential_challenges = []
+    challenges_names = [params[:challenge1], params[:challenge2], params[:challenge3]]
     challenges_names.each do |cn|
       potential_challenges << PotentialChallenge.create!(challenge: Challenge.find_by(name: cn), group_id: params[:group_id].to_i)
     end
@@ -21,6 +21,11 @@ class PotentialChallengesController < ApplicationController
       redirect_to group_path(params[:group_id]), notice: "select failed"
     end
   end
+
+  # def show
+  #   @potential_challenge = Group.potential_challenge
+  # end
+
 
   def new
     @potential_challenge = PotentialChallenge.new
