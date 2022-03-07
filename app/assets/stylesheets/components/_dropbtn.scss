@@ -25,3 +25,14 @@
   text-align: center;
   font-weight: bold;
 }
+
+.primary-text {
+  color: $primary;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.info-potential-challenges {
+  width: 80%;
+}

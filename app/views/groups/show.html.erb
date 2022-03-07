@@ -181,17 +181,19 @@
 
             <div class="score-potential-challenges">
               <p>Score: <%= potential_challenge.challenge.score %></p>
-              <%= button_to "Vote", potential_challenge_challenge_votes_path(potential_challenge), method: :post, data: { action: "click->challenge-voting#reloadContent", challenge_voting_target: "button"}, class: "btn-regular mb-3" %>
+              <% unless @user_voted %>
+                <%= link_to "Vote", potential_challenge_challenge_votes_path(potential_challenge), method: :post, data: { action: "click->challenge-voting#reloadContent", challenge_voting_target: "button",challenge_voting_total_value: potential_challenge.challenge_votes.count }, class: "btn-regular mb-3" %>
+                <span class="primary-text d-none" data-challenge-voting-target="votes">
+                  <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
+                </span>
+              <% else %>
+                <span class="primary-text">
+                <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
+                </span>
+              <% end %>
             </div>
           </div>
           <% end %>
-          <!-- test -->
-          <%= link_to "test", potential_challenge_challenge_votes_path(@group.potential_challenges.first.id), method: :post, data: { action: "click->challenge-voting#reloadContent" } %>
-          <% potential_challenge = @group.potential_challenges.first %>
-          <% if ChallengeVote.exists?(user: current_user, potential_challenge: potential_challenge) %>
-            <h2>Already Voted</h2>
-          <% end %>
-          <!-- test -->
 
         <% end %>
 
