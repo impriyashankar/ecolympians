@@ -36,6 +36,17 @@ class MembershipsController < ApplicationController
 
   end
 
+  def update_vote
+    @group = Group.find(params[:id])
+    @group_challenges = GroupChallenge.where(membership: current_user, group: @group)
+    raise
+    if @group_challenge.status == "finished"
+      @membership.score += @group_challenge.score
+    end
+  end
+
+
+
   private
 
   def membership_params
