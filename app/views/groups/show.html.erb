@@ -98,7 +98,7 @@
                       <!-- start of proof buttons -->
                       <div class="card-challenge-buttons">
                         <a class="btn-regular" ref="" id="upload_proof" data-bs-toggle="modal" data-bs-target="#uploadProofModal">Upload proof!</a>
-                        <%= link_to "View proofs", group_group_challenge_path(item), class: "btn-regular" %>
+                        <%= link_to "View proofs", group_group_challenge_path(item.membership.group, item), class: "btn-regular" %>
                       </div>
                       <!-- end of proof buttons -->
                   </div>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="modal-body">
                   <% if @item %>
-                    <%= simple_form_for(@item) do |f| %>
+                    <%= simple_form_for([@item.membership.group, @item]) do |f| %>
                       <%= f.input :photo, as: :file %>
                       <%= f.input :comment, as: :text %>
                     <%= f.submit "Update photo", class: "btn-welcome text-center" %>
