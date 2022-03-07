@@ -8,6 +8,10 @@ class GroupChallenge < ApplicationRecord
   validates :start_date, presence: true
   # validate :valid_start_date?
 
+  def finished?
+    Date.today - start_date >= 7
+  end
+
   # private
 
   # def valid_start_date?

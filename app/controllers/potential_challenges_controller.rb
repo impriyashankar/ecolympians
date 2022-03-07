@@ -9,7 +9,7 @@ class PotentialChallengesController < ApplicationController
     #  potential_challenges << po
     # end
 
-    @potential_challenges = []
+    potential_challenges = []
     challenges_names = [params[:challenge1], params[:challenge2], params[:challenge3]]
     challenges_names.each do |cn|
       potential_challenges << PotentialChallenge.create!(challenge: Challenge.find_by(name: cn), group_id: params[:group_id].to_i)

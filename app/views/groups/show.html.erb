@@ -1,4 +1,22 @@
 <div class="container">
+  <% @group.voting_check! %>
+  <% if @notification %>
+    <i class="fa fa-solid fa-xmark"></i>
+
+    <div class="notification">
+      <!--<img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />-->
+      <i class="fa fa-solid fa-bell"></i>
+      <div class="notification-content">
+        <p><small><%= Date.today %></small></p>
+        <p><%= @notification %></p>
+      </div>
+
+      <div class="notification-actions">
+        <a href="#"><i class="fas fa-times-circle"></i></a>
+      </div>
+    </div>
+  <% end %>
+
     <h2><strong><%= @group.name %></strong></h2>
 
   <div>
@@ -140,7 +158,36 @@
         <%=  f.association :challenge, collection: Challenge.order(:name), input_html: { :multiple => true }%>
         <%= f.submit %>
         <% end %> -->
-        <% if @user_role == "admin" %>
+        <% if !@group.potential_challenges.empty? && !@group.vote_ended?%>
+          <h4 class="text-center">Time left to vote: <%= pluralize(@group.time_left_for_voting, "day") %></h4>
+          <% @group.potential_challenges.each do |potential_challenge| %>
+          <div class="card-potential-challenges">
+            <div class="info-potential-challenges">
+              <h5><%= potential_challenge.challenge.name %></h5>
+              <p><%= potential_challenge.challenge.description %></p>
+            </div>
+
+            <div class="score-potential-challenges">
+              <p>Score: <%= potential_challenge.challenge.score %></p>
+              <% unless @user_voted %>
+                <%= link_to "Vote", potential_challenge_challenge_votes_path(potential_challenge), method: :post, data: { action: "click->challenge-voting#reloadContent", challenge_voting_target: "button",challenge_voting_total_value: potential_challenge.challenge_votes.count }, class: "btn-regular mb-3" %>
+                <span class="primary-text d-none" data-challenge-voting-target="votes">
+                  <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
+                </span>
+              <% else %>
+                <span class="primary-text">
+                <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
+        <% elsif @group.potential_challenges.empty? && @user_role != "Admin" %>
+          <h4>You don't have any challenges to vote for.</h4>
+        <% end %>
+
+        <% if @user_role == "Admin" && @group.potential_challenges.empty? %>
           <div class="potential-challenges">
             <h3>Please! choose the next challenge<h3>
             <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
@@ -171,33 +218,7 @@
             </div>
             </form>
           </div>
-
-        <% else %>
-          <% @group.potential_challenges.each do |potential_challenge| %>
-          <div class="card-potential-challenges">
-            <div class="info-potential-challenges">
-              <h5><%= potential_challenge.challenge.name %></h5>
-              <p><%= potential_challenge.challenge.description %></p>
-            </div>
-
-            <div class="score-potential-challenges">
-              <p>Score: <%= potential_challenge.challenge.score %></p>
-              <% unless @user_voted %>
-                <%= link_to "Vote", potential_challenge_challenge_votes_path(potential_challenge), method: :post, data: { action: "click->challenge-voting#reloadContent", challenge_voting_target: "button",challenge_voting_total_value: potential_challenge.challenge_votes.count }, class: "btn-regular mb-3" %>
-                <span class="primary-text d-none" data-challenge-voting-target="votes">
-                  <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
-                </span>
-              <% else %>
-                <span class="primary-text">
-                <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
-                </span>
-              <% end %>
-            </div>
-          </div>
-          <% end %>
-
         <% end %>
-
         </div>
       </div>
       <!--Next challenges end-->
