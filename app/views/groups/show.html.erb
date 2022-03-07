@@ -134,34 +134,70 @@
       <!--Challenges overview end-->
 
       <!-- Next challenges page -->
-      <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab">
+      <div class="tab-pane fade" id="pills-next" role="tabpanel" aria-labelledby="pills-next-tab" data-controller="challenge-voting">
         <!-- <%= simple_form_for [@group, @potential_challenge] do |f| %>
         <%=  f.association :challenge, collection: Challenge.order(:name), input_html: { :multiple => true }%>
         <%= f.submit %>
         <% end %> -->
+        <% if @user_role == "admin" %>
+          <div class="potential-challenges">
+            <h3>Please! choose the next challenge<h3>
+            <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
+            <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
+            <select id="challenge1" name="challenge1" size="1">
+              <% Challenge.all.each do |challenge| %>
+                <option value="<%= challenge.name %>"><%= challenge.name %></option>
+              <% end %>
+            </select>
 
-        <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
-              <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
-              <select id="challenge1" name="challenge1" size="1">
-                <% Challenge.all.each do |challenge| %>
-                  <option value="<%= challenge.name %>"><%= challenge.name %></option>
-                <% end %>
-                </select>
-                <select id="challenge2" name="challenge2" size="1">
-                <% Challenge.all.each do |challenge| %>
-                  <option value="<%= challenge.name %>"><%= challenge.name %></option>
-                <% end %>
-                </select>
-                <select id="challenge3" name="challenge3" size="1">
-                <% Challenge.all.each do |challenge| %>
-                  <option value="<%= challenge.name %>"><%= challenge.name %></option>
-                <% end %>
-                </select>
+            <br>
+            <select id="challenge2" name="challenge2" size="1">
+              <% Challenge.all.each do |challenge| %>
+                <option value="<%= challenge.name %>"><%= challenge.name %></option>
+              <% end %>
+            </select>
 
-            <div class="form-example">
-              <input type="submit" value="Select!">
+            <br>
+            <select id="challenge3" name="challenge3" size="1">
+              <% Challenge.all.each do |challenge| %>
+                <option value="<%= challenge.name %>"><%= challenge.name %></option>
+              <% end %>
+            </select>
+
+
+            <div class="submit-challenges">
+              <input type="submit" value="Select!" class="btn-regular">
             </div>
-        </form>
+            </form>
+          </div>
+
+        <% else %>
+          <% @group.potential_challenges.each do |potential_challenge| %>
+          <div class="card-potential-challenges">
+            <div class="info-potential-challenges">
+              <h5><%= potential_challenge.challenge.name %></h5>
+              <p><%= potential_challenge.challenge.description %></p>
+            </div>
+
+            <div class="score-potential-challenges">
+              <p>Score: <%= potential_challenge.challenge.score %></p>
+              <% unless @user_voted %>
+                <%= link_to "Vote", potential_challenge_challenge_votes_path(potential_challenge), method: :post, data: { action: "click->challenge-voting#reloadContent", challenge_voting_target: "button",challenge_voting_total_value: potential_challenge.challenge_votes.count }, class: "btn-regular mb-3" %>
+                <span class="primary-text d-none" data-challenge-voting-target="votes">
+                  <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
+                </span>
+              <% else %>
+                <span class="primary-text">
+                <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
+        <% end %>
+
+        </div>
       </div>
       <!--Next challenges end-->
 

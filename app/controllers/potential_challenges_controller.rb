@@ -9,8 +9,8 @@ class PotentialChallengesController < ApplicationController
     #  potential_challenges << po
     # end
 
-    potential_challenges = []
-    challenges_names = [ params[:challenge1], params[:challenge2], params[:challenge3] ]
+    @potential_challenges = []
+    challenges_names = [params[:challenge1], params[:challenge2], params[:challenge3]]
     challenges_names.each do |cn|
       potential_challenges << PotentialChallenge.create!(challenge: Challenge.find_by(name: cn), group_id: params[:group_id].to_i)
     end
@@ -22,6 +22,11 @@ class PotentialChallengesController < ApplicationController
     end
   end
 
+  # def show
+  #   @potential_challenge = Group.potential_challenge
+  # end
+
+
   def new
     @potential_challenge = PotentialChallenge.new
 
@@ -31,18 +36,6 @@ class PotentialChallengesController < ApplicationController
   #     @group.potential_challenges.destroy_all
   #   end
   #   @p_challenge = PotentialChallenge.new(p_challenge_params)
-  end
-
-  def votes_tally
-    sum = 0
-    challenge_votes.each do |challenge_vote|
-      if challenge_vote.vote?
-        sum -= 1
-      else
-        sum += 1
-      end
-    end
-    return sum
   end
 
   private
