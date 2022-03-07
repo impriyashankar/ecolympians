@@ -23,7 +23,7 @@
             </p>
           </div>
 
-          <% if challenge.status = "finished" %>
+          <% if challenge.status == "finished" %>
               <% if (challenge.proof_votes.select{ |proofvote| proofvote.vote == true }.count >= challenge.proof_votes.select{ |proofvote| proofvote.vote == false}.count) %>
                 <h4> This proof has been accepted!</h4>
               <% else %>
