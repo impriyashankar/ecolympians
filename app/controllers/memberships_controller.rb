@@ -36,6 +36,7 @@ class MembershipsController < ApplicationController
 
   end
 
+<<<<<<< HEAD
   # def update_vote
   #   @group = Group.find(params[:id])
   #   @group_challenges = GroupChallenge.where(membership: current_user, group: @group)
@@ -43,6 +44,31 @@ class MembershipsController < ApplicationController
   #     @membership.score += @group_challenge.challenge.score
   #   end
   # end
+=======
+  def edit
+    @membership = Membership.find(params[:id])
+
+
+  end
+
+  def update_status
+    @membership = Membership.find(params[:id])
+    new_status = params[:membership][:status]
+    @membership.update(status: new_status)
+    @membership.save
+
+    if @membership.save
+      redirect_to my_dashboard_path(anchor: "pending-member-box" )
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @membership.destroy
+    redirect_to group_path(@group, anchor: "pending-member-box")
+  end
+>>>>>>> master
 
   private
 
@@ -52,3 +78,6 @@ class MembershipsController < ApplicationController
   end
 
 end
+
+#update_status_booking_path(booking, { booking: { status: 'accepted' } } ), method: :patch, remote: true, class: 'btn btn-flat'
+#update_status_booking_path(booking, { booking: { status: 'declined' } } ), method: :patch, remote: true, data: { confirm: "Are you sure?" }, class: 'btn btn-gradient'

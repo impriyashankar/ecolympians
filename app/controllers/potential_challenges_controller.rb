@@ -38,18 +38,6 @@ class PotentialChallengesController < ApplicationController
   #   @p_challenge = PotentialChallenge.new(p_challenge_params)
   end
 
-  def votes_tally
-    sum = 0
-    challenge_votes.each do |challenge_vote|
-      if challenge_vote.vote?
-        sum -= 1
-      else
-        sum += 1
-      end
-    end
-    return sum
-  end
-
   private
 
   def potential_challenge_params
