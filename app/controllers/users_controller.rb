@@ -6,5 +6,6 @@ class UsersController < ApplicationController
     @group = Group.new
     @group_challenges_ongoing = @user.group_challenges.select{ |challenge| challenge.status == "ongoing"}
     @group_challenges_upcoming = @user.group_challenges.select{ |challenge| challenge.status == "waiting"}
+    @pending_invitations = @user.memberships.where(status: "Pending")
   end
 end
