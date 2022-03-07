@@ -63,6 +63,12 @@
   }
 }
 
+.card-member-pending-invitation {
+  display:flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 .proof-card {
   min-width: 90vw;
   background-color: $blue;

@@ -1,0 +1,4 @@
+ <%= form_tag(group_memberships_path(@group), format: :js ,method: :post, remote: true, id: 'invite-form', data: { invite_member_target: "form", action: "submit->invite-member#send" }) do %>
+    <%= select_tag :user_id, options_from_collection_for_select(User.where.not(id: @group.user_ids), "id", "first_name"), class: "js-states", multiple: true %>
+    <%= submit_tag "Invite", class: 'btn-regular mt-3 mb-3' %>
+  <% end %>
