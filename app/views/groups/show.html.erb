@@ -20,7 +20,7 @@
       <!-- Members overview -->
       <div class="tab-pane fade show active" id="pills-member" role="tabpanel" aria-labelledby="pills-member-tab">
         <% if  Membership.find_by(group: @group, status: "Accepted").present? %>
-          <% grp_members = Membership.where(group: @group, status: "Accepted") %>
+          <% grp_members = Membership.where(group: @group, status: "Accepted").order(score: :desc) %><!--included method to sort desc by score-->
           <% grp_members.each do |member| %>
             <div class="card-player text-center mb-3">
               <%= cl_image_tag member.user.photo.key, class: "avatar-large" if member.user.photo.key%>
@@ -62,6 +62,7 @@
             <%= button_value %>
           </button>
       </div>
+    </div><!--moved closing 'div' to fix challenge display-->
       <!--Members overview end-->
 
       <!-- Challenges overview -->
@@ -201,7 +202,7 @@
       </div>
       <!--Next challenges end-->
 
-    </div>
+    <!--</div> To be moved to top-->
     <!-- Content ends here -->
   </div>
 </div>
