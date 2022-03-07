@@ -23,10 +23,19 @@
             </p>
           </div>
 
-          <% if proof_vote = ProofVote.find_by(user: current_user, group_challenge: challenge) %>
+          <% if challenge.status = "finished" %>
+              <% if (challenge.proof_votes.select{ |proofvote| proofvote.vote == true }.count >= challenge.proof_votes.select{ |proofvote| proofvote.vote == false}.count) %>
+                <h4> This proof has been accepted!</h4>
+              <% else %>
+                <h4> This proof has been rejected!</h4>
+              <% end %>
+
+          <% elsif proof_vote = ProofVote.find_by(user: current_user, group_challenge: challenge) %>
             <div class="vote-text"><h4> You have <%= proof_vote.vote ? "approved" : "rejected" %> this!</h4></div>
+
           <% elsif challenge.membership.user == current_user%>
             <div class="vote-text"><h4> Awaiting votes for your proof!</h4></div>
+
           <% else %>
             <div class="proof-card-vote" data-proof-voting-target="buttons" >
               <div class="btn-vote-proof-round">
