@@ -8,12 +8,42 @@
         Score: <%= @user.score %>
       </h1>
     </div>
-    <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: "avatar-extra-large" %>
-    <% else %>
-      <%= image_tag "empty_account", class: "avatar-extra-large" %>
-    <% end %>
+    <div class="user-avatar">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "avatar-extra-large" %>
+        <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#avatarModal">Update my picture</a>
+      <% else %>
+        <%= image_tag "empty_account", class: "avatar-extra-large" %>
+        <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#avatarModal">Update my picture</a>
+      <% end %>
+    </div>
   </div>
+
+  <!--Avatar modal-->
+<div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload a picture</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(current_user) do |f| %>
+          <%= f.input :photo, as: :file %>
+        <%= f.submit "Update photo", class: "btn btn-success text-center" %>
+      <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Avatar model end-->
+
+
   <div>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
