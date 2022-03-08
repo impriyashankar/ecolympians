@@ -18,11 +18,28 @@
     margin-bottom: 1rem;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
-    padding: 1rem 1rem 2rem 0.5rem;
+    padding: 1rem 1rem 2rem 1rem;
     border-radius: 0.8rem;
+    // transition-property: background-color, font-size, transform, color;
+    // transition-timing-function: ease-in-out;
+    // transition-duration: 3s;
     p {
       color: $white;
     }
+
+    // .transformed-state {
+    //   transform: rotate(270deg);
+    //   background-color: blue;
+    //   color: yellow;
+    //   font-size: 12px;
+    //   transition-property: background-color, font-size, transform, color;
+    //   transition-timing-function: ease-in-out;
+    //   transition-duration: 3s;
+    // }
+
+    // .display {
+    //   transition: 1s;
+    // }
   }
 
   .card-challenges:hover {
@@ -90,4 +107,9 @@
     text-align: center;
     padding: 0.375rem 1rem;
   }
+}
+
+
+#category {
+  font-size: 800;
 }

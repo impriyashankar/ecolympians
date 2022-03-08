@@ -3,27 +3,63 @@
 <div data-search-challenges-target="list">
   <div class="challenges-container">
     <% challenges.all.each do |challenge| %>
-      <% if challenge.category == "Saving energy" || challenge.category == "Planting tree"%>
+      <% if challenge.category == "Travel" || challenge.category == "Planting tree"%>
         <% color = "card-green" %>
-      <% elsif challenge.category == "Food" || challenge.category == "Preventing pollution"%>
+      <% elsif challenge.category == "Conserving water" || challenge.category == "Preventing pollution"%>
         <% color = "card-purple" %>
-      <% elsif challenge.category == "Travel" || challenge.category == "Recycle"%>
+      <% elsif challenge.category == "Saving energy" || challenge.category == "Recycle"%>
         <% color = "card-dark" %>
-      <% elsif challenge.category == "Reuse items" || challenge.category == "Conserving water"%>
+      <% elsif challenge.category == "Reuse items" || challenge.category == "Food"%>
         <% color = "card-blue" %>
       <% elsif challenge.category == "Pick up trash" || challenge.category == "Made homemade art"%>
         <% color = "card-pink" %>
       <% end %>
+
+      <!--add icon to category-->
+      <% if challenge.category == "Travel"%>
+        <% icon1 = '🏖' %>
+        <% icon2 = '🏜' %>
+      <%elsif challenge.category == "Food"%>
+        <% icon1 = '🍔' %>
+        <% icon2 = '🍣' %>
+      <%elsif challenge.category == "Pick up trash"%>
+        <% icon1 = '🗑' %>
+        <% icon2 = '🎏' %>
+      <%elsif challenge.category == "Planting tree"%>
+        <% icon1 = '🌿' %>
+        <% icon2 = '🌹' %>
+      <%elsif challenge.category == "Conserving water"%>
+        <% icon1 = '🛁' %>
+        <% icon2 = '🌧' %>
+      <%elsif challenge.category == "Preventing pollution"%>
+        <% icon1 = '📣' %>
+        <% icon2 = '🚲' %>
+      <%elsif challenge.category == "Saving energy"%>
+        <% icon1 = '🔋' %>
+        <% icon2 = '💡' %>
+      <%elsif challenge.category == "Recycle"%>
+        <% icon1 = '📺' %>
+        <% icon2 = '🧴' %>
+      <%elsif challenge.category == "Reuse items"%>
+        <% icon1 = '👘' %>
+        <% icon2 = '🧸' %>
+      <%elsif challenge.category == "Made homemade art"%>
+        <% icon1 = '🏮' %>
+        <% icon2 = '👒' %>
+      <% end %>
+
       <div class="card-challenges <%= color %>">
         <div class="info-challenge">
           <h2><%=challenge.name %></h2>
-          <p>Description: <%= challenge.description %></p>
-          <p id="category">Type: <%= challenge.category %></p>
+          <p id="description" >Description: <%= challenge.description %></p>
+
+          <p id="category"><%= icon1 %> - <%= challenge.category %> - <%= icon2 %></p>
         </div>
 
         <div class="challenge-score">
-          <p>Score:<p>
+          <p>★ 𝙎𝙘𝙤𝙧𝙚 ★<p>
           <p><%= challenge.score %></p>
+          <p>🍀</p>
         </div>
 
       </div>
