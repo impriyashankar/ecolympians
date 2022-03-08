@@ -1,6 +1,10 @@
-<div class="container">
-  <h2>Challenge: <%= @group_challenge.challenge.name %></h2>
-  <!-- <p> <%= @group_challenge.start_date.strftime("%e %B") %> - <%= (@group_challenge.start_date + 7).strftime("%e %B") %></p> -->
+<div class="container top-text">
+  <% if @group_challenge.status == "finished" %>
+    <h3> This challenge has finished! </h3>
+  <% else %>
+    <h3><%= (@group_challenge.start_date + 14 - Date.today).to_i %> days left for proofs & voting! </h3>
+    <p> <strong><%= @group_challenge.challenge.name %> </strong> (<%= @group_challenge.start_date.strftime("%e %B") %> - <%= (@group_challenge.start_date + 7).strftime("%e %B") %>)</p>
+  <% end %>
 </div>
 
 <div class="proofs-horizontal">
@@ -11,7 +15,7 @@
           <div class="proof-card-top">
             <h3><%= "Proof from #{challenge.membership.user.first_name}" %></h3>
             <div>
-              <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+              <%= cl_image_tag challenge.membership.user.photo.key, class: "avatar" %>
             </div>
           </div>
 
