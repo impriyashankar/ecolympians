@@ -1,0 +1,50 @@
+
+<div class="modal fade" id="readRulesModal" tabindex="-1" aria-labelledby="readRulesModal" aria-hidden="true">
+  <div class="modal-dialog .modal-dialog-centered .modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="readRulesModal">How to play?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h1>Welcome to <strong class="green-title">Ecolympians</strong></h1>
+        <h3 class="blue-title">Play with your friends</h3>
+        <ol>
+          <li><p>Create a new group!</p></li>
+          <li><p>Give it a cool name!</p></li>
+          <%= image_tag 'rules_create_group' %>
+          <li><p>Invite your friends!</p></li>
+          <%= image_tag 'rules_invite_friends' %>
+        </ol>
+        <h3 class="blue-title">Challenge your friends</h3>
+        <ol>
+          <li><p>Let your group choose from <em class="green-title">three</em> different challenges!</p></li>
+          <%= image_tag 'rules_choose_challenges' %>
+          <li><p>Then vote for the challenge you like the most.</p></li>
+          <%= image_tag 'rules_vote_challenges' %>
+          <li><p>Each group will have <em class="green-title">1 week</em> to complete the challenge.</p></li>
+        </ol>
+        <h3 class="blue-title">Save the world</h3>
+        <ol>
+          <%= image_tag 'rules_challenge' %>
+          <li>Go outside and take on the challenge!</li>
+          <li>Finished? Take a photo as a proof.</li>
+          <%= image_tag 'rules_my_proof' %>
+          <li>Approve your friends' proofs.</li>
+          <%= image_tag 'rules_other_proof' %>
+        </ol>
+        <h3 class="blue-title">Explore the world</h3>
+        <ol>
+          <li>Join additional groups.</li>
+          <%= image_tag 'rules_groups' %>
+          <li>View all challenges.</li>
+          <%= image_tag 'rules_all_challenges' %>
+        </ol>
+        <h2 class="blue-title red-shadow">Ready to save our playground?</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-regular" data-bs-dismiss="modal">Save the world!</button>
+      </div>
+    </div>
+  </div>
+</div>

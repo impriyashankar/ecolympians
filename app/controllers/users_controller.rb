@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def show
+    @show_rules = true if params[:new_user]
     @user = current_user
     #@groups = @user.groups -- old logic
     @groups = @user.memberships.where(status: "Accepted") # Changed logic to show only 'Accepted' status groups

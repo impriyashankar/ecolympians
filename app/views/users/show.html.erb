@@ -1,5 +1,7 @@
 <% @user.update_challenge_status! %> <!-- updating the statusses of ongoing challenges -->
-
+<% if @show_rules %>
+  <div class="show-rules d-none"><%= @show_rules %></div>
+<% end %>
 <div class="container">
   <div class="user-dashboard-top">
     <div class="user-info">
