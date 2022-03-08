@@ -14,8 +14,8 @@
     <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
 
-  <body>
-    <% unless current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path)%>
+  <body <%= "style='padding-bottom: 4rem;'" unless current_page?(root_path) || controller.controller_name == 'registrations' %>>
+    <% unless current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) || current_page?(user_registration_path) || controller.controller_name == 'registrations' %>
       <%= render 'shared/navbar' %>
     <% end %>
 
@@ -25,7 +25,7 @@
 
     <%= render 'shared/rules' %>
 
-    <% unless current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path)%>
+    <% unless current_page?(root_path) || current_page?(new_user_session_path) || current_page?(new_user_registration_path) || current_page?(users_path) || controller.controller_name == 'registrations' %>
       <%= render 'shared/footer' %>
     <% end %>
   </body>
