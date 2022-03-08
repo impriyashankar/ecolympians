@@ -158,6 +158,11 @@ Group.all.each do |group|
           vote: [1, 2].sample == 1
         )
       end
+      if group_challenge.proof_votes.select{ |proofvote| proofvote.vote == true }.count >= group_challenge.proof_votes.select{ |proofvote| proofvote.vote == false}.count
+        group_challenge.membership.score += group_challenge.challenge.score
+        group_challenge.membership.save!
+      end
+
     end
 
     group_challenge.save!
