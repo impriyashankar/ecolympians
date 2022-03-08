@@ -1,3 +1,5 @@
+<% @user.update_challenge_status! %> <!-- updating the statusses of ongoing challenges -->
+
 <div class="container">
   <div class="user-dashboard-top">
     <div class="user-info">
@@ -8,12 +10,42 @@
         Score: <%= @user.score %>
       </h1>
     </div>
-    <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: "avatar-extra-large" %>
-    <% else %>
-      <%= image_tag "empty_account", class: "avatar-extra-large" %>
-    <% end %>
+    <div class="user-avatar">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "avatar-extra-large" %>
+        <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#avatarModal">Update my picture</a>
+      <% else %>
+        <%= image_tag "empty_account", class: "avatar-extra-large" %>
+        <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#avatarModal">Update my picture</a>
+      <% end %>
+    </div>
   </div>
+
+  <!--Avatar modal-->
+<div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload a picture</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(current_user) do |f| %>
+          <%= f.input :photo, as: :file %>
+        <%= f.submit "Update photo", class: "btn btn-success text-center" %>
+      <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Avatar model end-->
+
+
   <div>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
@@ -34,47 +66,5 @@
     </div>
   </div>
 
-  <!--Display Pending Invitations-->
-  <% if @pending_invitations.count > 0 %>
-    <h3 class="text-center mt-3">Pending Invitations</h3><!--display only if pending inv exist-->
-  <% end %>
-  <div class="cards-grid">
-    <% @pending_invitations.each do |member| %>
-      <div class="card-groups text-center" style= "height:auto;">
-        <%= link_to group_path(member.group.id) do %>
-          <div class= "color-band"></div>
-            <div class="card-group-wrapper">
-              <div class="card-group-info-pic">
-                <%=image_tag("leaf.png")%>
-                <!--<img class="avatar-large" alt="avatar" src="../../assets/images/leaf.png" />-->
-              </div>
-              <div class="card-group-infos">
-                <h3><%= member.group.name %></h3>
-                <p><strong><%= pluralize(member.group.memberships.where(status: "Accepted").count, "member") %></strong></p>
-              </div>
-            </div>
-        <% end %>
-        <div class="card-challenge-buttons mb-3">
-          <!--<a class="btn-regular">Accept</a>-->
-          <%#= link_to "Decline", group_path(member.group.id),
-            method: :delete,
-            data: { confirm: "Are you sure?" }, class: "btn-regular" %>
-          <%= link_to "Accept",
-                      update_status_group_membership_path(member.group, member, { membership: { status: 'Accepted' } } ),
-                      method: :patch,
-                      class: 'btn-regular',
-                      remote: true
-                      %>
-          <%= link_to "Decline",
-                      update_status_group_membership_path(member.group, member, { membership: { status: 'Declined' } } ),
-                      method: :patch,
-                      data: { confirm: "Are you sure?" },
-                      class: 'btn-regular',
-                      remote: true
-                      %>
 
-        </div>
-      </div>
-    <% end %>
-  </div>
 </div>

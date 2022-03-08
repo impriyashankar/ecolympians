@@ -17,21 +17,64 @@
 </div>
 
 <div class="cards-grid">
-  <% @groups.each do |group| %>
+  <% @groups.each do |member| %><!--New logic for proper display of only 'Accepted' groups-->
     <div class="card-groups text-center">
-      <%= link_to group_path(group) do %>
+      <%= link_to group_path(member.group.id) do %>
         <div class= "color-band"></div>
         <div class="card-group-wrapper">
           <div class="card-group-info-pic">
             <%=image_tag("leaf.png")%>
-            <!--<img class="avatar-large" alt="avatar" src="../../assets/images/leaf.png" />-->
           </div>
           <div class="card-group-infos">
-            <h3><%= group.name %></h3>
-            <p><strong><%= pluralize(Membership.where(group: group, status: "Accepted").count, "member") %></strong></p><!--Made change to display count of 'Accepted' members in group-->
+            <h3><%= member.group.name %></h3>
+            <p><strong><%= pluralize(member.group.memberships.where(status: "Accepted").count, "member") %></strong></p>
           </div>
         </div>
       </div>
     <% end %>
   <% end %>
 </div>
+
+<!--Display Pending Invitations -- moved here to remove from 'Challnges' tab-->
+  <% if @pending_invitations.count > 0 %>
+    <h3 class="text-center mt-3">Pending Invitations</h3><!--display only if pending inv exist-->
+  <% end %>
+  <div class="cards-grid">
+    <% @pending_invitations.each do |member| %>
+      <div class="card-groups text-center" style= "height:auto;">
+        <%= link_to group_path(member.group.id) do %>
+          <div class= "color-band"></div>
+            <div class="card-group-wrapper">
+              <div class="card-group-info-pic">
+                <%=image_tag("leaf.png")%>
+                <!--<img class="avatar-large" alt="avatar" src="../../assets/images/leaf.png" />-->
+              </div>
+              <div class="card-group-infos">
+                <h3><%= member.group.name %></h3>
+                <p><strong><%= pluralize(member.group.memberships.where(status: "Accepted").count, "member") %></strong></p>
+              </div>
+            </div>
+        <% end %>
+        <div class="card-challenge-buttons mb-3">
+          <!--<a class="btn-regular">Accept</a>-->
+          <%#= link_to "Decline", group_path(member.group.id),
+            method: :delete,
+            data: { confirm: "Are you sure?" }, class: "btn-regular" %>
+          <%= link_to "Accept",
+                      update_status_group_membership_path(member.group, member, { membership: { status: 'Accepted' } } ),
+                      method: :patch,
+                      class: 'btn-regular',
+                      remote: true
+                      %>
+          <%= link_to "Decline",
+                      update_status_group_membership_path(member.group, member, { membership: { status: 'Declined' } } ),
+                      method: :patch,
+                      data: { confirm: "Are you sure?" },
+                      class: 'btn-regular',
+                      remote: true
+                      %>
+
+        </div>
+      </div>
+    <% end %>
+  </div>

@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :group_challenges, only: [] do
     resources :proof_votes, only: [:create]
   end
+
+  resources :users, only: [:update]
 end
