@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @user = current_user
+    @other_groups = Group.where.not(id:Membership.where(user: @current_user).distinct.pluck(:group_id)) # selecting other groups available
   end
 
   def show
