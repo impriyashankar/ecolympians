@@ -6,6 +6,21 @@
   border-bottom: 2px groove $secondary-light;
 }
 
+
+.user-avatar {
+ display: flex;
+
+ flex-direction: column;
+ text-align: center;
+}
+
+
+#update_picture_link {
+  font-size: medium;
+  margin-top: 0.5rem;
+}
+
+
 .cards-grid {
   display: flex;
   flex-wrap: wrap;
