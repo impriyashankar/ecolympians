@@ -7,8 +7,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h1>Welcome to <strong>Ecolympians</strong></h1>
-
+        <h1>Welcome to <strong class="green-title">Ecolympians</strong></h1>
+        <h3 class="blue-title">Play with your friends</h3>
+        <ol>
+          <li><p>Create a new group!</p></li>
+          <li><p>Give it a cool name!</p></li>
+          <%= image_tag 'rules_create_group' %>
+          <li><p>Invite your friends!</p></li>
+          <%= image_tag 'rules_invite_friends' %>
+        </ol>
+        <h3 class="blue-title">Challenge your friends</h3>
+        <p>Let your group choose from <em class="title-green">three</em> different challenges!</p>
+        <%= image_tag 'rules_choose_challenges' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-regular" data-bs-dismiss="modal">Close</button>
