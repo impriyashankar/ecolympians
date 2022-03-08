@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
     @membership = Membership.new
     @group_challenges = GroupChallenge.where(membership: @current_membership) # moved from group_challenges controller
     # @group_challenge = GroupChallenge.find(params[:id]) #moved from group_challenges controller
-    @user_role = Membership.where(user: current_user, group: @group).first.role
+    @user_role = Membership.where(user: current_user, group: @group).first.role unless Membership.where(user: current_user, group: @group).none? # to handle cases where current_user does not belong to group
     @user_voted = false
     @group.potential_challenges.each do |potential_challenge|
       @user_voted = true if ChallengeVote.exists?(user: current_user, potential_challenge: potential_challenge)
