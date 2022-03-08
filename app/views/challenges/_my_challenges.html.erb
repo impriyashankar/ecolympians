@@ -1,7 +1,7 @@
 <div class="challenges-index">
   <div class="challenges-container">
     <% if @group_challenges_ongoing.count > 0 %>
-      <h3 style="text-align:center;">Your ongoing challenges</h3>
+      <h3 style="text-align:center;">Ongoing challenges</h3>
     <% end %>
 
     <% @group_challenges_ongoing.each do |item| %>
@@ -101,7 +101,7 @@
           <% end %>
 
     <% if @group_challenges_finished.count > 0 %>
-      <h3 style="text-align:center;">Your finished challenges</h3>
+      <h3 style="text-align:center;">Finished challenges</h3>
     <% end %>
           <% @group_challenges_finished.each do |item| %>
             <% @item = item %>

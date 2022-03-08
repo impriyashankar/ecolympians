@@ -12,8 +12,10 @@ class GroupsController < ApplicationController
     @potential_challenge = PotentialChallenge.new
     @current_membership = Membership.where(user: @user, group: @group, status: "Accepted")
     @membership = Membership.new
+    @group_challenges_ongoing = GroupChallenge.where(membership: @current_membership, status: "ongoing")
+    @group_challenges_upcoming = GroupChallenge.where(membership: @current_membership, status: "waiting")
+    @group_challenges_finished = GroupChallenge.where(membership: @current_membership, status: "finished")
     @group_challenges = GroupChallenge.where(membership: @current_membership) # moved from group_challenges controller
-    # @group_challenge = GroupChallenge.find(params[:id]) #moved from group_challenges controller
     @user_role = Membership.where(user: current_user, group: @group).first.role
     @user_voted = false
     @group.potential_challenges.each do |potential_challenge|
