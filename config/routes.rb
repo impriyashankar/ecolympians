@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, except: [:show]
+  devise_scope :user do
+    get '/users', to: 'devise/registrations#new'
+    get '/users/password', to: 'devise/passwords#new'
+  end
   root to: 'pages#home'
   resources :groups do
     resources :group_challenges, only: [:new, :create, :index, :show, :update]
