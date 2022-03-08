@@ -27,6 +27,9 @@ class User < ApplicationRecord
   def update_challenge_status!
     group_challenges.select { |challenge| challenge.status == "ongoing" && Date.today > (challenge.start_date + 14) }.each do |group_challenge|
       group_challenge.status = "finished"
+      if group_challenge.proof_votes.select{ |proofvote| proofvote.vote == true }.count >= group_challenge.proof_votes.select{ |proofvote| proofvote.vote == false}.count
+        group_challenge.membership.score += group_challenge.challenge.score
+      end
     end
   end
 end
