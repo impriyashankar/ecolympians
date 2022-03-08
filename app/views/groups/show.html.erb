@@ -19,16 +19,16 @@
 
     <h2><strong><%= @group.name %></strong></h2>
 
-  <div>
+  <div data-controller="tab">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link dashboard-tab active" id="pills-member-tab" data-bs-toggle="pill" data-bs-target="#pills-member" type="button" role="tab" aria-controls="pills-member" aria-selected="true">Members</button>
+        <button class="nav-link dashboard-tab active" id="pills-member-tab" data-bs-toggle="pill" data-bs-target="#pills-member" type="button" role="tab" aria-controls="pills-member" aria-selected="true" data-tab-target="memberTab" data-action="click->tab#setActiveTab">Members</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link dashboard-tab" id="pills-challenge-tab" data-bs-toggle="pill" data-bs-target="#pills-challenge" type="button" role="tab" aria-controls="pills-challenge" aria-selected="false">Challenges</button>
+        <button class="nav-link dashboard-tab" id="pills-challenge-tab" data-bs-toggle="pill" data-bs-target="#pills-challenge" type="button" role="tab" aria-controls="pills-challenge" aria-selected="false" data-tab-target="challengeTab" data-action="click->tab#setActiveTab">Challenges</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link dashboard-tab" id="pills-next-tab" data-bs-toggle="pill" data-bs-target="#pills-next" type="button" role="tab" aria-controls="pills-next" aria-selected="false">Next Challenges</button>
+        <button class="nav-link dashboard-tab" id="pills-next-tab" data-bs-toggle="pill" data-bs-target="#pills-next" type="button" role="tab" aria-controls="pills-next" aria-selected="false" data-tab-target="nextTab" data-action="click->tab#setActiveTab">Next Challenges</button>
       </li>
     </ul>
 
