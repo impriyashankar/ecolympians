@@ -30,5 +30,33 @@
         </div>
 
       </div>
+      <!--Display groups which user is not part of-->
+      <h3 class= "mt-3 mb-3">Other groups you might be interested in</h3>
+      <div class="cards-grid"> <!--#changed from card groups-->
+          <% @other_groups.each do |group| %>
+          <%# @groups.each do |group| %>
+            <%#= link_to group_group_challenges_path(group) do %>
+            <div class="card-groups text-center" style="height: auto;">
+              <%= link_to group_path(group) do %>
+
+                <div class= "color-band"></div>
+                <div class="card-group-wrapper">
+                  <div class="card-group-info-pic">
+                    <%=image_tag("leaf.png")%>
+                  </div>
+                  <div class="card-group-infos">
+                    <h3><%= group.name %></h3>
+                    <p><strong><%= group.memberships.where(status: "Accepted").count %></strong> members</p>
+                    <div class="card-challenge-buttons mb-3" style="justify-content: center;">
+                    <a href="#" class="btn btn-regular">Join Group</a>
+                    </div>
+                  </div>
+                </div>
+
+              <% end %>
+            </div>
+
+          <% end %>
+        </div>
   </div>
 </div>
