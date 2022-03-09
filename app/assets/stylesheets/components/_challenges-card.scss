@@ -14,7 +14,7 @@
     background: $background;
     margin: 0;
     padding-bottom: 1rem;
-    padding-top: 2rem;
+    padding-top: 1.8rem;
   }
 
   .search-challenges {
@@ -34,9 +34,9 @@
     text-align: center;
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 1.5rem;
+    // margin-bottom: 1rem;
     padding-top: 3rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     position: fixed;
     top: 9rem;
     z-index: 9;
@@ -48,7 +48,7 @@
 
   .challenges-page {
     .challenges {
-      padding-top: 12rem;
+      padding-top: 11rem;
     }
   }
   .card-challenges {
