@@ -30,7 +30,12 @@ class GroupsController < ApplicationController
 
   def create
     @user = current_user
+    @groups = @user.memberships.where(status: "Accepted")
     @group = Group.new(group_params)
+    @group_challenges_ongoing = @user.group_challenges.select{ |challenge| challenge.status == "ongoing" }
+    @group_challenges_upcoming = @user.group_challenges.select{ |challenge| challenge.status == "waiting" }
+    @group_challenges_finished = @user.group_challenges.select{ |challenge| challenge.status == "finished" }
+    @pending_invitations = @user.memberships.where(status: "Pending")
     if @group.save
       @membership = Membership.new(role: "Admin", status: "Accepted")
       @membership.group = @group
@@ -39,7 +44,7 @@ class GroupsController < ApplicationController
 
       redirect_to group_path(@group)
     else
-      render :new
+      render "users/show"
     end
   end
 
