@@ -3,7 +3,7 @@
 <div data-search-challenges-target="list">
   <div class="challenges-container">
     <% challenges.all.each do |challenge| %>
-      <% if challenge.category == "Travel" || challenge.category == "Planting tree"%>
+      <% if challenge.category == "Travel" || challenge.category == "Planting trees"%>
         <% color = "card-green" %>
       <% elsif challenge.category == "Conserving water" || challenge.category == "Preventing pollution"%>
         <% color = "card-purple" %>
@@ -25,7 +25,7 @@
       <%elsif challenge.category == "Pick up trash"%>
         <% icon1 = '🗑' %>
         <% icon2 = '🎏' %>
-      <%elsif challenge.category == "Planting tree"%>
+      <%elsif challenge.category == "Planting trees"%>
         <% icon1 = '🌿' %>
         <% icon2 = '🌹' %>
       <%elsif challenge.category == "Conserving water"%>
