@@ -3,7 +3,7 @@ class Group < ApplicationRecord
   has_many :users, through: :memberships
   has_many :group_challenges, through: :memberships
   has_many :potential_challenges, dependent: :destroy
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 15, too_long: "%{count} characters is the maximum allowed" }
 
   def vote_ended?
     return false if potential_challenges.empty?
