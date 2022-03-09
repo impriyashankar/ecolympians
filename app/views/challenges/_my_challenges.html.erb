@@ -119,9 +119,6 @@
                       <h2><%=item.challenge.name %></h2>
                       <p>Description: <%= item.challenge.description %></p>
                     </div>
-                    <div class="">
-                      <p class="" id="category">Type: <%= item.challenge.category %></p>
-                    </div>
                     <!-- start of proof buttons -->
                       <div class="card-challenge-buttons">
                         <%= link_to "View proofs", group_group_challenge_path(item.membership.group, item), class: "btn-regular" %>
