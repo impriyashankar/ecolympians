@@ -2,7 +2,7 @@
 
   <h1>Explore challenges</h1>
 
-  <div data-controller="search-challenges">
+  <div class="challenges-page" data-controller="search-challenges">
     <div class="search-challenges">
       <%= form_with url: challenges_path, method: :get, html: {data: { search_challenges_target: 'form' } } do |f| %>
       <%= text_field_tag :query,
