@@ -79,5 +79,5 @@ Rails.application.configure do
   config.active_storage.service = :cloudinary
 
   # setting up ngrok (change every time you set up ngrok mobile)
-  config.hosts << "b63f-92-108-134-52.ngrok.io"
+  config.hosts << "16af-92-108-134-52.ngrok.io"
 end
