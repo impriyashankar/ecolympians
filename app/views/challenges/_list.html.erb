@@ -3,7 +3,7 @@
 <div data-search-challenges-target="list">
   <div class="challenges-container">
     <% challenges.all.each do |challenge| %>
-      <% if challenge.category == "Travel" || challenge.category == "Planting tree"%>
+      <% if challenge.category == "Travel" || challenge.category == "Planting trees"%>
         <% color = "card-green" %>
       <% elsif challenge.category == "Conserving water" || challenge.category == "Preventing pollution"%>
         <% color = "card-purple" %>
@@ -25,7 +25,7 @@
       <%elsif challenge.category == "Pick up trash"%>
         <% icon1 = '🗑' %>
         <% icon2 = '🎏' %>
-      <%elsif challenge.category == "Planting tree"%>
+      <%elsif challenge.category == "Planting trees"%>
         <% icon1 = '🌿' %>
         <% icon2 = '🌹' %>
       <%elsif challenge.category == "Conserving water"%>
@@ -49,17 +49,18 @@
       <% end %>
 
       <div class="card-challenges <%= color %>">
+        <div class="challenge-category">
+          <p id="category"><%= icon1 %> - <%= challenge.category %> - <%= icon2 %></p>
+        </div>
         <div class="info-challenge">
           <h2><%=challenge.name %></h2>
-          <p id="description" >Description: <%= challenge.description %></p>
+          <p id="description" ><%= challenge.description %></p>
 
-          <p id="category"><%= icon1 %> - <%= challenge.category %> - <%= icon2 %></p>
+
         </div>
 
         <div class="challenge-score">
-          <p>★ 𝙎𝙘𝙤𝙧𝙚 ★<p>
-          <p><%= challenge.score %></p>
-          <p>🍀</p>
+          <p> ★ 𝙎𝙘𝙤𝙧𝙚 ★ &nbsp; <strong><i> <%= challenge.score %> &nbsp; </i></strong> 🍀 <p>
         </div>
 
       </div>

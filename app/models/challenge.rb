@@ -1,7 +1,7 @@
 class Challenge < ApplicationRecord
   CATEGORIES = %w[
     Recycle
-    Planting\ tree
+    Planting\ trees
     Pick\ up\ trash
     Made\ homemade\ art
     Conserving\ water
@@ -15,7 +15,7 @@ class Challenge < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :category, presence: true, inclusion: { in: CATEGORIES }
-  validates :score, presence: true
+  validates :score, presence: true, numericality: { less_than_or_equal_to: 300 }
 
   include PgSearch::Model
   pg_search_scope :search_by_score_category_name,

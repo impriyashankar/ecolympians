@@ -2,7 +2,7 @@
   <% if @group_challenge.status == "finished" %>
     <h3> This challenge has finished! </h3>
   <% else %>
-    <h3><%= (@group_challenge.start_date + 14 - Date.today).to_i %> days left for proofs & voting! </h3>
+    <h3><%= (@group_challenge.start_date + 14 - Date.today).to_i %> days left for voting! </h3>
     <p> <strong><%= @group_challenge.challenge.name %> </strong> (<%= @group_challenge.start_date.strftime("%e %B") %> - <%= (@group_challenge.start_date + 7).strftime("%e %B") %>)</p>
   <% end %>
 </div>
@@ -19,7 +19,21 @@
             </div>
           </div>
 
-          <%= cl_image_tag challenge.photo.key %>
+          <div class="proof-card-img">
+            <%= cl_image_tag challenge.photo.key %>
+            <% if @group_challenge.status == "finished" %>
+              <div class="proof-card-end-votes">
+                <div class="proof-card-end-vote green-circle">
+                  <span><%= challenge.proof_votes.select{ |proofvote| proofvote.vote == true }.count %></span>
+                  <%= icon("far", "thumbs-up") %>
+                </div>
+                <div class="proof-card-end-vote red-circle">
+                  <span><%= challenge.proof_votes.select{ |proofvote| proofvote.vote == false}.count %></span>
+                  <%= icon("far", "thumbs-down") %>
+                </div>
+              </div>
+            <% end %>
+          </div>
 
           <div class="proof-card-text">
             <p>
