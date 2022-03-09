@@ -1,7 +1,8 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [ :edit, :update ]
   def index
-    @groups = Group.all
+    #@groups = Group.all
+    @groups= @user.memberships.where(status: "Accepted")# new logic to display only member groups
     @user = current_user
     @other_groups = Group.where.not(id:Membership.where(user: @current_user).distinct.pluck(:group_id)) # selecting other groups available
   end
