@@ -5,14 +5,20 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <%= f.input :first_name,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "first_name" }%>
-        <%= f.input :last_name,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "family_name" }%>
+        <div class="row">
+          <div class="col">
+            <%= f.input :first_name,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "first_name" }%>
+          </div>
+          <div class="col">
+            <%= f.input :last_name,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "family_name" }%>
+          </div>
+        </div>
         <%= f.input :email,
                     required: true,
                     autofocus: true,
@@ -24,10 +30,13 @@
         <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
+        <%= f.input :photo, as: :file,
+                    label: false %>
       </div>
 
+
       <div class="form-actions">
-        <%= f.button :submit, "Sign up" %>
+        <%= f.button :submit, "Sign up", class: "btn-welcome" %>
       </div>
     <% end %>
 
