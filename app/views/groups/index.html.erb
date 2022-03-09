@@ -19,7 +19,7 @@
                   </div>
                   <div class="card-group-infos">
                     <h3><%= member.group.name %></h3>
-                    <p><strong><%= pluralize(member.group.memberships.where(status: "Accepted").count, "member") %></strong> members</p>
+                    <p><strong><%= pluralize(member.group.memberships.where(status: "Accepted").count, "member") %></strong> </p>
                   </div>
                 </div>
 
