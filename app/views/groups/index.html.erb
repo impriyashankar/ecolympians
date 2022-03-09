@@ -6,11 +6,11 @@
         <h2><strong>My groups</strong></h2>
 
         <div class="cards-grid"> <!--#changed from card groups-->
-          <% current_user.groups.each do |group| %>
+          <% @groups.each do |member| %><!--change to show only member groups-->
           <%# @groups.each do |group| %>
             <%#= link_to group_group_challenges_path(group) do %>
             <div class="card-groups text-center">
-              <%= link_to group_path(group) do %>
+              <%= link_to group_path(member.group.id) do %>
 
                 <div class= "color-band"></div>
                 <div class="card-group-wrapper">
@@ -18,8 +18,8 @@
                     <%=image_tag("leaf.png")%>
                   </div>
                   <div class="card-group-infos">
-                    <h3><%= group.name %></h3>
-                    <p><strong><%= group.memberships.where(status: "Accepted").count %></strong> members</p>
+                    <h3><%= member.group.name %></h3>
+                    <p><strong><%= pluralize(member.group.memberships.where(status: "Accepted").count, "member") %></strong> members</p>
                   </div>
                 </div>
 
@@ -41,8 +41,8 @@
           <% @other_groups.each do |group| %>
           <%# @groups.each do |group| %>
             <%#= link_to group_group_challenges_path(group) do %>
-            <div class="card-groups text-center" style="height:auto;">
-              <%= link_to group_path(group) do %>
+            <div class="card-groups text-center" style="height: auto;">
+              <%#= link_to group_path(group) do %>
 
                 <div class= "color-band"></div>
                 <div class="card-group-wrapper">
@@ -58,7 +58,7 @@
                   </div>
                 </div>
 
-              <% end %>
+              <%# end %>
             </div>
 
           <% end %>

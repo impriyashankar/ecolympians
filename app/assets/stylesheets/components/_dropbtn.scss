@@ -5,14 +5,26 @@
   background-color: $secondary-light;
   padding-top: 3rem;
   padding-bottom: 2rem;
-  margin: 3rem;
+  margin: 2rem;//reduced margin to widen drop-down container for choosing next challenge
   border-radius: 1rem;
 }
 #challenge1 , #challenge2, #challenge3 {
   margin-bottom: 3rem;
   border-radius: 0.6rem;
   width: max-content;
+
+
 }
+.hover-div1, .hover-div2 {
+  margin-top:-30px;
+  margin-bottom:-30px;
+  font-size:20px;
+}
+.hover-div3 {
+  margin-top:-30px;
+  font-size:20px;
+}
+
 .card-potential-challenges {
   display: flex;
   justify-content: space-between;
@@ -31,6 +43,7 @@
   font-weight: 700;
   padding: 0.5rem 1rem;
   border-radius: 8px;
+  padding-top:0;//to center-align vote count
 }
 
 .info-potential-challenges {
