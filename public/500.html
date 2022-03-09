@@ -4,12 +4,37 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
+  @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Dosis:wght@400;700&family=Roboto:wght@400;700&family=Source+Sans+3:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
+  .rails-error-page {
+    background-color: #FAFAFF;
+    color: #333;
     text-align: center;
-    font-family: arial, sans-serif;
+    font-family: "Source Sans 3", "Roboto", "Helvetica", "sans-serif";;
     margin: 0;
+  }
+
+  .rails-error-page h1, h2, h3, h4 {
+    font-family: "Bubblegum Sans", "Dosis", "Helvetica", "sans-serif";
+    color: #bb4e46;
+  }
+
+   .rails-error-page h1 {
+     font-size: 5em;
+   }
+
+   .rails-error-page h2 {
+     font-size: 3em;
+   }
+
+  .rails-error-page h3 {
+     font-size: 2em;
+   }
+
+  .rails-error-page .text-brown {
+    color: #a16d54;
   }
 
   .rails-default-error-page div.dialog {
@@ -54,13 +79,12 @@
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<body class="rails-error-page">
   <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+  <h1>500</h1>
+  <h2>SERVER ERROR</h2>
+  <img src="/images/dead-earth.png" style="width:80%; height:auto;" alt="">
+  <h3 class="text-brown">We're sorry</h3>
+  <h3 class="text-brown">Something went <strong>very</strong> wrong...</h3>
 </body>
 </html>
