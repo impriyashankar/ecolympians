@@ -1,11 +1,18 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [ :edit, :update ]
   def index
+<<<<<<< HEAD
     #@groups = Group.all
     @user = current_user
     @groups = @user.memberships.where(status: "Accepted") # change to show only member groups
     @user = current_user
     #raise
+=======
+    @user = current_user
+    #@groups = Group.all
+    @groups= @user.memberships.where(status: "Accepted")# new logic to display only member groups
+
+>>>>>>> master
     @other_groups = Group.where.not(id:Membership.where(user: @current_user).distinct.pluck(:group_id)) # selecting other groups available
   end
 
@@ -33,7 +40,12 @@ class GroupsController < ApplicationController
 
   def create
     @user = current_user
+    @groups = @user.memberships.where(status: "Accepted")
     @group = Group.new(group_params)
+    @group_challenges_ongoing = @user.group_challenges.select{ |challenge| challenge.status == "ongoing" }
+    @group_challenges_upcoming = @user.group_challenges.select{ |challenge| challenge.status == "waiting" }
+    @group_challenges_finished = @user.group_challenges.select{ |challenge| challenge.status == "finished" }
+    @pending_invitations = @user.memberships.where(status: "Pending")
     if @group.save
       @membership = Membership.new(role: "Admin", status: "Accepted")
       @membership.group = @group
@@ -42,7 +54,7 @@ class GroupsController < ApplicationController
 
       redirect_to group_path(@group)
     else
-      render :new
+      render "users/show"
     end
   end
 

@@ -13,13 +13,15 @@
       </h1>
     </div>
     <div class="user-avatar">
-      <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, class: "avatar-extra-large" %>
-        <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#avatarModal">Update my picture</a>
-      <% else %>
-        <%= image_tag "empty_account", class: "avatar-extra-large" %>
-        <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#avatarModal">Update my picture</a>
+      <% unless @user.photo.attached? %>
+        <% photo = ['avatar1.jpg', 'avatar2.jpg', 'avatar3.jpg', 'avatar4.jpg', 'avatar5.jpg', 'avatar6.jpg'].sample %>
+        <% @user.photo.attach(io: File.open("app/assets/images/#{photo}"),
+                              filename: photo,
+                              content_type: "image/jpg"
+                            ) %>
       <% end %>
+      <%= cl_image_tag @user.photo.key, class: "avatar-extra-large" %>
+      <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#avatarModal">Update my picture</a>
     </div>
   </div>
 

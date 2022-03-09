@@ -3,28 +3,83 @@
   h1, .search-challenges, .create-tag {
     text-align: center;
   }
+
   h1 {
+    background: $background;
     color: $primary;
+    width: 100%;
+    position: fixed;
+    top: 3rem;
+    z-index: 10;
+    background: $background;
+    margin: 0;
+    padding-bottom: 1rem;
+    padding-top: 1.8rem;
   }
+
+  .search-challenges {
+    background: $background;
+    width: 100%;
+    position: fixed;
+    top: 8rem;
+    z-index: 10;
+    // padding-bottom: 1rem;
+  }
+
   .create-tag {
     margin-bottom: 0.4rem;
   }
 
+  .create-button-container {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    // margin-bottom: 1rem;
+    padding-top: 3rem;
+    padding-bottom: 0.5rem;
+    position: fixed;
+    top: 9rem;
+    z-index: 9;
+    background: $background;
+    .btn-welcome {
+      width: 17rem;
+    }
+  }
+
+  .challenges-page {
+    .challenges {
+      padding-top: 11rem;
+    }
+  }
   .card-challenges {
     height: auto;
-    box-shadow: 0 0 2rem rgba(0,0,0,0.2);
+    box-shadow: 0 0 1rem rgba(0,0,0,0.2);
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 1rem;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
-    padding: 1rem 1rem 2rem 1rem;
+    padding: 0.2rem 0.2rem 0.2rem 0.2rem;
     border-radius: 0.8rem;
     // transition-property: background-color, font-size, transform, color;
     // transition-timing-function: ease-in-out;
     // transition-duration: 3s;
     p {
       color: $white;
+      margin: 0;
+    }
+
+    .challenge-category {
+      text-align: center;
+      background-color: $background;
+      border-radius: 0.8rem;
+      p {
+        font-size: 1rem;
+        color: black;
+        font-style: italic;
+        font-weight: bold;
+      }
     }
 
     // .transformed-state {
@@ -48,15 +103,20 @@
   }
 
 
-  .info-challenge p {
-    line-height: 1.5rem;
-    text-overflow: ellipsis;
+  .info-challenge {
+    min-height: 8rem;
+    padding: 1rem;
+    p {
+      line-height: 1.5rem;
+      text-overflow: ellipsis;
+    }
+    h2 {
+      color: $yellow-hover;
+    }
+
   }
 
-  .info-challenge h2 {
-    color: $yellow-hover;
 
-  }
   .challenge-score p {
     font-weight: bold;
     font-size: large;
@@ -103,6 +163,7 @@
   justify-content: space-evenly;
   width: 100%;
   align-self: center;
+  margin-bottom: 1rem;
   .btn-regular {
     text-align: center;
     padding: 0.375rem 1rem;

@@ -69,30 +69,52 @@
   flex-wrap: wrap;
 }
 
+// Proof card
+
 .proof-card {
+  scroll-snap-align: center;
   min-width: 90vw;
-  background-color: $blue;
+  background-color: $yellow;
   margin: 1rem 5vw;
-  // margin-bottom: 1rem;
   border-radius: 16px;
   padding: 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.412);
-  & > img {
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
-  }
 
   h4 {
     margin: 0;
   }
 }
 
+@media(max-height: 660px) {
+.proof-card {
+  height: 60vh;
+  }
+}
+
+@media(min-height: 660px) {
+.proof-card {
+  height: 65vh;
+  }
+}
+
+@media(min-height: 700px) {
+.proof-card {
+  height: 68vh;
+  }
+}
+
+@media(min-height: 760px) {
+.proof-card {
+  height: 73vh;
+  }
+}
+
 .proof-card-top {
   width: 100%;
+  height: 12%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,8 +126,71 @@
   }
 }
 
+.proof-card-img {
+  width: fit-content;
+  height: 50%;
+
+  img {
+    width: auto;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+    transition: 0.5s ease-in-out;
+    touch-action: pinch-zoom;
+  }
+
+  img:active {
+    z-index: 10;
+    position: absolute;
+    bottom: 25vh;
+    top: 25vh;
+    right: 2.5vw;
+    left: 2.5vw;
+    width: 95vw;
+    height: auto;
+    transition: 0.5s ease-in-out;
+  }
+}
+
+.proof-card-end-votes {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: 4rem;
+  padding: 0 1.5rem;
+}
+
+.proof-card-end-vote {
+  color: $white;
+  font-size: large;
+  word-spacing: 1em;
+}
+
+.red-circle {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: $red-opacity;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+}
+
+.green-circle {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: $primary-opacity;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+}
+
+
+
 .proof-card-text {
   width: 100%;
+  max-height: 18%;
   border-radius: 8px;
   margin: 1rem 0;
   padding: 0.5rem;
@@ -117,8 +202,10 @@
 
 .proof-card-vote {
   width: 100%;
+  height: 20%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 

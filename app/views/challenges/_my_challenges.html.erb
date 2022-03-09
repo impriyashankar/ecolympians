@@ -8,7 +8,7 @@
       <% @item = item %>
         <div class="challenges">
           <% color = ''%>
-          <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting tree"%>
+          <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting trees"%>
             <% color = "card-green" %>
           <% elsif item.challenge.category == "Food" || item.challenge.category == "Preventing pollution"%>
             <% color = "card-purple" %>
@@ -23,11 +23,9 @@
             <div class="">
               <div class="info-challenge">
                 <h2><%=item.challenge.name %></h2>
-                <p>Description: <%= item.challenge.description %></p>
+                <p><%= item.challenge.description %></p>
               </div>
-                <div class="">
-                  <p class="" id="category">Type: <%= item.challenge.category %></p>
-                </div>
+
                 <!-- start of proof buttons -->
                 <div class="card-challenge-buttons">
                   <a class="btn-regular" ref="" id="upload_proof" data-bs-toggle="modal" data-bs-target="#uploadProofModal">Upload proof!</a>
@@ -75,7 +73,7 @@
             <% @item = item %>
               <div class="challenges">
                 <% color = ''%>
-                <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting tree"%>
+                <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting trees"%>
                   <% color = "card-green" %>
                 <% elsif item.challenge.category == "Food" || item.challenge.category == "Preventing pollution"%>
                   <% color = "card-purple" %>
@@ -90,11 +88,8 @@
                   <div class="">
                     <div class="info-challenge">
                       <h2><%=item.challenge.name %></h2>
-                      <p>Description: <%= item.challenge.description %></p>
+                      <p><%= item.challenge.description %></p>
                     </div>
-                      <div class="">
-                        <p class="" id="category">Type: <%= item.challenge.category %></p>
-                      </div>
                   </div>
                 </div>
               </div>
@@ -107,7 +102,7 @@
             <% @item = item %>
               <div class="challenges">
                 <% color = ''%>
-                <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting tree"%>
+                <% if item.challenge.category == "Saving energy" || item.challenge.category == "Planting trees"%>
                   <% color = "card-green" %>
                 <% elsif item.challenge.category == "Food" || item.challenge.category == "Preventing pollution"%>
                   <% color = "card-purple" %>
@@ -123,9 +118,6 @@
                     <div class="info-challenge">
                       <h2><%=item.challenge.name %></h2>
                       <p>Description: <%= item.challenge.description %></p>
-                    </div>
-                    <div class="">
-                      <p class="" id="category">Type: <%= item.challenge.category %></p>
                     </div>
                     <!-- start of proof buttons -->
                       <div class="card-challenge-buttons">

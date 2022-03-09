@@ -23,6 +23,7 @@ ProofVote.destroy_all
 
 puts "Creating 15 users...\n"
 
+photos = ['avatar1.jpg', 'avatar2.jpg', 'avatar3.jpg', 'avatar4.jpg', 'avatar5.jpg', 'avatar6.jpg']
 users = 15.times.each_with_object([]) do |index, arr|
   arr << user = User.create!(
     first_name: Faker::Name.first_name,
@@ -32,10 +33,12 @@ users = 15.times.each_with_object([]) do |index, arr|
     password_confirmation: "123456"
   )
 
+  photo = photos.sample
+
   user.photo.attach(
-    io: File.open("app/assets/images/empty_account.png"),
-    filename: "empty_account.png",
-    content_type: "image/png"
+    io: File.open("app/assets/images/#{photo}"),
+    filename: photo,
+    content_type: "image/jpg"
   )
 
   user.save
