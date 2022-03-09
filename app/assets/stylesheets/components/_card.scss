@@ -72,10 +72,10 @@
 // Proof card
 
 .proof-card {
+  scroll-snap-align: center;
   min-width: 90vw;
   background-color: $yellow;
   margin: 1rem 5vw;
-  // margin-bottom: 1rem;
   border-radius: 16px;
   padding: 1rem 1.5rem;
   display: flex;
@@ -135,6 +135,19 @@
     height: 100%;
     border-radius: 16px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+    transition: 0.5s ease-in-out;
+  }
+
+  img:active {
+    z-index: 10;
+    position: absolute;
+    bottom: 25vh;
+    top: 25vh;
+    right: 2.5vw;
+    left: 2.5vw;
+    width: 95vw;
+    height: auto;
+    transition: 0.5s ease-in-out;
   }
 }
 
