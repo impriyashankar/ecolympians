@@ -32,9 +32,15 @@
   }
   .card-group-infos {
     position:relative;
-    top:-20px;
+    top:-30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    // h3 {
+    //   white-space: nowrap;
+    // }
   }
-
 .color-band {
   height:75px;
   background-color: $secondary;
