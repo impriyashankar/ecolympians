@@ -34,13 +34,14 @@
     h2 {
       color: $background;
       font-size: 2.5em;
+      text-shadow: 2px 2px rgba(0,0,0,0.5);
     }
   }
 
   .scroll-link {
     text-decoration: none;
     h3 {
-
+      text-shadow: 2px 2px rgba(0,0,0,0.5);
       color: $background;
       font-family: $headers-font;
     }
@@ -54,7 +55,6 @@
     top: -140px;
     height: 50vh;
     padding: 1rem;
-    padding-bottom: 0;
     margin: 8rem 0;
     background-color: rgba( $background, 0.5);
     border-radius: 8px;
@@ -85,7 +85,7 @@
     p {
       margin: 6px 0;
     }
-    padding-bottom: 1.5rem;
+    padding-bottom: 1rem;
   }
 
   .landing-bottom {
@@ -95,7 +95,7 @@
     text-align: center;
     h2 {
       color: $background;
-      text-shadow: 1px 1px rgba(0,0,0,0.3);
+      text-shadow: 2px 2px rgba(0,0,0,0.5);
       font-size: 2.5em;
       margin-bottom: 1rem;
     }
