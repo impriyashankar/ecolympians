@@ -28,7 +28,7 @@
         <button class="nav-link dashboard-tab" id="pills-challenge-tab" data-bs-toggle="pill" data-bs-target="#pills-challenge" type="button" role="tab" aria-controls="pills-challenge" aria-selected="false" data-tab-target="challengeTab" data-action="click->tab#setActiveTab">Challenges</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link dashboard-tab" id="pills-next-tab" data-bs-toggle="pill" data-bs-target="#pills-next" type="button" role="tab" aria-controls="pills-next" aria-selected="false" data-tab-target="nextTab" data-action="click->tab#setActiveTab">Next Challenges</button>
+        <button class="nav-link dashboard-tab" id="pills-next-tab" data-bs-toggle="pill" data-bs-target="#pills-next" type="button" role="tab" aria-controls="pills-next" aria-selected="false" data-tab-target="nextTab" data-action="click->tab#setActiveTab">Next Up</button><!--changed from Next challenges-->
       </li>
     </ul>
 
@@ -113,13 +113,13 @@
               <p>Score: <%= potential_challenge.challenge.score %></p>
               <% unless @user_voted %>
                 <%= link_to "Vote", potential_challenge_challenge_votes_path(potential_challenge), method: :post, data: { action: "click->challenge-voting#reloadContent", challenge_voting_target: "button",challenge_voting_total_value: potential_challenge.challenge_votes.count }, class: "btn-regular mb-3" %>
-                <span class="primary-text d-none" data-challenge-voting-target="votes">
+                <p class="primary-text d-none" data-challenge-voting-target="votes"><!--Changing to center align vote count-->
                   <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
-                </span>
+                </p>
               <% else %>
-                <span class="primary-text">
+                <p class="primary-text">
                 <%= pluralize(potential_challenge.challenge_votes.count, "vote") %>
-                </span>
+                </p>
               <% end %>
             </div>
           </div>
@@ -130,29 +130,37 @@
         <% end %>
 
         <% if @user_role == "Admin" && @group.potential_challenges.empty? %>
-          <div class="potential-challenges">
-            <h3>Please! choose the next challenge<h3>
+          <div class="potential-challenges" data-controller="hover-option"><!--to test for challnge desc popup on option hover in dropdown-->
+            <h3>Please choose the next challenge<h3>
             <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
             <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
-            <select id="challenge1" name="challenge1" size="1">
+            <select id="challenge1" name="challenge1" size="1" data-action="change->hover-option#showDesc1">
               <% Challenge.all.each do |challenge| %>
-                <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                <option value="<%= challenge.name %>" data-challenge-type="<%= challenge.description %>"><%= challenge.name %></option>
               <% end %>
             </select>
 
-            <br>
-            <select id="challenge2" name="challenge2" size="1">
-              <% Challenge.all.each do |challenge| %>
-                <option value="<%= challenge.name %>"><%= challenge.name %></option>
-              <% end %>
-            </select>
+            <div class="hover-div1" data-hover-option-target="select"><!--new div for challenge desc-->
+            </div>
+
 
             <br>
-            <select id="challenge3" name="challenge3" size="1">
+            <select id="challenge2" name="challenge2" size="1" data-action="change->hover-option#showDesc2">
               <% Challenge.all.each do |challenge| %>
-                <option value="<%= challenge.name %>"><%= challenge.name %></option>
+                <option value="<%= challenge.name %>" data-challenge-type="<%= challenge.description %>"><%= challenge.name %></option>
               <% end %>
             </select>
+            <div class="hover-div2" data-hover-option-target="select"><!--new div for challenge desc-->
+            </div>
+
+            <br>
+            <select id="challenge3" name="challenge3" size="1" data-action="change->hover-option#showDesc3">
+              <% Challenge.all.each do |challenge| %>
+                <option value="<%= challenge.name %>" data-challenge-type="<%= challenge.description %>"><%= challenge.name %></option>
+              <% end %>
+            </select>
+            <div class="hover-div3" data-hover-option-target="select"><!--new div for challenge desc-->
+            </div>
 
 
             <div class="submit-challenges">
