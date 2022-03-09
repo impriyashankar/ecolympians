@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["select"]
+  static targets = ["select1", "select2", "select3"]
   connect(){
     console.log("works right");
   }
@@ -10,21 +10,21 @@ export default class extends Controller {
     const a = event.currentTarget.selectedOptions[0].dataset.challengeType;
     let toolTip=''
     toolTip = "<p>"+a+"</p>"
-    this.selectTarget.innerHTML = toolTip
+    this.select1Target.innerHTML = toolTip
 
   }
   showDesc2(event) {
     const a = event.currentTarget.selectedOptions[0].dataset.challengeType;
     let toolTip=''
     toolTip = "<p>"+a+"</p>"
-    this.selectTarget.innerHTML = toolTip
+    this.select2Target.innerHTML = toolTip
 
   }
   showDesc3(event) {
     const a = event.currentTarget.selectedOptions[0].dataset.challengeType;
     let toolTip=''
     toolTip = "<p>"+a+"</p>"
-    this.selectTarget.innerHTML = toolTip
+    this.select3Target.innerHTML = toolTip
 
   }
 }
