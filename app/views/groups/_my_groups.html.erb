@@ -16,24 +16,25 @@
   </div>
 </div>
 
-<div class="cards-grid">
-  <% @groups.each do |member| %><!--New logic for proper display of only 'Accepted' groups-->
-    <div class="card-groups text-center">
-      <%= link_to group_path(member.group.id) do %>
-        <div class= "color-band"></div>
-        <div class="card-group-wrapper">
-          <div class="card-group-info-pic">
-            <%=image_tag("leaf.png")%>
-          </div>
-          <div class="card-group-infos">
-            <h3><%= member.group.name %></h3>
-            <p><strong><%= pluralize(member.group.memberships.where(status: "Accepted").count, "member") %></strong></p>
+<div class="cards-ind-dashboard">
+  <div class="cards-grid">
+    <% @groups.each do |member| %><!--New logic for proper display of only 'Accepted' groups-->
+      <div class="card-groups text-center">
+        <%= link_to group_path(member.group.id) do %>
+          <div class= "color-band"></div>
+          <div class="card-group-wrapper">
+            <div class="card-group-info-pic">
+              <%=image_tag("leaf.png")%>
+            </div>
+            <div class="card-group-infos">
+              <h3><%= member.group.name %></h3>
+              <p><strong><%= pluralize(member.group.memberships.where(status: "Accepted").count, "member") %></strong></p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
 <!--Display Pending Invitations -- moved here to remove from 'Challnges' tab-->
   <% if @pending_invitations.count > 0 %>
@@ -78,3 +79,4 @@
       </div>
     <% end %>
   </div>
+</div>
