@@ -16,6 +16,7 @@ import "controllers"
 import "bootstrap"
 
 require("jquery")
+require('select2')
 
 
 //$(document).ready(function(){});
