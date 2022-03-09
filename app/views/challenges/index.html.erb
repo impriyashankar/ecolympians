@@ -2,10 +2,9 @@
 
   <h1>Explore challenges</h1>
 
-  <div data-controller="search-challenges">
+  <div class="challenges-page" data-controller="search-challenges">
     <div class="search-challenges">
-      <%= form_with url: challenges_path, method: :get, html: { class:
-      'mb-4', data: { search_challenges_target: 'form' } } do |f| %>
+      <%= form_with url: challenges_path, method: :get, html: {data: { search_challenges_target: 'form' } } do |f| %>
       <%= text_field_tag :query,
         params[:query],
         class: "searchbar",
@@ -16,8 +15,9 @@
       <%#= submit_tag "Search", class: "btn btn-primary" %>
       <% end %>
     </div>
-    <div>
-      <a class="btn-welcome mb-3" href="<%= new_challenge_path %>">Create new challenge</a>
+
+    <div class="create-button-container">
+      <a class="btn-welcome" href="<%= new_challenge_path %>">Create new challenge</a>
     </div>
 
     <div class="challenges">
