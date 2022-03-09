@@ -4,11 +4,15 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
+  @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Dosis:wght@400;700&family=Roboto:wght@400;700&family=Source+Sans+3:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
+  .rails-error-page {
+    background-color: #FAFAFF;
+    color: #333;
     text-align: center;
-    font-family: arial, sans-serif;
+    font-family: "Source Sans 3", "Roboto", "Helvetica", "sans-serif";;
     margin: 0;
   }
 
@@ -31,10 +35,25 @@
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
+  .rails-error-page h1, h2, h3, h4 {
+    font-family: "Bubblegum Sans", "Dosis", "Helvetica", "sans-serif";
+    color: #37aa3d;
+  }
+
+   .rails-error-page h1 {
+     font-size: 5em;
+   }
+
+   .rails-error-page h2 {
+     font-size: 3em;
+   }
+
+  .rails-error-page h3 {
+     font-size: 2em;
+   }
+
+  .rails-error-page .text-brown {
+    color: #C78669;
   }
 
   .rails-default-error-page div.dialog > p {
@@ -54,14 +73,10 @@
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+<body class="rails-error-page">
+  <h1>404</h1>
+  <h2>NOT FOUND</h2>
+  <img src="/images/earth.png" style="width:80%; height:auto;" alt="">
+  <h3 class="text-brown">We've searched <strong>everywhere</strong> in our playground, but could not find this page...</h3>
 </body>
 </html>
