@@ -1,7 +1,7 @@
 class Challenge < ApplicationRecord
   CATEGORIES = %w[
     Recycle
-    Planting\ tree
+    Planting\ trees
     Pick\ up\ trash
     Made\ homemade\ art
     Conserving\ water
