@@ -17,7 +17,7 @@
             <%= link_to "Rules", "#", class: "nav-link", id: "read_rules", data: { controller: "rules", rules_target: "button", bs_toggle: "modal", bs_target: "#readRulesModal" } %>
           </li>
           <li class="nav-item">
-            <%= link_to "Edit Profile", "#", class: "nav-link" %>
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
