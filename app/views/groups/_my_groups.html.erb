@@ -36,6 +36,8 @@
 </div>
 
 <!--Display Pending Invitations -- moved here to remove from 'Challnges' tab-->
+
+<div class="group-card-container">
   <% if @pending_invitations.count > 0 %>
     <h3 class="text-center mt-2">Pending Invitations</h3><!--display only if pending inv exist-->
   <% end %>
@@ -78,3 +80,4 @@
       </div>
     <% end %>
   </div>
+</div>
