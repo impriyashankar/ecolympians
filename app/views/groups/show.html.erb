@@ -41,10 +41,17 @@
           <% grp_members = Membership.where(group: @group, status: "Accepted").order(score: :desc) %><!--included method to sort desc by score-->
           <% grp_members.each do |member| %>
             <div class="card-player text-center mb-3">
-              <%= cl_image_tag member.user.photo.key, class: "avatar-large" if member.user.photo.key%>
-                <!--<img class="avatar-large" alt="avatar" src='https://kitt.lewagon.com/placeholder/users/arthur-littm' />-->
-              <p><strong><%= member.user.first_name %></strong> </p>
-              <span><%= member.score %></span>
+              <div class="card-player-left">
+                <div class="color-band">
+                  <%= cl_image_tag member.user.photo.key, class: "avatar-large" if member.user.photo.key%>
+                  <%= image_tag "leaf.png", class: "avatar-badge avatar-small"%>
+                </div>
+              </div>
+              <div class="card-player-infos">
+                  <!--<img class="avatar-large" alt="avatar" src='https://kitt.lewagon.com/placeholder/users/arthur-littm' />-->
+                <p><strong><%= member.user.first_name %></strong> </p>
+                <span><%= member.score %></span>
+              </div>
             </div>
           <% end %>
         <% end %>

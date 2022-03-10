@@ -41,11 +41,11 @@
     //   white-space: nowrap;
     // }
   }
-.color-band {
-  height:75px;
-  background-color: $secondary;
-  border-radius: 15px;
-}
+  .color-band {
+    height:75px;
+    background-color: $secondary;
+    border-radius: 15px;
+  }
 }
 
 //Player card
@@ -55,18 +55,48 @@
   margin:0 auto;
   height:75px;
   display:flex;
-  justify-content:space-around;
+  justify-content:space-between;
   align-items:center;
   color: $secondary;
   border-radius: 5px;
-  padding: 5px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.24);
+  padding: 0 1rem 0 0;
+  box-shadow: 2px 2px 8px #c787693b;
   p{
     margin:0;
   }
   span {
     color: $black;
     font-weight:bold;
+  }
+  .card-player-infos {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.card-player-left {
+  height: 100%;
+    .color-band {
+    height: 100%;
+    background-color: $secondary;
+    border-radius: 15px;
+    width: 60px;
+  }
+    img {
+    border: 2px solid $white;
+    position: relative;
+    left: 1.5rem;
+    top: 0.5rem;
+  }
+  .avatar-badge {
+    position: relative;
+    top: -2.25rem;
+    left: -0.25rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid $white;
   }
 }
 
