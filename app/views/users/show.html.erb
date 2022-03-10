@@ -21,6 +21,7 @@
                             ) %>
       <% end %>
       <%= cl_image_tag @user.photo.key, class: "avatar-extra-large" %>
+      <%#= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
       <a href="" id="update_picture_link" data-bs-toggle="modal" data-bs-target="#avatarModal">Update my picture</a>
     </div>
   </div>
