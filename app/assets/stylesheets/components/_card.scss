@@ -50,7 +50,7 @@
 
 //Player card
 .card-player {
-  background-color: $secondary-light;
+  background-color: $white;
   width:90%;//making width change for mobile view
   margin:0 auto;
   height:75px;
@@ -60,6 +60,7 @@
   color: $secondary;
   border-radius: 5px;
   padding: 5px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.24);
   p{
     margin:0;
   }
