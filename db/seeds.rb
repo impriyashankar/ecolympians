@@ -269,7 +269,7 @@ our_group.memberships.each do |member|
     challenge: finished_challenge,
     membership: member,
     start_date: Date.today - 16,
-    status: "finished"
+    status: "finished",
     comment: finished_comments[i - 1]
   )
 
