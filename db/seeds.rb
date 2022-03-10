@@ -291,7 +291,7 @@ our_group.memberships.each do |member|
     status: "ongoing"
   )
 
-  if i == 1
+  if i == 3
     photo_suffix = "accepted"
   else
     photo_suffix = "rejected"
@@ -301,7 +301,8 @@ our_group.memberships.each do |member|
     ongoing_group_challenge.photo.attach(
       io: File.open("app/assets/images/Trash_trasher_#{photo_suffix}.jpeg"),
       filename: "Trash_trasher_#{photo_suffix}",
-      content_type: "image/jpeg"
+      content_type: "image/jpeg",
+      comment: "Ready and finished picking up a full bag of trash!"
     )
   end
 
