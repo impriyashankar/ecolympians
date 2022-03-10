@@ -45,7 +45,8 @@
 .card-potential-challenges {
   display: flex;
   justify-content: space-between;
-  background-color: $secondary-light;
+  background-color: $white;
+  box-shadow: 4px 4px 16px #c7866982;
   margin-bottom: 2rem;
   border-radius: 1rem;
   padding: 1rem;
@@ -53,6 +54,12 @@
 .score-potential-challenges {
   text-align: center;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  p {
+    color: $secondary;
+  }
 }
 
 .primary-text {
@@ -64,5 +71,8 @@
 }
 
 .info-potential-challenges {
-  width: 80%;
+  padding-right: 1rem;
+    h5 {
+    color: $secondary;
+  }
 }
