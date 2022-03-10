@@ -18,7 +18,7 @@
                     <%=image_tag("leaf.png")%>
                   </div>
                   <div class="card-group-infos">
-                    <h3><%= member.group.name %></h3>
+                    <div><h3><%= member.group.name %></h3></div>
                     <p><strong><%= pluralize(member.group.memberships.where(status: "Accepted").count, "member") %></strong> </p>
                   </div>
                 </div>
@@ -49,10 +49,14 @@
                   <div class="card-group-info-pic">
                     <%=image_tag("leaf.png")%>
                   </div>
-                  <div class="card-group-infos">
-                    <h3><%= group.name %></h3>
+                  <div class="card-group-infos" id="join-group">
+                    <div>
+                      <h3 style="height: 60px;"><%= group.name %></h3>
+                    </div>
 
-                    <p><strong><%= group.memberships.where(status: "Accepted").count %></strong> members</p>
+                    <div>
+                      <p><strong><%= group.memberships.where(status: "Accepted").count %></strong> members</p>
+                    </div>
                     <div class="card-challenge-buttons mb-3" style="justify-content: center;">
                       <a href="#" class="btn btn-regular">Join Group</a>
                     </div>
