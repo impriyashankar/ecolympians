@@ -33,6 +33,8 @@ users = 15.times.each_with_object([]) do |index, arr|
     password_confirmation: "123456"
   )
 
+
+
   photo = photos.sample
 
   user.photo.attach(
@@ -49,6 +51,41 @@ users = 15.times.each_with_object([]) do |index, arr|
   puts ""
 end
 
+ # Creating ecolympians users
+
+ user = User.create!(first_name: "Daan", last_name: "Moens", email: "daan@gmail.com", password: "123456", password_confirmation: "123456")
+user.photo.attach(
+  io: File.open("app/assets/images/Daan.jpeg"),
+  filename: "Daan",
+  content_type: "image/jpeg"
+)
+user.save
+
+user = User.create!(first_name: "Ofer", last_name: "Peled", email: "ofer@gmail.com", password: "123456", password_confirmation: "123456")
+user.photo.attach(
+  io: File.open("app/assets/images/Ofer.jpeg"),
+  filename: "Ofer",
+  content_type: "image/jpeg"
+)
+user.save
+
+user = User.create!(first_name: "Linh", last_name: "Trieu", email: "linh@gmail.com", password: "123456", password_confirmation: "123456")
+user.photo.attach(
+  io: File.open("app/assets/images/Linh.JPG"),
+  filename: "Linh",
+  content_type: "image/JPG"
+)
+user.save
+
+user = User.create!(first_name: "Priya", last_name: "Shankar", email: "priya@gmail.com", password: "123456", password_confirmation: "123456")
+user.photo.attach(
+  io: File.open("app/assets/images/Priya.jpeg"),
+  filename: "Priya",
+  content_type: "image/jpeg"
+)
+user.save
+
+
 # create groups
 
 puts "Creating 5 groups...\n"
@@ -61,13 +98,42 @@ puts ""
 
   puts "Created group named #{Group.last.name}"
 end
+# New group with our team
+Group.create!(
+  name: "OG Ecolympians"
+)
+puts "Created group named #{Group.last.name}"
+
+our_group = Group.find_by(name: "OG Ecolympians")
+user_daan = User.find_by(first_name: "Daan")
 
 # create memberships
+
+# Ecolympians group membership
+
+Membership.create!(
+  status: "Accepted",
+  role: "Admin",
+  user: user_daan,
+  group: our_group
+)
+
+ecolympians_users = User.where(first_name: ["Priya", "Linh", "Ofer"])
+ecolympians_users.each do |user|
+  Membership.create!(
+    status: "Accepted",
+    role: "Member",
+    user: user,
+    group: our_group
+  )
+end
+
 puts ""
 puts "Assigning group memberships....\n"
 puts ""
 
-Group.all.each do |group|
+Group.where.not(name: "OG Ecolympians").each do |group|
+#Group.all.each do |group|
   group_users = users.sample(6) # sample of 6 users
 
   # create a group leader from first user in sample
@@ -77,6 +143,8 @@ Group.all.each do |group|
     user: group_users.first,
     group: group
   )
+
+
 
   # create members of the group with the rest of the user sample
   group_users.last(5).each do |user|
@@ -96,6 +164,8 @@ Group.all.each do |group|
 
   puts ""
 end
+
+
 
 # create challenges
 puts "Creating the challenges...\n"
@@ -174,4 +244,67 @@ Group.all.each do |group|
   puts "#{group.name} will do the #{GroupChallenge.last.challenge.name} challenge, which starts at #{GroupChallenge.last.start_date} (#{GroupChallenge.last.status})"
 end
 
-puts ""
+#group challenges for ecolympians
+
+finished_challenge = Challenge.find_by(name: "Tree Titans")
+ongoing_challenge = Challenge.find_by(name: "Trash Trasher")
+
+#finished challenge
+i = 0
+our_group.memberships.each do |member|
+  i += 1
+  finished_group_challenge = GroupChallenge.create!(
+    challenge: finished_challenge,
+    membership: member,
+    start_date: Date.today - 16,
+    status: "finished"
+  )
+
+  finished_group_challenge.photo.attach(
+    io: File.open("app/assets/images/Tree_titans_#{i}.jpeg"),
+    filename: "Tree_titans_#{i}",
+    content_type: "image/jpeg"
+  )
+
+  user = member.user
+  users = our_group.memberships.excluding(member).map { |item| item.user }
+  users.each do |u|
+    proof_v = ProofVote.new(
+      vote: [true, false].sample
+    )
+    proof_v.user = u
+    proof_v.group_challenge = finished_group_challenge
+    proof_v.save!
+  end
+
+  if finished_group_challenge.proof_votes.select{ |proofvote| proofvote.vote == true }.count >= finished_group_challenge.proof_votes.select{ |proofvote| proofvote.vote == false}.count
+    finished_group_challenge.membership.score += finished_group_challenge.challenge.score
+    finished_group_challenge.membership.save!
+  end
+
+
+  #ongoing challenge
+  ongoing_group_challenge = GroupChallenge.create!(
+    challenge: ongoing_challenge,
+    membership: member,
+    start_date: Date.today - 6 ,
+    status: "ongoing"
+  )
+
+  if i == 1
+    photo_suffix = "accepted"
+  else
+    photo_suffix = "rejected"
+  end
+
+  unless i < 3
+    ongoing_group_challenge.photo.attach(
+      io: File.open("app/assets/images/Trash_trasher_#{photo_suffix}.jpeg"),
+      filename: "Trash_trasher_#{photo_suffix}",
+      content_type: "image/jpeg"
+    )
+  end
+
+  finished_group_challenge.save!
+  ongoing_group_challenge.save!
+end
