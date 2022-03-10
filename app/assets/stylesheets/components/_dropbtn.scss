@@ -8,8 +8,6 @@
   margin: 2rem;//reduced margin to widen drop-down container for choosing next challenge
   border-radius: 1rem;
   box-shadow: 4px 4px 16px #c7866982;
-  .btn-regular {
-  }
 
   .searchbar {
     font-size: large;
@@ -60,6 +58,9 @@
   justify-content: space-between;
   p {
     color: $secondary;
+  }
+    .btn-regular {
+    padding: 0.375rem;
   }
 }
 
