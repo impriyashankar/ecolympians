@@ -2,27 +2,44 @@
   text-align: center;
 }
 .form-example {
-  background-color: $secondary-light;
+  background-color: $white;
   padding-top: 3rem;
   padding-bottom: 2rem;
   margin: 2rem;//reduced margin to widen drop-down container for choosing next challenge
   border-radius: 1rem;
+  box-shadow: 4px 4px 16px #c7866982;
+  .btn-regular {
+  }
+
+  .searchbar {
+    font-size: large;
+    width: 75% !important;
+    margin-bottom: 1rem;
+  }
 }
 #challenge1 , #challenge2, #challenge3 {
   margin-bottom: 3rem;
   border-radius: 0.6rem;
   width: max-content;
-
+  background-color: $background
 
 }
+
+
+
+
 .hover-div1, .hover-div2 {
   margin-top:-30px;
   margin-bottom:-30px;
-  font-size:20px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size:large;
 }
 .hover-div3 {
   margin-top:-30px;
-  font-size:20px;
+  font-size:large;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .card-potential-challenges {
