@@ -15,3 +15,12 @@
 .cards-ind-dashboard {
   padding-bottom: 1rem;
 }
+
+#join-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  #btn-join-group {
+    margin-bottom: 10px;
+  }
+}
