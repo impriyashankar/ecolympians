@@ -80,14 +80,14 @@
 .proof-card {
   scroll-snap-align: center;
   min-width: 90vw;
-  background-color: $yellow;
+  background-color: $primary-light;
   margin: 1rem 5vw;
   border-radius: 16px;
   padding: 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.412);
+  box-shadow: 4px 4px 24px #c7866982;
 
   h4 {
     margin: 0;
@@ -142,7 +142,7 @@
     aspect-ratio: 1 / 1;
     height: 100%;
     border-radius: 16px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
+    box-shadow: 0 0 8px #c7866982;
     transition: 0.5s ease-in-out;
     touch-action: pinch-zoom;
     object-fit: cover;
@@ -204,7 +204,7 @@
   border-radius: 8px;
   margin: 1rem 0;
   padding: 0.5rem;
-  background-color: $blue-hover;
+  background-color: #f6f4e4;
   font-size: large;
   color: $black;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.212);
