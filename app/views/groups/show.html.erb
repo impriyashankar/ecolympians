@@ -44,7 +44,7 @@
               <div class="card-player-left">
                 <div class="color-band">
                   <%= cl_image_tag member.user.photo.key, class: "avatar-large" if member.user.photo.key%>
-                  <%= image_tag "leaf.png", class: "avatar-badge avatar-small"%>
+                  <%= image_tag "leaf#{(1..8).to_a.sample}.png", class: "avatar-badge avatar-small"%>
                 </div>
               </div>
               <div class="card-player-infos">
