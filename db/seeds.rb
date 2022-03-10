@@ -287,7 +287,7 @@ our_group.memberships.each do |member|
   ongoing_group_challenge = GroupChallenge.create!(
     challenge: ongoing_challenge,
     membership: member,
-    start_date: Date.today - 6 ,
+    start_date: Date.today - 6,
     status: "ongoing"
   )
 
@@ -301,8 +301,7 @@ our_group.memberships.each do |member|
     ongoing_group_challenge.photo.attach(
       io: File.open("app/assets/images/Trash_trasher_#{photo_suffix}.jpeg"),
       filename: "Trash_trasher_#{photo_suffix}",
-      content_type: "image/jpeg",
-      comment: "Ready and finished picking up a full bag of trash!"
+      content_type: "image/jpeg"
     )
   end
 
