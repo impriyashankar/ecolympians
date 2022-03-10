@@ -251,6 +251,18 @@ ongoing_challenge = Challenge.find_by(name: "Trash Trasher")
 
 #finished challenge
 i = 0
+finished_comments = [
+  "Planted a tree in Amsterdam!",
+  "Look at my beautiful tree",
+  "This one's gonna grow 100 years old",
+  "Planted with the FreeTree organisation"
+]
+
+ongoing_comments = [
+  "OMG this city is so dirrty, look how much trash I picked up!",
+  "Feeling refreshed after making this place a little bit cleaner."
+]
+
 our_group.memberships.each do |member|
   i += 1
   finished_group_challenge = GroupChallenge.create!(
@@ -258,6 +270,7 @@ our_group.memberships.each do |member|
     membership: member,
     start_date: Date.today - 16,
     status: "finished"
+    comment: finished_comments[i - 1]
   )
 
   finished_group_challenge.photo.attach(
@@ -289,6 +302,7 @@ our_group.memberships.each do |member|
     membership: member,
     start_date: Date.today - 6,
     status: "ongoing"
+
   )
 
   if i == 3
@@ -303,6 +317,7 @@ our_group.memberships.each do |member|
       filename: "Trash_trasher_#{photo_suffix}",
       content_type: "image/jpeg"
     )
+    ongoing_group_challenge.comment = ongoing_comments[i - 3]
   end
 
   finished_group_challenge.save!
