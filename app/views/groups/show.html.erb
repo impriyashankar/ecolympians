@@ -141,7 +141,7 @@
             <h3>Please choose the next challenge<h3>
             <form action="<%= group_potential_challenges_path(@group)%>" method="post" class="form-example">
             <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
-            <select id="challenge1" name="challenge1" size="1" data-action="change->hover-option#showDesc1">
+            <select id="challenge1" name="challenge1" size="1" data-action="change->hover-option#showDesc1" class="searchbar">
               <% Challenge.all.each do |challenge| %>
                 <option value="<%= challenge.name %>" data-challenge-type="<%= challenge.description %>"><%= challenge.name %></option>
               <% end %>
@@ -152,7 +152,7 @@
 
 
             <br>
-            <select id="challenge2" name="challenge2" size="1" data-action="change->hover-option#showDesc2">
+            <select id="challenge2" name="challenge2" size="1" data-action="change->hover-option#showDesc2" class="searchbar">
               <% Challenge.all.each do |challenge| %>
                 <option value="<%= challenge.name %>" data-challenge-type="<%= challenge.description %>"><%= challenge.name %></option>
               <% end %>
@@ -161,7 +161,7 @@
             </div>
 
             <br>
-            <select id="challenge3" name="challenge3" size="1" data-action="change->hover-option#showDesc3">
+            <select id="challenge3" name="challenge3" size="1" data-action="change->hover-option#showDesc3" class="searchbar">
               <% Challenge.all.each do |challenge| %>
                 <option value="<%= challenge.name %>" data-challenge-type="<%= challenge.description %>"><%= challenge.name %></option>
               <% end %>
