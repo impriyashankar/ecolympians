@@ -19,10 +19,14 @@
           <% elsif item.challenge.category == "Pick up trash" || item.challenge.category == "Made homemade art"%>
             <% color = "card-pink" %>
           <% end %>
-          <div class="card-challenges <%= color %>">
+          <div class="card-challenges">
             <div class="">
-              <div class="info-challenge">
-                <h2><%=item.challenge.name %></h2>
+              <div class="info-challenge <%= color %>">
+                <div class="challenge-card-name-box">
+                  <h2><%=item.challenge.name %></h2>
+                  <h2 class="leaf-icon"><%= icon("fas", "leaf") %></h2>
+                </div>
+
                 <p><%= item.challenge.description %></p>
               </div>
 
@@ -84,10 +88,13 @@
                 <% elsif item.challenge.category == "Pick up trash" || item.challenge.category == "Made homemade art"%>
                   <% color = "card-pink" %>
                 <% end %>
-                <div class="card-challenges <%= color %>">
+                <div class="card-challenges">
                   <div class="">
-                    <div class="info-challenge">
-                      <h2><%=item.challenge.name %></h2>
+                    <div class="info-challenge <%= color %>">
+                      <div class="challenge-card-name-box">
+                        <h2><%=item.challenge.name %></h2>
+                        <h2 class="leaf-icon"><%= icon("fas", "leaf") %></h2>
+                      </div>
                       <p><%= item.challenge.description %></p>
                     </div>
                   </div>
@@ -113,11 +120,14 @@
                 <% elsif item.challenge.category == "Pick up trash" || item.challenge.category == "Made homemade art"%>
                   <% color = "card-pink" %>
                 <% end %>
-                <div class="card-challenges <%= color %>">
+                <div class="card-challenges">
                   <div class="">
-                    <div class="info-challenge">
-                      <h2><%=item.challenge.name %></h2>
-                      <p>Description: <%= item.challenge.description %></p>
+                    <div class="info-challenge <%= color %>">
+                      <div class="challenge-card-name-box">
+                        <h2><%=item.challenge.name %></h2>
+                        <h2 class="leaf-icon"><%= icon("fas", "leaf") %></h2>
+                      </div>
+                      <p><%= item.challenge.description %></p>
                     </div>
                     <!-- start of proof buttons -->
                       <div class="card-challenge-buttons">
